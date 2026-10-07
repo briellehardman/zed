@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Swipe through delicious ideas for cooking at home or eating out.">
+    <meta name="theme-color" content="#f7f5ef">
+    <title>Swipe &amp; Bite</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <div class="app-shell">
+        <header class="topbar">
+            <a class="brand" href="#home" aria-label="Swipe and Bite home">
+                <span class="brand-icon" aria-hidden="true">S&amp;B</span>
+                <span class="brand-name">Swipe <span>&amp;</span> Bite</span>
+            </a>
+            <p class="topbar-note">A little inspiration for your next bite</p>
+        </header>
+
+        <main>
+            <section class="welcome" aria-labelledby="welcome-title">
+                <div>
+                    <p class="eyebrow">GOOD FOOD, NO GUESSWORK</p>
+                    <h1 id="welcome-title">Find your next <em>favorite.</em></h1>
+                    <p class="welcome-copy">Swipe through something delicious, whether you're cooking in or heading out.</p>
+                </div>
+                <span class="welcome-doodle" aria-hidden="true">✳</span>
+            </section>
+
+            <nav class="main-tabs" aria-label="Food discovery pages" role="tablist">
+                <button class="main-tab is-active" id="tab-home" type="button" role="tab" aria-selected="true" aria-controls="page-home" data-page="home">
+                    <span aria-hidden="true">⌂</span> Cook at Home
+                </button>
+                <button class="main-tab" id="tab-out" type="button" role="tab" aria-selected="false" aria-controls="page-out" data-page="out" tabindex="-1">
+                    <span aria-hidden="true">↗</span> Eat Out
+                </button>
+                <button class="main-tab saved-tab" id="tab-saved" type="button" role="tab" aria-selected="false" aria-controls="page-saved" data-page="saved" tabindex="-1">
+                    <span aria-hidden="true">♡</span> Saved <span class="saved-count" id="saved-count">0</span>
+                </button>
+            </nav>
+
+            <section class="discovery-page is-active" id="page-home" role="tabpanel" aria-labelledby="tab-home">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">YOUR KITCHEN, YOUR RULES</p>
+                        <h2>Cook at Home</h2>
+                    </div>
+                    <label class="filter-control" for="home-filter">
+                        <span>I'm craving</span>
+                        <select id="home-filter">
+                            <option value="All">Anything</option>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Snacks">Snacks</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="discovery-layout">
+                    <p class="side-note">A good thing is<br>worth a second look.</p>
+                    <div class="card-stage" id="home-stage" aria-live="polite"></div>
+                    <div class="side-counter"><span id="home-position">01</span><span class="counter-rule"></span><span id="home-total">06</span></div>
+                </div>
+            </section>
+
+            <section class="discovery-page" id="page-out" role="tabpanel" aria-labelledby="tab-out" hidden>
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">A TABLE FOR YOU</p>
+                        <h2>Eat Out</h2>
+                    </div>
+                    <label class="filter-control" for="out-filter">
+                        <span>I'm in the mood for</span>
+                        <select id="out-filter">
+                            <option value="All">Anything</option>
+                            <option value="Breakfast">Breakfast</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Sweet Treat">Sweet Treat</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="discovery-layout">
+                    <p class="side-note">Good places make<br>good memories.</p>
+                    <div class="card-stage" id="out-stage" aria-live="polite"></div>
+                    <div class="side-counter"><span id="out-position">01</span><span class="counter-rule"></span><span id="out-total">06</span></div>
+                </div>
+            </section>
+
+            <section class="saved-page" id="page-saved" role="tabpanel" aria-labelledby="tab-saved" hidden>
+                <div class="page-heading saved-heading">
+                    <div>
+                        <p class="eyebrow">THE GOOD ONES</p>
+                        <h2>Your saved bites</h2>
+                    </div>
+                    <p class="saved-hint">Tap the heart to keep a favorite here.</p>
+                </div>
+                <div class="saved-groups">
+                    <section class="saved-group" aria-labelledby="saved-recipes-title">
+                        <div class="saved-group-heading">
+                            <h3 id="saved-recipes-title">Recipes</h3>
+                            <span id="saved-recipes-count">0</span>
+                        </div>
+                        <div class="saved-grid" id="saved-recipes"></div>
+                    </section>
+                    <section class="saved-group" aria-labelledby="saved-places-title">
+                        <div class="saved-group-heading">
+                            <h3 id="saved-places-title">Restaurants</h3>
+                            <span id="saved-places-count">0</span>
+                        </div>
+                        <div class="saved-grid" id="saved-places"></div>
+                    </section>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer"><span>Made for hungry, indecisive people.</span><span>Swipe &amp; Bite <b>•</b> 2026</span></footer>
+    </div>
+</body>
+</html>
