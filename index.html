@@ -57,7 +57,7 @@
                             <option value="Breakfast">Breakfast</option>
                             <option value="Lunch">Lunch</option>
                             <option value="Dinner">Dinner</option>
-                            <option value="Snacks">Snacks</option>
+                            <option value="Snack">Snacks</option>
                         </select>
                     </label>
                 </div>
@@ -69,6 +69,12 @@
             </section>
 
             <section class="discovery-page" id="page-out" role="tabpanel" aria-labelledby="tab-out" hidden>
+                <div class="city-search">
+                    <label for="city-select">Where are you eating?</label>
+                    <select id="city-select">
+                        <option value="Fort Worth, TX">Fort Worth, TX</option>
+                    </select>
+                </div>
                 <div class="page-heading">
                     <div>
                         <p class="eyebrow">A TABLE FOR YOU</p>
@@ -121,5 +127,12 @@
 
         <footer class="app-footer"><span>Made for hungry, indecisive people.</span><span>Swipe &amp; Bite <b>•</b> 2026</span></footer>
     </div>
+
+    <dialog class="detail-dialog" id="detail-dialog" aria-labelledby="detail-title">
+        <div class="detail-dialog-shell">
+            <button class="detail-close" id="detail-close" type="button" aria-label="Close details">×</button>
+            <div id="detail-content"></div>
+        </div>
+    </dialog>
 </body>
 </html>
