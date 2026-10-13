@@ -5,14 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Swipe through delicious ideas for cooking at home or eating out.">
     <meta name="theme-color" content="#f7f5ef">
+    <meta name="referrer" content="no-referrer">
     <title>Swipe &amp; Bite</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/recipe-data.js" defer></script>
+    <script src="js/recipe-data-lunch.js" defer></script>
+    <script src="js/recipe-data-dinner.js" defer></script>
+    <script src="js/recipe-data-snacks.js" defer></script>
+    <script src="js/restaurant-photos.js" defer></script>
+    <script src="js/restaurant-data-more.js" defer></script>
+    <script src="js/restaurant-photos-more.js" defer></script>
     <script src="js/app.js" defer></script>
 </head>
-<body>
+<body class="app-initializing">
     <div class="app-shell">
         <header class="topbar">
             <a class="brand" href="#home" aria-label="Swipe and Bite home">
@@ -57,7 +65,7 @@
                             <option value="Breakfast">Breakfast</option>
                             <option value="Lunch">Lunch</option>
                             <option value="Dinner">Dinner</option>
-                            <option value="Snack">Snacks</option>
+                            <option value="Snacks">Snacks</option>
                         </select>
                     </label>
                 </div>

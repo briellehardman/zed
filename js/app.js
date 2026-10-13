@@ -1,166 +1,7 @@
 const STORAGE_KEY = "swipe-and-bite.saved";
-
-const recipeImages = [
-	"https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1506976785307-8732e854ad03?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1551024506-0bccd307d7e8?auto=format&fit=crop&w=1000&q=85",
-	"https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1000&q=85",
-];
-
-const recipes = [
-	{
-		id: 1,
-		name: "Avocado Egg Toast",
-		category: "Breakfast",
-		cookTime: "10 minutes",
-		description: "Avocado toast topped with a fried egg.",
-		images: [recipeImages[0]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["2 slices bread", "1 avocado", "2 eggs", "Salt", "Pepper", "Red pepper flakes"],
-		instructions: ["Toast the bread.", "Mash the avocado with salt and pepper.", "Spread avocado over toast.", "Cook the eggs in a skillet.", "Place one egg on each piece of toast.", "Add red pepper flakes."],
-	},
-	{
-		id: 2,
-		name: "Breakfast Tacos",
-		category: "Breakfast",
-		cookTime: "15 minutes",
-		description: "Easy breakfast tacos with eggs, cheese and avocado.",
-		images: [recipeImages[1]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["4 small tortillas", "4 eggs", "1/2 cup shredded cheese", "1 avocado", "Salsa", "Salt and pepper"],
-		instructions: ["Scramble the eggs.", "Warm the tortillas.", "Divide eggs between tortillas.", "Add cheese and avocado.", "Top with salsa."],
-	},
-	{
-		id: 3,
-		name: "Berry Yogurt Bowl",
-		category: "Breakfast",
-		cookTime: "5 minutes",
-		description: "A quick yogurt bowl with fruit and granola.",
-		images: [recipeImages[2]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["1 cup yogurt", "1/2 cup berries", "1/4 cup granola", "1 tablespoon honey"],
-		instructions: ["Add yogurt to a bowl.", "Top with berries.", "Add granola.", "Drizzle with honey."],
-	},
-	{
-		id: 4,
-		name: "Chicken Caesar Wrap",
-		category: "Lunch",
-		cookTime: "15 minutes",
-		description: "Chicken, lettuce and Caesar dressing wrapped in a tortilla.",
-		images: [recipeImages[3]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["1 large tortilla", "1 cup cooked chicken", "1 cup romaine lettuce", "2 tablespoons Caesar dressing", "Parmesan cheese"],
-		instructions: ["Chop the chicken and lettuce.", "Mix with Caesar dressing.", "Place mixture on tortilla.", "Add Parmesan.", "Roll tightly and slice."],
-	},
-	{
-		id: 5,
-		name: "Chicken Avocado Bowl",
-		category: "Lunch",
-		cookTime: "20 minutes",
-		description: "A simple chicken bowl with avocado and vegetables.",
-		images: [recipeImages[4]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["1 chicken breast", "1 avocado", "1 cup lettuce", "1/2 cup tomatoes", "1/2 cup corn", "Lime", "Salt and pepper"],
-		instructions: ["Season and cook the chicken.", "Slice the chicken.", "Add lettuce to a bowl.", "Add tomatoes, corn and avocado.", "Top with chicken.", "Squeeze lime over the bowl."],
-	},
-	{
-		id: 6,
-		name: "Turkey Pesto Sandwich",
-		category: "Lunch",
-		cookTime: "10 minutes",
-		description: "Turkey sandwich with pesto, tomato and greens.",
-		images: [recipeImages[5]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["2 slices bread", "4 slices turkey", "1 tablespoon pesto", "Tomato slices", "Arugula"],
-		instructions: ["Spread pesto on the bread.", "Add turkey.", "Add tomato and arugula.", "Close sandwich.", "Toast if desired."],
-	},
-	{
-		id: 7,
-		name: "Honey Garlic Chicken",
-		category: "Dinner",
-		cookTime: "30 minutes",
-		description: "Chicken cooked in a sweet garlic sauce.",
-		images: [recipeImages[6]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["2 chicken breasts", "2 tablespoons honey", "2 tablespoons soy sauce", "2 cloves garlic", "1 tablespoon olive oil"],
-		instructions: ["Cut chicken into pieces.", "Heat olive oil in a skillet.", "Cook chicken until browned.", "Mix honey, soy sauce and garlic.", "Pour sauce over chicken.", "Cook until the sauce thickens."],
-	},
-	{
-		id: 8,
-		name: "Steak and Roasted Potatoes",
-		category: "Dinner",
-		cookTime: "35 minutes",
-		description: "Simple steak served with crispy roasted potatoes.",
-		images: [recipeImages[7]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["1 steak", "2 potatoes", "Olive oil", "Garlic powder", "Salt", "Pepper"],
-		instructions: ["Preheat oven to 425°F.", "Cut potatoes into pieces.", "Toss potatoes with oil and seasoning.", "Roast for about 25 minutes.", "Season steak.", "Cook steak in a skillet to your preferred doneness.", "Serve together."],
-	},
-	{
-		id: 9,
-		name: "Chicken Fajitas",
-		category: "Dinner",
-		cookTime: "25 minutes",
-		description: "Chicken with peppers and onions served in tortillas.",
-		images: [recipeImages[8]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["2 chicken breasts", "1 bell pepper", "1 onion", "Fajita seasoning", "4 tortillas", "1 tablespoon olive oil"],
-		instructions: ["Slice chicken, pepper and onion.", "Heat oil in a skillet.", "Cook chicken.", "Add peppers and onions.", "Add fajita seasoning.", "Serve in warm tortillas."],
-	},
-	{
-		id: 10,
-		name: "Apple Peanut Butter Bites",
-		category: "Snack",
-		cookTime: "5 minutes",
-		description: "Apple slices topped with peanut butter and granola.",
-		images: [recipeImages[9]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["1 apple", "2 tablespoons peanut butter", "2 tablespoons granola"],
-		instructions: ["Slice the apple.", "Spread peanut butter over each slice.", "Sprinkle granola on top."],
-	},
-	{
-		id: 11,
-		name: "Loaded Nachos",
-		category: "Snack",
-		cookTime: "15 minutes",
-		description: "Quick nachos topped with cheese, beans, salsa and avocado.",
-		images: [recipeImages[1]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["Tortilla chips", "1 cup shredded cheese", "1/2 cup black beans", "Salsa", "1 avocado"],
-		instructions: ["Place chips on a baking sheet.", "Add cheese and beans.", "Bake at 400°F until cheese melts.", "Top with salsa and avocado."],
-	},
-	{
-		id: 12,
-		name: "Chocolate Banana Bites",
-		category: "Snack",
-		cookTime: "10 minutes",
-		description: "Banana slices dipped in chocolate.",
-		images: [recipeImages[11]],
-		sourceName: "",
-		sourceUrl: "",
-		ingredients: ["2 bananas", "1/2 cup chocolate chips"],
-		instructions: ["Slice bananas.", "Melt chocolate.", "Dip banana pieces into chocolate.", "Place on parchment paper.", "Chill until chocolate hardens."],
-	},
-];
+const UI_STORAGE_KEY = "swipe-and-bite.ui-state";
+const SWIPE_LOCK_MS = 180;
+const recipes = window.SWIPE_BITE_RECIPES;
 
 const restaurants = [
 	{
@@ -174,9 +15,8 @@ const restaurants = [
 		address: "1509 S University Dr, Fort Worth, TX 76107",
 		description: "A classic Fort Worth diner known for pancakes, breakfast plates and late-night breakfast.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Pancakes", "Breakfast Plates", "French Toast"],
-		websiteUrl: "",
+		websiteUrl: "https://www.olsouthpancakehouse.com/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -191,9 +31,8 @@ const restaurants = [
 		address: "2150 W 7th St Suite 108, Fort Worth, TX 76107",
 		description: "A colorful breakfast and brunch restaurant with pancakes, breakfast hashes, benedicts and other creative breakfast dishes.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Pancakes", "Breakfast Hash", "Eggs Benedict"],
-		websiteUrl: "",
+		websiteUrl: "https://www.snoozeeatery.com/restaurant/texas/left-bank/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -208,9 +47,8 @@ const restaurants = [
 		address: "2421 W 7th St Ste 109, Fort Worth, TX 76107",
 		description: "A casual neighborhood cafe serving breakfast plates, pancakes, waffles, burgers and comfort food.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Pancakes", "Waffles", "Breakfast Plates"],
-		websiteUrl: "",
+		websiteUrl: "https://vickerycafe.com/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -225,9 +63,8 @@ const restaurants = [
 		address: "4801 Edwards Ranch Rd #105, Fort Worth, TX 76109",
 		description: "An all-day cafe by the Trinity Trails with breakfast, salads, sandwiches, burgers and entrees.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Burgers", "Salads", "Brunch"],
-		websiteUrl: "",
+		websiteUrl: "https://www.presscafeftworth.com/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -242,9 +79,8 @@ const restaurants = [
 		address: "305 Main St, Fort Worth, TX 76102",
 		description: "A downtown breakfast restaurant serving pancakes, omelets, benedicts, French toast and lunch dishes.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["French Toast", "Pancakes", "Omelets"],
-		websiteUrl: "",
+		websiteUrl: "https://eatyolk.com/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -259,9 +95,8 @@ const restaurants = [
 		address: "1116 8th Ave, Fort Worth, TX 76104",
 		description: "Texas barbecue with Tex-Mex influences, smoked meats, tacos and barbecue plates.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Brisket", "Barbecue Tacos", "Smoked Meats"],
-		websiteUrl: "",
+		websiteUrl: "https://hurtadobbq.com/locations/fort-worth",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -276,9 +111,8 @@ const restaurants = [
 		address: "1314 W Magnolia Ave, Fort Worth, TX 76104",
 		description: "A Fort Worth vegan diner serving plant-based comfort food for breakfast, lunch and dinner.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Biscuits and Gravy", "Breakfast Burrito", "Vegan Burgers"],
-		websiteUrl: "",
+		websiteUrl: "https://www.spiraldiner.com/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -293,9 +127,8 @@ const restaurants = [
 		address: "1201 W Magnolia Ave Ste 115, Fort Worth, TX 76104",
 		description: "A Fort Worth small-batch ice cream shop with rotating flavors and seasonal creations.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Small-Batch Ice Cream", "Seasonal Flavors", "Ice Cream Cones"],
-		websiteUrl: "",
+		websiteUrl: "https://melticecreams.com/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -310,9 +143,8 @@ const restaurants = [
 		address: "3936 W Vickery Blvd, Fort Worth, TX 76107",
 		description: "A longtime Fort Worth bakery known for cakes, pastries and its famous Black Forest cake.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Black Forest Cake", "Pastries", "Éclairs"],
-		websiteUrl: "",
+		websiteUrl: "https://www.facebook.com/swisspastryshop/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -327,9 +159,8 @@ const restaurants = [
 		address: "5274 Monahans Ave, Fort Worth, TX 76107",
 		description: "An Italian gelato shop known for flower-shaped gelato cones, crepes and other desserts.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Gelato", "Rose-Shaped Cone", "Crepes"],
-		websiteUrl: "",
+		websiteUrl: "https://www.amorino.com/en-us",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -341,12 +172,11 @@ const restaurants = [
 		cuisine: "Italian",
 		price: "$$",
 		neighborhood: "River District",
-		address: "",
+		address: "4400 White Settlement Rd, Fort Worth, TX 76114",
 		description: "A casual Italian restaurant from chef Tim Love serving pizza, pasta and Italian-inspired dishes.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Pizza", "Pasta", "Italian Small Plates"],
-		websiteUrl: "",
+		websiteUrl: "https://www.gemelleftw.com/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
@@ -358,19 +188,36 @@ const restaurants = [
 		cuisine: "Mexican",
 		price: "$$$",
 		neighborhood: "Cultural District",
-		address: "",
+		address: "3268 W 7th St, Fort Worth, TX 76107",
 		description: "An upscale restaurant focused on the food and traditions of northern Mexico.",
 		images: [],
-		googlePlaces: { placeId: "", photoUrls: [], photoResources: [] },
 		popularDishes: ["Barbacoa Tacos", "Cabrito", "Tamal de Cerdo"],
-		websiteUrl: "",
+		websiteUrl: "https://www.donartemio.us/",
 		menuUrl: "",
 		yelpUrl: "",
 	},
 ];
 
+restaurants.push(...(window.SWIPE_BITE_MORE_RESTAURANTS || []));
+
+restaurants.forEach((restaurant) => {
+	restaurant.images = window.SWIPE_BITE_RESTAURANT_PHOTOS?.[restaurant.id] || window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS?.[restaurant.id] || restaurant.images || [];
+	restaurant.customerPhotos = window.SWIPE_BITE_CUSTOMER_PHOTOS?.[restaurant.id] || window.SWIPE_BITE_MORE_CUSTOMER_PHOTOS?.[restaurant.id] || [];
+	const leadImage = restaurant.images[0];
+	if (!restaurant.mainImage && leadImage) restaurant.mainImage = typeof leadImage === "string" ? leadImage : leadImage.url;
+	if (!restaurant.imageSourceType && leadImage) restaurant.imageSourceType = typeof leadImage === "object" ? leadImage.sourceType || (leadImage.attribution === "Yelp customer photo" ? "customer" : "official") : "official";
+	if (restaurant.imageSelectionReviewed === undefined) restaurant.imageSelectionReviewed = Boolean(leadImage);
+});
+
 const availableCities = [...new Set(restaurants.map((restaurant) => restaurant.city))];
-let selectedCity = availableCities[0];
+let restoredUIState = {};
+try {
+	restoredUIState = JSON.parse(localStorage.getItem(UI_STORAGE_KEY) || "{}") || {};
+} catch {
+	restoredUIState = {};
+}
+let selectedCity = availableCities.includes(restoredUIState.city) ? restoredUIState.city : availableCities[0];
+let currentPage = ["home", "out", "saved"].includes(restoredUIState.page) ? restoredUIState.page : "home";
 
 const tabs = document.querySelectorAll(".main-tab");
 const pages = {
@@ -393,9 +240,52 @@ const citySelect = document.querySelector("#city-select");
 const detailDialog = document.querySelector("#detail-dialog");
 const detailContent = document.querySelector("#detail-content");
 const detailClose = document.querySelector("#detail-close");
-const positions = { home: 0, out: 0 };
+const positions = {
+	home: Number.isInteger(restoredUIState.homeIndex) ? Math.max(0, restoredUIState.homeIndex) : 0,
+	out: Number.isInteger(restoredUIState.outIndex) ? Math.max(0, restoredUIState.outIndex) : 0,
+};
+const swipeLocks = { home: false, out: false };
+const undoHistory = {
+	home: restoredUIState.undo?.home || null,
+	out: restoredUIState.undo?.out || null,
+};
+let activeDetail = null;
+const preloadedRestaurantImages = new Map();
 let savedItems = loadSavedItems();
 let lastDetailTrigger = null;
+
+function hasSelectOption(select, value) {
+	return [...select.options].some((option) => option.value === value);
+}
+
+if (hasSelectOption(filters.home, restoredUIState.homeCategory)) filters.home.value = restoredUIState.homeCategory;
+if (hasSelectOption(filters.out, restoredUIState.outCategory)) filters.out.value = restoredUIState.outCategory;
+
+function persistUIState() {
+	const homeItems = getVisibleItems("home");
+	const outItems = getVisibleItems("out");
+	const homeItem = homeItems[positions.home];
+	const outItem = outItems[positions.out];
+	const detailOpen = detailDialog.open && activeDetail;
+	try {
+		localStorage.setItem(UI_STORAGE_KEY, JSON.stringify({
+			page: currentPage,
+			homeCategory: filters.home.value,
+			outCategory: filters.out.value,
+			city: selectedCity,
+			homeIndex: positions.home,
+			outIndex: positions.out,
+			homeId: homeItem?.id ?? null,
+			outId: outItem?.id ?? null,
+			detailOpen: Boolean(detailOpen),
+			detailType: detailOpen ? activeDetail.type : null,
+			detailId: detailOpen ? activeDetail.id : null,
+			undo: undoHistory,
+		}));
+	} catch {
+		return;
+	}
+}
 
 function renderCityOptions() {
 	citySelect.replaceChildren();
@@ -411,10 +301,24 @@ function renderCityOptions() {
 function loadSavedItems() {
 	try {
 		const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-		const recipeIds = new Set(recipes.map((recipe) => recipe.id));
 		const restaurantIds = new Set(restaurants.map((restaurant) => restaurant.id));
+		const storedRecipes = Array.isArray(saved.recipes) ? saved.recipes : [];
+		const normalizedRecipes = storedRecipes.map((savedRecipe) => {
+			if (savedRecipe && typeof savedRecipe === "object") {
+				return {
+					...savedRecipe,
+					mainImage: savedRecipe.mainImage || "",
+					images: Array.isArray(savedRecipe.images) ? savedRecipe.images : [],
+					ingredients: Array.isArray(savedRecipe.ingredients) ? savedRecipe.ingredients : [],
+					measurements: Array.isArray(savedRecipe.measurements) ? savedRecipe.measurements : [],
+					instructions: Array.isArray(savedRecipe.instructions) ? savedRecipe.instructions : [],
+				};
+			}
+			return recipes.find((recipe) => String(recipe.id) === String(savedRecipe));
+		}).filter(Boolean);
+
 		return {
-			recipes: Array.isArray(saved.recipes) ? saved.recipes.filter((id) => recipeIds.has(id)) : [],
+			recipes: normalizedRecipes,
 			restaurants: Array.isArray(saved.restaurants) ? saved.restaurants.filter((id) => restaurantIds.has(id)) : [],
 		};
 	} catch {
@@ -437,43 +341,150 @@ function getVisibleItems(page) {
 	return allItems.filter((item) => item.category === selectedCategory);
 }
 
+function itemIdMatches(item, id) {
+	return id !== null && id !== undefined && String(item.id) === String(id);
+}
+
+function restorePosition(page, savedId, savedIndex) {
+	const items = getVisibleItems(page);
+	const matchingIndex = items.findIndex((item) => itemIdMatches(item, savedId));
+	positions[page] = matchingIndex >= 0
+		? matchingIndex
+		: Math.min(Math.max(0, Number(savedIndex) || 0), Math.max(0, items.length - 1));
+}
+
+function undoIsAvailable(page) {
+	const undo = undoHistory[page];
+	if (!undo || undo.category !== filters[page].value) return false;
+	if (page === "out" && undo.city !== selectedCity) return false;
+	return getVisibleItems(page).some((item) => itemIdMatches(item, undo.itemId));
+}
+
+function finishSwipeLock(page) {
+	swipeLocks[page] = false;
+	const stage = cardStages[page];
+	stage.querySelectorAll("button").forEach((button) => {
+		button.disabled = button.hasAttribute("data-undo") && !undoIsAvailable(page);
+	});
+	stage.removeAttribute("aria-busy");
+}
+
+function runSwipeAction(page, item, action) {
+	if (swipeLocks[page]) return;
+	swipeLocks[page] = true;
+	const stage = cardStages[page];
+	stage.setAttribute("aria-busy", "true");
+	stage.querySelectorAll("button").forEach((button) => { button.disabled = true; });
+	if (stage.contains(document.activeElement)) document.activeElement.blur();
+
+	const collection = page === "home" ? "recipes" : "restaurants";
+	let addedToSaved = false;
+	if (action === "like") {
+		const alreadySaved = savedItems[collection].some((savedItem) => {
+			const savedId = typeof savedItem === "object" ? savedItem.id : savedItem;
+			return itemIdMatches({ id: savedId }, item.id);
+		});
+		if (!alreadySaved) {
+			savedItems[collection].push(collection === "recipes" ? { ...item } : item.id);
+			addedToSaved = true;
+			saveItems();
+			updateSavedCount();
+		}
+	}
+
+	undoHistory[page] = {
+		itemId: item.id,
+		category: filters[page].value,
+		city: page === "out" ? selectedCity : null,
+		addedToSaved,
+	};
+	positions[page] = (positions[page] + 1) % Math.max(1, getVisibleItems(page).length);
+	renderCard(page);
+	persistUIState();
+	window.setTimeout(() => finishSwipeLock(page), SWIPE_LOCK_MS);
+}
+
+function undoLastSwipe(page) {
+	if (swipeLocks[page] || !undoIsAvailable(page)) return;
+	const undo = undoHistory[page];
+	const items = getVisibleItems(page);
+	const restoredIndex = items.findIndex((item) => itemIdMatches(item, undo.itemId));
+	if (restoredIndex < 0) return;
+
+	swipeLocks[page] = true;
+	const stage = cardStages[page];
+	stage.setAttribute("aria-busy", "true");
+	stage.querySelectorAll("button").forEach((button) => { button.disabled = true; });
+	if (stage.contains(document.activeElement)) document.activeElement.blur();
+	if (undo.addedToSaved) {
+		const collection = page === "home" ? "recipes" : "restaurants";
+		savedItems[collection] = savedItems[collection].filter((savedItem) => {
+			const savedId = typeof savedItem === "object" ? savedItem.id : savedItem;
+			return !itemIdMatches({ id: savedId }, undo.itemId);
+		});
+		saveItems();
+		updateSavedCount();
+	}
+	positions[page] = restoredIndex;
+	undoHistory[page] = null;
+	renderCard(page);
+	if (currentPage === "saved") renderSavedItems();
+	persistUIState();
+	window.setTimeout(() => finishSwipeLock(page), SWIPE_LOCK_MS);
+}
+
 function getItemImages(item, type) {
-	const recipeOrCuratedImages = Array.isArray(item.images) ? item.images : [];
+	const recipeOrCuratedImages = type === "recipe"
+		? [item.mainImage, ...(Array.isArray(item.images) ? item.images : [])].filter(Boolean)
+		: [item.mainImage, ...(Array.isArray(item.images) ? item.images : [])].filter(Boolean);
+	const seenRestaurantPhotos = new Set();
+	const canonicalPhotoKey = (url) => {
+		try {
+			const parsed = new URL(url, window.location.href);
+			parsed.pathname = parsed.pathname.replace(/-\d{2,4}x\d{2,4}(?=\.[a-z0-9]+$)/i, "");
+			[...parsed.searchParams.keys()].forEach((key) => {
+				if (["w", "width", "h", "height", "format", "quality", "fit", "crop", "auto", "cs", "lossy", "strip", "webp", "compress", "dpr", "resize", "fill", "variant"].includes(key.toLowerCase())) parsed.searchParams.delete(key);
+			});
+			parsed.hash = "";
+			return `${parsed.hostname.toLowerCase()}${parsed.pathname.toLowerCase()}?${parsed.searchParams.toString()}`;
+		} catch {
+			return url;
+		}
+	};
 	const normalizeImages = (images) => images
-		.map((image) => typeof image === "string" ? { url: image, attribution: "" } : image)
-		.filter((image) => typeof image?.url === "string" && image.url.trim());
+		.map((image) => typeof image === "string" ? { url: image, attribution: type === "restaurant" ? "Official restaurant website" : "" } : image)
+		.filter((image) => typeof image?.url === "string" && image.url.trim())
+		.filter((image) => type !== "restaurant" || !/(?:^|[\/_-])(logo|icon|badge|seal|placeholder|sprite|dummy|close|reload)(?:[\/_?.-]|$)/i.test(image.url))
+		.filter((image) => {
+			if (type !== "restaurant") return true;
+			const key = canonicalPhotoKey(image.url);
+			if (seenRestaurantPhotos.has(key)) return false;
+			seenRestaurantPhotos.add(key);
+			return true;
+		});
 
 	if (type === "restaurant") {
-		const googlePhotoUrls = item.googlePlaces?.photoUrls || [];
-		return normalizeImages([...recipeOrCuratedImages, ...googlePhotoUrls])
-			.slice(0, 10);
+		return normalizeImages(recipeOrCuratedImages);
 	}
 
 	return normalizeImages(recipeOrCuratedImages);
 }
 
-function applyGooglePlacesDetails(restaurant, placeDetails) {
-	if (placeDetails.id) restaurant.googlePlaces.placeId = placeDetails.id;
-	if (placeDetails.formattedAddress) restaurant.address = placeDetails.formattedAddress;
-	if (placeDetails.websiteUri) restaurant.websiteUrl = placeDetails.websiteUri;
-	if (placeDetails.editorialSummary?.text) restaurant.description = placeDetails.editorialSummary.text;
-	if (Array.isArray(placeDetails.photos)) {
-		restaurant.googlePlaces.photoResources = placeDetails.photos.slice(0, 10).map((photo) => photo.name).filter(Boolean);
-		restaurant.googlePlaces.photoUrls = placeDetails.photos
-			.map((photo) => ({
-				url: photo.photoUri || photo.url,
-				attribution: (photo.authorAttributions || []).map((author) => author.displayName).filter(Boolean).join(", "),
-			}))
-			.filter((photo) => photo.url)
-			.slice(0, 10);
-	}
-}
-
 function imageOrPlaceholder(item, type, className = "") {
 	const image = getItemImages(item, type)[0];
 	return image
-		? `<img class="${className}" src="${image.url}" alt="${item.name}" loading="lazy">`
+		? `<img class="${className}" src="${image.url}" alt="${item.name}" loading="lazy" data-photo-fallback>`
 		: `<div class="photo-placeholder ${className}" aria-label="No photo added for ${item.name}"><span>Photo not provided</span></div>`;
+}
+
+function connectImageFallback(image) {
+	if (!image) return;
+	image.addEventListener("error", () => {
+		const placeholder = document.createElement("div");
+		placeholder.className = "photo-placeholder image-error-placeholder";
+		placeholder.textContent = "Photo unavailable";
+		image.replaceWith(placeholder);
+	}, { once: true });
 }
 
 function galleryMarkup(item, type) {
@@ -491,26 +502,238 @@ function galleryMarkup(item, type) {
 		? `<button class="gallery-arrow gallery-previous" type="button" data-gallery-step="-1" aria-label="Previous photo">‹</button><button class="gallery-arrow gallery-next" type="button" data-gallery-step="1" aria-label="Next photo">›</button><span class="gallery-count" aria-live="polite">1 / ${images.length}</span>`
 		: "";
 
-	return `<div class="detail-gallery" data-gallery data-gallery-alt="${description}"><div class="gallery-main"><img class="detail-hero-image" src="${images[0].url}" alt="${description} 1 of ${images.length}">${controls}<span class="gallery-credit" aria-live="polite"></span></div>${thumbnails}</div>`;
+	return `<div class="detail-gallery" data-gallery data-gallery-alt="${description}"><div class="gallery-main"><img class="detail-hero-image" src="${images[0].url}" alt="${description} 1 of ${images.length}" data-photo-fallback>${controls}<span class="gallery-credit" aria-live="polite"></span></div>${thumbnails}</div>`;
+}
+
+function customerPhotosMarkup(item, yelpUrl, mapsUrl) {
+	const photos = item.customerPhotos || [];
+	if (photos.length === 0) {
+		return `<section class="customer-photos"><h3>Photos from customers</h3><p class="customer-photos-empty">Guest photos will appear here. See what diners are sharing on Yelp and Google Maps.</p><p class="detail-source">See more guest photos on <a href="${yelpUrl}" target="_blank" rel="noopener noreferrer">Yelp</a> or <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer">Google Maps</a></p></section>`;
+	}
+
+	const preview = photos.slice(0, 6);
+	const hiddenCount = photos.length - preview.length;
+	const tiles = preview.map((photo, index) => {
+		const more = hiddenCount > 0 && index === preview.length - 1 ? `<span class="customer-photo-more">+${hiddenCount}</span>` : "";
+		return `<button class="customer-photo" type="button" data-guest-index="${index}" aria-label="Open customer photo ${index + 1} of ${photos.length}"><img src="${photo.thumb}" alt="Customer photo at ${item.name}" loading="lazy">${more}</button>`;
+	}).join("");
+	return `<section class="customer-photos"><div class="customer-photos-heading"><h3>Photos from customers</h3><button class="customer-photos-all" type="button" data-guest-open>View all ${photos.length}</button></div><div class="customer-photo-grid">${tiles}</div><p class="detail-source">Photos shared by diners on Yelp</p></section>`;
+}
+
+function closeGuestGallery() {
+	detailDialog.querySelector(".guest-gallery")?.remove();
+	detailContent.hidden = false;
+}
+
+function openGuestGallery(item, startIndex = null) {
+	const photos = item.customerPhotos || [];
+	const shell = detailDialog.querySelector(".detail-dialog-shell");
+	closeGuestGallery();
+	detailContent.hidden = true;
+	detailDialog.scrollTo({ top: 0 });
+
+	const gallery = document.createElement("div");
+	gallery.className = "guest-gallery";
+	gallery.setAttribute("role", "region");
+	gallery.setAttribute("aria-label", `Customer photos of ${item.name}`);
+	gallery.innerHTML = `
+		<div class="guest-gallery-bar">
+			<button class="guest-back" type="button">‹ Back to ${item.name}</button>
+			<span>${photos.length} photos from Yelp diners</span>
+		</div>
+		<div class="guest-grid">${photos.map((photo, index) => `<button class="guest-grid-photo" type="button" data-index="${index}" aria-label="View customer photo ${index + 1} of ${photos.length}"><img src="${photo.thumb}" alt="Customer photo at ${item.name}" loading="lazy"></button>`).join("")}</div>
+		<div class="guest-viewer" hidden>
+			<button class="guest-viewer-back" type="button">‹ All photos</button>
+			<img class="guest-viewer-image" alt="">
+			<button class="guest-viewer-arrow guest-viewer-prev" type="button" aria-label="Previous photo">‹</button>
+			<button class="guest-viewer-arrow guest-viewer-next" type="button" aria-label="Next photo">›</button>
+			<div class="guest-viewer-caption"><span class="guest-viewer-count"></span><a target="_blank" rel="noopener noreferrer">Photo from Yelp · View on Yelp</a></div>
+		</div>`;
+	shell.append(gallery);
+
+	const viewer = gallery.querySelector(".guest-viewer");
+	const viewerImage = gallery.querySelector(".guest-viewer-image");
+	let current = 0;
+	let touchStartX = null;
+	let savedScroll = 0;
+
+	function showPhoto(index) {
+		if (viewer.hidden) {
+			savedScroll = gallery.scrollTop;
+			gallery.scrollTop = 0;
+			gallery.style.overflowY = "hidden";
+		}
+		current = (index + photos.length) % photos.length;
+		viewerImage.src = photos[current].url;
+		viewerImage.alt = `Customer photo ${current + 1} of ${photos.length} at ${item.name}`;
+		gallery.querySelector(".guest-viewer-count").textContent = `${current + 1} / ${photos.length}`;
+		gallery.querySelector(".guest-viewer-caption a").href = photos[current].sourceUrl;
+		viewer.hidden = false;
+		viewer.querySelector(".guest-viewer-back").focus();
+	}
+
+	function closeViewer() {
+		viewer.hidden = true;
+		gallery.style.overflowY = "";
+		gallery.scrollTop = savedScroll;
+		gallery.querySelector(`[data-index="${current}"]`)?.focus({ preventScroll: true });
+	}
+
+	viewerImage.addEventListener("error", () => {
+		if (viewerImage.src !== photos[current].thumb) viewerImage.src = photos[current].thumb;
+	});
+	gallery.querySelectorAll(".guest-grid-photo img").forEach((thumbnail) => {
+		thumbnail.addEventListener("error", () => thumbnail.closest(".guest-grid-photo").remove(), { once: true });
+	});
+	gallery.querySelectorAll(".guest-grid-photo").forEach((button) => {
+		button.addEventListener("click", () => showPhoto(Number(button.dataset.index)));
+	});
+
+	gallery.querySelector(".guest-back").addEventListener("click", () => {
+		closeGuestGallery();
+		detailContent.querySelector("[data-guest-open]")?.focus();
+	});
+	viewer.querySelector(".guest-viewer-back").addEventListener("click", closeViewer);
+	preloadNextRestaurantImage(page);
+	viewer.querySelector(".guest-viewer-prev").addEventListener("click", () => showPhoto(current - 1));
+	viewer.querySelector(".guest-viewer-next").addEventListener("click", () => showPhoto(current + 1));
+	gallery.addEventListener("keydown", (event) => {
+		if (viewer.hidden) return;
+		if (event.key === "ArrowLeft") showPhoto(current - 1);
+		if (event.key === "ArrowRight") showPhoto(current + 1);
+	});
+	viewer.addEventListener("touchstart", (event) => {
+		touchStartX = event.changedTouches[0].clientX;
+	}, { passive: true });
+	viewer.addEventListener("touchend", (event) => {
+		if (touchStartX === null) return;
+		const distance = event.changedTouches[0].clientX - touchStartX;
+		if (Math.abs(distance) > 40) showPhoto(current + (distance < 0 ? 1 : -1));
+		touchStartX = null;
+	}, { passive: true });
+
+	if (startIndex === null) {
+		gallery.querySelector(".guest-back").focus();
+	} else {
+		showPhoto(startIndex);
+	}
+}
+
+function cardPhotoMarkup(item, type, label) {
+	const images = getItemImages(item, type);
+	const photo = images.length
+		? `<img class="card-gallery-image" src="${images[0].url}" alt="${item.name}" loading="eager">`
+		: imageOrPlaceholder(item, type);
+	const controls = images.length > 1
+		? `<button class="card-gallery-arrow card-gallery-previous" type="button" data-card-gallery-step="-1" aria-label="Previous ${item.name} photo">‹</button><button class="card-gallery-arrow card-gallery-next" type="button" data-card-gallery-step="1" aria-label="Next ${item.name} photo">›</button><span class="card-gallery-count" aria-live="polite">1 / ${images.length}</span>`
+		: "";
+
+	return `<div class="food-photo" data-card-gallery data-card-gallery-count="${images.length}">${photo}${controls}<span class="photo-label">${label}</span></div>`;
+}
+
+function connectCardGallery(card, images) {
+	if (images.length < 2) return;
+	const photoArea = card.querySelector(".food-photo");
+	const image = photoArea.querySelector(".card-gallery-image");
+	let currentIndex = 0;
+	let touchStartX = null;
+	let fallback = null;
+
+	function showImage(index) {
+		currentIndex = (index + images.length) % images.length;
+		image.src = images[currentIndex].url;
+		image.alt = `${card.querySelector("h3").textContent}, photo ${currentIndex + 1} of ${images.length}`;
+		photoArea.querySelector(".card-gallery-count").textContent = `${currentIndex + 1} / ${images.length}`;
+	}
+
+	image.addEventListener("error", () => {
+		const failedIndex = images.findIndex((candidate) => candidate.url === image.getAttribute("src"));
+		if (images.length > 1 && failedIndex !== -1) {
+			images.splice(failedIndex, 1);
+			if (images.length < 2) photoArea.querySelectorAll(".card-gallery-arrow, .card-gallery-count").forEach((control) => control.remove());
+			currentIndex = failedIndex % images.length;
+			image.src = images[currentIndex].url;
+			const count = photoArea.querySelector(".card-gallery-count");
+			if (count) count.textContent = `${currentIndex + 1} / ${images.length}`;
+			return;
+		}
+		if (fallback) return;
+		fallback = document.createElement("div");
+		fallback.className = "photo-placeholder card-gallery-fallback";
+		fallback.textContent = "Photo unavailable";
+		photoArea.append(fallback);
+		image.style.visibility = "hidden";
+	});
+	image.addEventListener("load", () => {
+		image.style.visibility = "visible";
+		fallback?.remove();
+		fallback = null;
+	});
+
+	photoArea.querySelectorAll("[data-card-gallery-step]").forEach((button) => {
+		button.addEventListener("click", () => showImage(currentIndex + Number(button.dataset.cardGalleryStep)));
+	});
+	photoArea.addEventListener("touchstart", (event) => {
+		touchStartX = event.changedTouches[0].clientX;
+	}, { passive: true });
+	photoArea.addEventListener("touchend", (event) => {
+		if (touchStartX === null) return;
+		const distance = event.changedTouches[0].clientX - touchStartX;
+		if (Math.abs(distance) > 40) showImage(currentIndex + (distance < 0 ? 1 : -1));
+		touchStartX = null;
+	}, { passive: true });
 }
 
 function connectGallery(gallery, images) {
 	if (!gallery) return;
 	const credit = gallery.querySelector(".gallery-credit");
 	if (credit && images[0]?.attribution) credit.textContent = `Photo: ${images[0].attribution}`;
+	const mainImage = gallery.querySelector(".detail-hero-image");
+	let fallback = null;
+	let touchStartX = null;
+	mainImage.addEventListener("error", () => {
+		if (dropImage(mainImage.getAttribute("src"))) return;
+		if (fallback) return;
+		fallback = document.createElement("div");
+		fallback.className = "photo-placeholder gallery-image-fallback";
+		fallback.textContent = "Photo unavailable";
+		gallery.querySelector(".gallery-main").append(fallback);
+		mainImage.style.visibility = "hidden";
+	});
+	mainImage.addEventListener("load", () => {
+		mainImage.style.visibility = "visible";
+		fallback?.remove();
+		fallback = null;
+	});
+	gallery.querySelectorAll(".gallery-thumbnail img").forEach((thumbnail) => {
+		thumbnail.addEventListener("error", () => dropImage(thumbnail.getAttribute("src")), { once: true });
+	});
 	if (images.length < 2) return;
 	let currentIndex = 0;
-	let touchStartX = null;
+
+	function dropImage(url) {
+		const index = images.findIndex((image) => image.url === url);
+		if (index === -1 || images.length < 2) return false;
+		images.splice(index, 1);
+		const thumbnails = [...gallery.querySelectorAll(".gallery-thumbnail")];
+		thumbnails[index]?.remove();
+		gallery.querySelectorAll(".gallery-thumbnail").forEach((thumbnail, thumbnailIndex) => {
+			thumbnail.dataset.galleryIndex = thumbnailIndex;
+		});
+		if (images.length < 2) gallery.querySelectorAll(".gallery-arrow, .gallery-count, .gallery-thumbnails").forEach((element) => element.remove());
+		showImage(index < currentIndex ? currentIndex - 1 : currentIndex);
+		return true;
+	}
 
 	function showImage(index) {
 		currentIndex = (index + images.length) % images.length;
-		const image = gallery.querySelector(".detail-hero-image");
-		image.src = images[currentIndex].url;
-		image.alt = `${gallery.dataset.galleryAlt} ${currentIndex + 1} of ${images.length}`;
+		mainImage.src = images[currentIndex].url;
+		mainImage.alt = `${gallery.dataset.galleryAlt} ${currentIndex + 1} of ${images.length}`;
 		gallery.querySelector(".gallery-credit").textContent = images[currentIndex].attribution
 			? `Photo: ${images[currentIndex].attribution}`
 			: "";
-		gallery.querySelector(".gallery-count").textContent = `${currentIndex + 1} / ${images.length}`;
+		const count = gallery.querySelector(".gallery-count");
+		if (count) count.textContent = `${currentIndex + 1} / ${images.length}`;
 		gallery.querySelectorAll(".gallery-thumbnail").forEach((thumbnail, thumbnailIndex) => {
 			const isActive = thumbnailIndex === currentIndex;
 			thumbnail.classList.toggle("is-active", isActive);
@@ -562,29 +785,33 @@ function renderCard(page) {
 	const isRecipe = page === "home";
 	const detail = isRecipe ? item.cookTime : item.cuisine;
 	const detailLabel = isRecipe ? "Ready in" : "Cuisine";
-	const description = isRecipe ? `<p>${item.description}</p>` : "";
+	const descriptionText = item.description || "";
+	const itemImages = getItemImages(item, isRecipe ? "recipe" : "restaurant");
+	const undoDisabled = !undoIsAvailable(page) || swipeLocks[page];
 
 	stage.innerHTML = `
 		<article class="food-card" tabindex="0" aria-label="Open details for ${item.name}" aria-haspopup="dialog">
-			<div class="food-photo">
-				${imageOrPlaceholder(item, isRecipe ? "recipe" : "restaurant")}
-				<span class="photo-label">${isRecipe ? "Made with love" : "Worth the trip"}</span>
-			</div>
+			${cardPhotoMarkup(item, isRecipe ? "recipe" : "restaurant", isRecipe ? "Made with love" : "Worth the trip")}
 			<div class="card-content">
 				<div class="card-meta">
 					<span class="category-tag">${item.category}</span>
-					<span>${detailLabel} · ${detail}</span>
+					<span>${detail ? `${detailLabel} · ${detail}` : " "}</span>
 				</div>
 				<h3>${item.name}</h3>
-				${description}
+				<p>${descriptionText}</p>
 			</div>
 			<div class="card-actions" aria-label="Choose what to do with ${item.name}">
-				<button class="action-button skip-button" type="button" data-action="skip" aria-label="Skip ${item.name}" title="Skip">
+				<button class="action-button undo-button" type="button" data-undo aria-label="Undo last swipe" title="Undo last swipe"${undoDisabled ? " disabled" : ""}>
+					<svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+						<path d="M3 7v6h6"></path><path d="M5.2 13a8 8 0 1 0 2.1-6L3 10"></path>
+					</svg>
+				</button>
+				<button class="action-button skip-button" type="button" data-action="skip" aria-label="Skip ${item.name}" title="Skip"${swipeLocks[page] ? " disabled" : ""}>
 					<svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
 						<path d="m6 6 12 12M18 6 6 18"></path>
 					</svg>
 				</button>
-				<button class="action-button like-button" type="button" data-action="like" aria-label="Save ${item.name}" title="Save">
+				<button class="action-button like-button" type="button" data-action="like" aria-label="Save ${item.name}" title="Save"${swipeLocks[page] ? " disabled" : ""}>
 					<svg class="action-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 						<path d="M12 21.1 3.5 13A5.5 5.5 0 0 1 11.3 5.3L12 6l.7-.7A5.5 5.5 0 0 1 20.5 13L12 21.1Z"></path>
 					</svg>
@@ -592,12 +819,41 @@ function renderCard(page) {
 			</div>
 		</article>`;
 
-	stage.querySelector("[data-action='skip']").addEventListener("click", () => moveToNext(page));
-	stage.querySelector("[data-action='like']").addEventListener("click", () => saveCurrentItem(page, item));
+	stage.querySelector("[data-action='skip']").addEventListener("click", () => runSwipeAction(page, item, "skip"));
+	stage.querySelector("[data-action='like']").addEventListener("click", () => runSwipeAction(page, item, "like"));
+	stage.querySelector("[data-undo]").addEventListener("click", () => undoLastSwipe(page));
 	const card = stage.querySelector(".food-card");
+	connectCardGallery(card, itemImages);
+	card.querySelectorAll("[data-photo-fallback]").forEach(connectImageFallback);
+	let pointerStart = null;
+	let suppressClick = false;
+	card.addEventListener("pointerdown", (event) => {
+		if (swipeLocks[page] || event.target.closest("button")) return;
+		if (itemImages.length > 1 && event.target.closest(".food-photo")) return;
+		pointerStart = { x: event.clientX, y: event.clientY };
+	});
+	card.addEventListener("pointerup", (event) => {
+		if (!pointerStart) return;
+		const horizontalDistance = event.clientX - pointerStart.x;
+		const verticalDistance = event.clientY - pointerStart.y;
+		pointerStart = null;
+		if (Math.abs(horizontalDistance) < 85 || Math.abs(verticalDistance) > 75 || swipeLocks[page]) return;
+		event.preventDefault();
+		suppressClick = true;
+		if (horizontalDistance < 0) {
+			runSwipeAction(page, item, "skip");
+		} else {
+			runSwipeAction(page, item, "like");
+		}
+	});
 	card.addEventListener("click", (event) => {
+		if (suppressClick) {
+			suppressClick = false;
+			return;
+		}
+		if (swipeLocks[page]) return;
 		if (!event.target.closest("button")) {
-			openDetails(page === "home" ? "recipe" : "restaurant", item, card);
+				openDetails(page === "home" ? "recipe" : "restaurant", item, card);
 		}
 	});
 	card.addEventListener("keydown", (event) => {
@@ -608,39 +864,29 @@ function renderCard(page) {
 	});
 }
 
-function moveToNext(page) {
-	positions[page] += 1;
-	renderCard(page);
-}
-
-function saveCurrentItem(page, item) {
-	const collection = page === "home" ? "recipes" : "restaurants";
-
-	if (!savedItems[collection].includes(item.id)) {
-		savedItems[collection].push(item.id);
-		saveItems();
-	}
-
-	updateSavedCount();
-	moveToNext(page);
-}
-
 function getSavedCollection(type) {
 	return type === "recipe" ? "recipes" : "restaurants";
 }
 
 function isItemSaved(type, item) {
-	return savedItems[getSavedCollection(type)].includes(item.id);
+	const collection = getSavedCollection(type);
+	return savedItems[collection].some((savedItem) => {
+		const savedId = typeof savedItem === "object" ? savedItem.id : savedItem;
+		return String(savedId) === String(item.id);
+	});
 }
 
 function toggleSavedItem(type, item) {
 	const collection = getSavedCollection(type);
-	const alreadySaved = savedItems[collection].includes(item.id);
+	const alreadySaved = isItemSaved(type, item);
 
 	if (alreadySaved) {
-		savedItems[collection] = savedItems[collection].filter((id) => id !== item.id);
+		savedItems[collection] = savedItems[collection].filter((savedItem) => {
+			const savedId = typeof savedItem === "object" ? savedItem.id : savedItem;
+			return String(savedId) !== String(item.id);
+		});
 	} else {
-		savedItems[collection].push(item.id);
+		savedItems[collection].push(type === "recipe" ? { ...item } : item.id);
 	}
 
 	saveItems();
@@ -649,7 +895,9 @@ function toggleSavedItem(type, item) {
 }
 
 function openDetails(type, item, trigger) {
+	closeGuestGallery();
 	lastDetailTrigger = trigger;
+	activeDetail = { type, id: item.id };
 	const isRecipe = type === "recipe";
 	const category = `<span class="category-tag">${item.category}</span>`;
 	const images = getItemImages(item, type);
@@ -659,17 +907,23 @@ function openDetails(type, item, trigger) {
 		const sourceDetails = item.sourceUrl
 			? `<p class="detail-source">Source: <a href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">${item.sourceName || "Original recipe website"}</a></p><a class="detail-link-button" href="${item.sourceUrl}" target="_blank" rel="noopener noreferrer">View Original Recipe</a>`
 			: `<p class="detail-source">Source not provided.</p><button class="detail-link-button" type="button" disabled>View Original Recipe</button>`;
+		const ingredientList = item.ingredients.map((ingredient, index) => {
+			const name = typeof ingredient === "object" ? ingredient.name : ingredient;
+			const measurement = typeof ingredient === "object" ? ingredient.measurement : item.measurements?.[index];
+			return `<li>${measurement ? `${measurement} ` : ""}${name}</li>`;
+		}).join("");
+		const instructions = Array.isArray(item.instructions) ? item.instructions : [];
 		detailContent.innerHTML = `
 			<div class="detail-layout">
 				${imageMarkup}
 				<div class="detail-body">
 					<p class="eyebrow">COOK AT HOME</p>
 					<div class="detail-heading-row"><h2 id="detail-title">${item.name}</h2>${category}</div>
-					<p class="detail-description">${item.description}</p>
-					<p class="detail-fact"><strong>Cooking time</strong><span>${item.cookTime}</span></p>
+					${item.description ? `<p class="detail-description">${item.description}</p>` : ""}
+					${item.cookTime ? `<p class="detail-fact"><strong>Cooking time</strong><span>${item.cookTime}</span></p>` : ""}
 					<div class="detail-columns">
-						<section><h3>Ingredients</h3><ul>${item.ingredients.map((ingredient) => `<li>${ingredient}</li>`).join("")}</ul></section>
-						<section><h3>Directions</h3><ol>${item.instructions.map((instruction) => `<li>${instruction}</li>`).join("")}</ol></section>
+						<section><h3>Ingredients</h3><ul>${ingredientList}</ul></section>
+						${instructions.length ? `<section><h3>Directions</h3><ol>${instructions.map((instruction) => `<li>${instruction}</li>`).join("")}</ol></section>` : ""}
 					</div>
 					<div class="detail-source-row">${sourceDetails}</div>
 					<button class="detail-save-button" type="button" data-detail-save>${isItemSaved(type, item) ? "♥ Saved" : "♡ Save recipe"}</button>
@@ -696,6 +950,7 @@ function openDetails(type, item, trigger) {
 						<div><dt>Address</dt><dd>${item.address || "Address not provided yet"}</dd></div>
 					</dl>
 					<section class="popular-dishes"><h3>Popular dishes</h3><ul>${item.popularDishes.map((dish) => `<li>${dish}</li>`).join("")}</ul></section>
+					${customerPhotosMarkup(item, yelpUrl, mapsUrl)}
 					<div class="detail-actions">
 						<button class="detail-save-button" type="button" data-detail-save>${isItemSaved(type, item) ? "♥ Saved" : "♡ Save place"}</button>
 						<a class="detail-link-button" href="${menuUrl}" target="_blank" rel="noopener noreferrer">View Menu</a>
@@ -708,6 +963,13 @@ function openDetails(type, item, trigger) {
 	}
 
 	connectGallery(detailContent.querySelector("[data-gallery]"), images);
+	detailContent.querySelectorAll(".customer-photo img").forEach((photo) => {
+		photo.addEventListener("error", () => photo.closest(".customer-photo").remove(), { once: true });
+	});
+	detailContent.querySelectorAll("[data-guest-index]").forEach((tile) => {
+		tile.addEventListener("click", () => openGuestGallery(item, Number(tile.dataset.guestIndex)));
+	});
+	detailContent.querySelector("[data-guest-open]")?.addEventListener("click", () => openGuestGallery(item));
 	detailContent.querySelector("[data-detail-save]").addEventListener("click", () => {
 		const nowSaved = toggleSavedItem(type, item);
 		detailContent.querySelector("[data-detail-save]").textContent = type === "recipe"
@@ -715,12 +977,15 @@ function openDetails(type, item, trigger) {
 			: (nowSaved ? "♥ Saved" : "♡ Save place");
 	});
 	detailDialog.showModal();
-	detailClose.focus();
+	detailClose.focus({ preventScroll: true });
+	persistUIState();
 }
 
 function closeDetails() {
 	if (detailDialog.open) {
 		detailDialog.close();
+		activeDetail = null;
+		persistUIState();
 		lastDetailTrigger?.focus();
 	}
 }
@@ -728,7 +993,11 @@ function closeDetails() {
 function renderSavedGroup(containerId, countId, collection, allItems) {
 	const container = document.querySelector(`#${containerId}`);
 	const saved = savedItems[collection]
-		.map((id) => allItems.find((item) => item.id === id))
+		.map((savedItem) => {
+			if (collection === "recipes" && typeof savedItem === "object") return savedItem;
+			const savedId = typeof savedItem === "object" ? savedItem.id : savedItem;
+			return allItems.find((item) => String(item.id) === String(savedId));
+		})
 		.filter(Boolean);
 
 	document.querySelector(`#${countId}`).textContent = saved.length;
@@ -754,11 +1023,15 @@ function renderSavedGroup(containerId, countId, collection, allItems) {
 				</div>
 			</article>`;
 	}).join("");
+	container.querySelectorAll("[data-photo-fallback]").forEach(connectImageFallback);
 
 	container.querySelectorAll("[data-remove]").forEach((button) => {
 		button.addEventListener("click", () => {
 			const { remove, collection: itemCollection } = button.dataset;
-			savedItems[itemCollection] = savedItems[itemCollection].filter((id) => String(id) !== remove);
+			savedItems[itemCollection] = savedItems[itemCollection].filter((savedItem) => {
+				const savedId = typeof savedItem === "object" ? savedItem.id : savedItem;
+				return String(savedId) !== remove;
+			});
 			saveItems();
 			renderSavedItems();
 		});
@@ -795,6 +1068,7 @@ function updateSavedCount() {
 }
 
 function showPage(pageName) {
+	currentPage = pageName;
 	tabs.forEach((tab) => {
 		const isActive = tab.dataset.page === pageName;
 		tab.classList.toggle("is-active", isActive);
@@ -810,6 +1084,7 @@ function showPage(pageName) {
 	if (pageName === "saved") {
 		renderSavedItems();
 	}
+	persistUIState();
 }
 
 tabs.forEach((tab) => {
@@ -818,27 +1093,79 @@ tabs.forEach((tab) => {
 
 filters.home.addEventListener("change", () => {
 	positions.home = 0;
+	undoHistory.home = null;
 	renderCard("home");
+	persistUIState();
 });
 
 filters.out.addEventListener("change", () => {
 	positions.out = 0;
+	undoHistory.out = null;
 	renderCard("out");
+	persistUIState();
 });
 
 citySelect.addEventListener("change", () => {
 	selectedCity = citySelect.value;
 	positions.out = 0;
+	undoHistory.out = null;
 	renderCard("out");
+	persistUIState();
 });
 
 detailClose.addEventListener("click", closeDetails);
-detailDialog.addEventListener("close", () => lastDetailTrigger?.focus());
+detailDialog.addEventListener("close", () => {
+	activeDetail = null;
+	persistUIState();
+	lastDetailTrigger?.focus({ preventScroll: true });
+});
+detailDialog.addEventListener("cancel", (event) => {
+	const gallery = detailDialog.querySelector(".guest-gallery");
+	if (!gallery) return;
+	event.preventDefault();
+	const viewer = gallery.querySelector(".guest-viewer");
+	if (viewer.hidden) {
+		closeGuestGallery();
+	} else {
+		viewer.querySelector(".guest-viewer-back").click();
+	}
+});
 detailDialog.addEventListener("click", (event) => {
 	if (event.target === detailDialog) closeDetails();
 });
 
+function restoreDetailIfRequested() {
+	if (!restoredUIState.detailOpen) return;
+	const type = restoredUIState.detailType;
+	const collection = type === "recipe" ? recipes : type === "restaurant" ? restaurants : [];
+	const item = collection.find((candidate) => itemIdMatches(candidate, restoredUIState.detailId));
+	if (!item) return;
+	let trigger = null;
+	if (currentPage === "saved") {
+		trigger = [...document.querySelectorAll("#saved-recipes .saved-card, #saved-places .saved-card")]
+			.find((card) => itemIdMatches({ id: card.querySelector("[data-remove]")?.dataset.remove }, item.id)) || null;
+	}
+	if (!trigger && type === "recipe") {
+		trigger = cardStages.home.querySelector(".food-card");
+	} else if (!trigger) {
+		trigger = cardStages.out.querySelector(".food-card");
+	}
+	if (!trigger) {
+		const container = type === "recipe" ? "#saved-recipes" : "#saved-places";
+		trigger = [...document.querySelectorAll(`${container} .saved-card`)].find((card) => card.getAttribute("aria-label") === `Open details for ${item.name}`) || null;
+	}
+	openDetails(type, item, trigger);
+}
+
+restorePosition("home", restoredUIState.homeId, positions.home);
+restorePosition("out", restoredUIState.outId, positions.out);
+if (!undoIsAvailable("home")) undoHistory.home = null;
+if (!undoIsAvailable("out")) undoHistory.out = null;
 renderCityOptions();
+showPage(currentPage);
 renderCard("home");
 renderCard("out");
 renderSavedItems();
+restoreDetailIfRequested();
+persistUIState();
+document.body.classList.remove("app-initializing");
