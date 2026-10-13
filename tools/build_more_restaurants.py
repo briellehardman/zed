@@ -48,6 +48,7 @@ WEBSITE_OVERRIDES = {
 NONLOCAL_YELP_INDEXES = {12, 24, 35, 43}
 
 CURATED_FIRST_IMAGES = {
+    0: ["https://97westkitchenandbar.com/app/uploads/2021/12/20210628_Shot_13-0275.jpg"],
     7: [],
     1: [
         "https://mds-assets.marriott.com/cdn-cgi/image/f=auto/cms-platform-for-marriott/dfwsy-atico/site-images/migrated-images/dine-prawns-and-flat-bread.jpg?cropY=71&cropW=1024&cropH=1138&width=600&height=667",
@@ -74,6 +75,9 @@ CURATED_FIRST_IMAGES = {
     92: [
         "https://www.themodern.org/sites/default/files/2021-05/web-block-test.jpg",
         "https://www.themodern.org/sites/default/files/2021-05/chef_jett_1.jpg",
+    ],
+    97: [
+        "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/34481DEL_Fort_Worth_First_Floor_Bar_crop.jpeg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600",
     ],
 }
 
@@ -127,7 +131,7 @@ def image_priority(url, label="", index=0):
         score += 20
     if has(("exterior", "outside", "front", "building")):
         score += 8
-    if has(("logo", "icon", "avatar", "sprite", "badge", "seal", "placeholder", "tracking", "dummy", "gift card", "merch", "shirt", "bag", "packaging", "award", "certificate", "sitemap", "map")):
+    if has(("logo", "icon", "favicon", "favi", "avatar", "sprite", "badge", "seal", "placeholder", "tracking", "dummy", "gift card", "merch", "shirt", "bag", "packaging", "award", "certificate", "sitemap", "map", "horse png", "close", "reload")):
         score -= 100
     if has(("menu", "screenshot")):
         score -= 25
@@ -355,6 +359,15 @@ def main():
                 }
                 for photo_id in row["ids"][:12]
             ]
+            # Keep official photos first, then use exact-listing customer photos only when the official gallery is sparse.
+            if images and len(images) < 4:
+                official_keys = {canonical_image_url(photo["url"]) for photo in images}
+                yelp_supplements = curate_images(
+                    [f"https://s3-media0.fl.yelpcdn.com/bphoto/{photo_id}/o.jpg" for photo_id in photo_ids],
+                    "customer",
+                    limit=6,
+                )
+                images.extend(photo for photo in yelp_supplements if canonical_image_url(photo["url"]) not in official_keys)
             if not images:
                 images = curate_images(
                     [f"https://s3-media0.fl.yelpcdn.com/bphoto/{photo_id}/o.jpg" for photo_id in photo_ids],
@@ -378,10 +391,10 @@ def main():
             "neighborhood": row.get("hood", "") if valid else "",
             "address": address,
             "description": description,
-            "images": images if images and isinstance(images[0], dict) else [],
+            "images": images[:8] if images and isinstance(images[0], dict) else [],
             "mainImage": images[0]["url"] if images else "",
             "imageSourceType": images[0]["sourceType"] if images else "",
-            "imageSelectionReviewed": bool(images),
+            "imageSelectionReviewed": index in CURATED_FIRST_IMAGES,
             "popularDishes": dishes[:5],
             "websiteUrl": website,
             "menuUrl": "",

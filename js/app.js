@@ -218,6 +218,8 @@ try {
 }
 let selectedCity = availableCities.includes(restoredUIState.city) ? restoredUIState.city : availableCities[0];
 let currentPage = ["home", "out", "saved"].includes(restoredUIState.page) ? restoredUIState.page : "home";
+let savedView = restoredUIState.savedView === "map" ? "map" : "list";
+let savedMapCity = restoredUIState.savedMapCity || "__all__";
 
 const tabs = document.querySelectorAll(".main-tab");
 const pages = {
@@ -273,6 +275,8 @@ function persistUIState() {
 			homeCategory: filters.home.value,
 			outCategory: filters.out.value,
 			city: selectedCity,
+			savedView,
+			savedMapCity,
 			homeIndex: positions.home,
 			outIndex: positions.out,
 			homeId: homeItem?.id ?? null,
@@ -301,7 +305,6 @@ function renderCityOptions() {
 function loadSavedItems() {
 	try {
 		const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-		const restaurantIds = new Set(restaurants.map((restaurant) => restaurant.id));
 		const storedRecipes = Array.isArray(saved.recipes) ? saved.recipes : [];
 		const normalizedRecipes = storedRecipes.map((savedRecipe) => {
 			if (savedRecipe && typeof savedRecipe === "object") {
@@ -319,11 +322,42 @@ function loadSavedItems() {
 
 		return {
 			recipes: normalizedRecipes,
-			restaurants: Array.isArray(saved.restaurants) ? saved.restaurants.filter((id) => restaurantIds.has(id)) : [],
+			restaurants: Array.isArray(saved.restaurants) ? saved.restaurants.map(completeSavedRestaurant) : [],
 		};
 	} catch {
 		return { recipes: [], restaurants: [] };
 	}
+}
+
+function coordinatesAreValid(latitude, longitude) {
+	return latitude !== null && latitude !== undefined && latitude !== ""
+		&& longitude !== null && longitude !== undefined && longitude !== ""
+		&& Number.isFinite(Number(latitude)) && Number.isFinite(Number(longitude))
+		&& Math.abs(Number(latitude)) <= 90 && Math.abs(Number(longitude)) <= 180;
+}
+
+function mapsUrlForRestaurant(restaurant) {
+	if (coordinatesAreValid(restaurant.latitude, restaurant.longitude)) {
+		return `https://www.google.com/maps/search/?api=1&query=${restaurant.latitude},${restaurant.longitude}`;
+	}
+	const query = encodeURIComponent(`${restaurant.name}, ${restaurant.address || ""}, ${restaurant.city || ""}`);
+	return `https://www.google.com/maps/search/?api=1&query=${query}`;
+}
+
+// Merge older saved IDs with current restaurant data, keeping any coordinates saved previously.
+function completeSavedRestaurant(savedRestaurant) {
+	const saved = savedRestaurant && typeof savedRestaurant === "object" ? savedRestaurant : { id: savedRestaurant };
+	const current = restaurants.find((restaurant) => String(restaurant.id) === String(saved.id));
+	const merged = { ...(current || {}), ...saved };
+	const hasCoordinates = coordinatesAreValid(merged.latitude, merged.longitude);
+	merged.latitude = hasCoordinates ? Number(merged.latitude) : null;
+	merged.longitude = hasCoordinates ? Number(merged.longitude) : null;
+	merged.placeId = merged.placeId || merged.googlePlaceId || null;
+	merged.mainImage = merged.mainImage || (Array.isArray(merged.images) ? (typeof merged.images[0] === "string" ? merged.images[0] : merged.images[0]?.url) : "") || "";
+	merged.images = Array.isArray(merged.images) ? merged.images : [];
+	merged.popularDishes = Array.isArray(merged.popularDishes) ? merged.popularDishes : [];
+	merged.googleMapsUrl = merged.googleMapsUrl || mapsUrlForRestaurant(merged);
+	return merged;
 }
 
 function saveItems() {
@@ -385,7 +419,7 @@ function runSwipeAction(page, item, action) {
 			return itemIdMatches({ id: savedId }, item.id);
 		});
 		if (!alreadySaved) {
-			savedItems[collection].push(collection === "recipes" ? { ...item } : item.id);
+			savedItems[collection].push(collection === "recipes" ? { ...item } : completeSavedRestaurant(item));
 			addedToSaved = true;
 			saveItems();
 			updateSavedCount();
@@ -505,8 +539,25 @@ function galleryMarkup(item, type) {
 	return `<div class="detail-gallery" data-gallery data-gallery-alt="${description}"><div class="gallery-main"><img class="detail-hero-image" src="${images[0].url}" alt="${description} 1 of ${images.length}" data-photo-fallback>${controls}<span class="gallery-credit" aria-live="polite"></span></div>${thumbnails}</div>`;
 }
 
+function normalizedCustomerPhotos(item) {
+	const seen = new Set();
+	return (item.customerPhotos || []).filter((photo) => {
+		try {
+			const url = new URL(photo.url, window.location.href);
+			url.search = "";
+			url.hash = "";
+			const key = `${url.hostname.toLowerCase()}${url.pathname.toLowerCase()}`;
+			if (seen.has(key)) return false;
+			seen.add(key);
+			return true;
+		} catch {
+			return false;
+		}
+	});
+}
+
 function customerPhotosMarkup(item, yelpUrl, mapsUrl) {
-	const photos = item.customerPhotos || [];
+	const photos = normalizedCustomerPhotos(item);
 	if (photos.length === 0) {
 		return `<section class="customer-photos"><h3>Photos from customers</h3><p class="customer-photos-empty">Guest photos will appear here. See what diners are sharing on Yelp and Google Maps.</p><p class="detail-source">See more guest photos on <a href="${yelpUrl}" target="_blank" rel="noopener noreferrer">Yelp</a> or <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer">Google Maps</a></p></section>`;
 	}
@@ -526,7 +577,7 @@ function closeGuestGallery() {
 }
 
 function openGuestGallery(item, startIndex = null) {
-	const photos = item.customerPhotos || [];
+	const photos = normalizedCustomerPhotos(item);
 	const shell = detailDialog.querySelector(".detail-dialog-shell");
 	closeGuestGallery();
 	detailContent.hidden = true;
@@ -886,7 +937,7 @@ function toggleSavedItem(type, item) {
 			return String(savedId) !== String(item.id);
 		});
 	} else {
-		savedItems[collection].push(type === "recipe" ? { ...item } : item.id);
+		savedItems[collection].push(type === "recipe" ? { ...item } : completeSavedRestaurant(item));
 	}
 
 	saveItems();
@@ -935,7 +986,7 @@ function openDetails(type, item, trigger) {
 		const websiteUrl = item.websiteUrl || `https://www.google.com/search?q=${searchName}+official+website`;
 		const yelpUrl = item.yelpUrl || `https://www.yelp.com/search?find_desc=${encodeURIComponent(item.name)}&find_loc=${encodeURIComponent(item.city)}`;
 		const mapsQuery = encodeURIComponent(item.address ? `${item.name}, ${item.address}` : `${item.name}, ${item.city}`);
-		const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+		const mapsUrl = item.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
 		detailContent.innerHTML = `
 			<div class="detail-layout restaurant-detail-layout">
 				${imageMarkup}
@@ -995,6 +1046,7 @@ function renderSavedGroup(containerId, countId, collection, allItems) {
 	const saved = savedItems[collection]
 		.map((savedItem) => {
 			if (collection === "recipes" && typeof savedItem === "object") return savedItem;
+			if (collection === "restaurants") return completeSavedRestaurant(savedItem);
 			const savedId = typeof savedItem === "object" ? savedItem.id : savedItem;
 			return allItems.find((item) => String(item.id) === String(savedId));
 		})
@@ -1056,6 +1108,332 @@ function renderSavedItems() {
 	renderSavedGroup("saved-recipes", "saved-recipes-count", "recipes", recipes);
 	renderSavedGroup("saved-places", "saved-places-count", "restaurants", getAllRestaurants());
 	updateSavedCount();
+	if (savedView === "map" && !document.querySelector("#saved-map-view").hidden && pages.saved && !pages.saved.hidden) renderSavedRestaurantMap();
+}
+
+let savedRestaurantMap = null;
+let savedRestaurantMarkers = new Map();
+let savedUserMarker = null;
+let savedUserCoordinates = null;
+let selectedSavedMapRestaurantId = null;
+let geocodeInProgress = false;
+
+function escapeHTML(value) {
+	return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+		"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+	}[character]));
+}
+
+function getSavedRestaurants() {
+	return savedItems.restaurants.map(completeSavedRestaurant);
+}
+
+function getSavedMapCityOptions() {
+	return [...new Set(getSavedRestaurants().map((restaurant) => restaurant.city).filter(Boolean))].sort((a, b) => a.localeCompare(b));
+}
+
+function renderSavedMapCityOptions() {
+	const select = document.querySelector("#saved-map-city");
+	const cities = getSavedMapCityOptions();
+	select.replaceChildren(new Option("All Cities", "__all__"));
+	cities.forEach((city) => select.add(new Option(city, city)));
+	if (savedMapCity !== "__all__" && cities.includes(savedMapCity)) select.value = savedMapCity;
+	else {
+		savedMapCity = "__all__";
+		select.value = "__all__";
+	}
+}
+
+function getVisibleSavedMapRestaurants() {
+	const restaurants = getSavedRestaurants();
+	return savedMapCity === "__all__" ? restaurants : restaurants.filter((restaurant) => restaurant.city === savedMapCity);
+}
+
+function normalizePlaceText(value) {
+	return String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+}
+
+function streetNameOnly(value) {
+	return normalizePlaceText(value).replace(/\b(street|st|road|rd|avenue|ave|boulevard|blvd|drive|dr|lane|ln|way|suite|ste|unit)\b/g, "").trim();
+}
+
+function photonResultMatchesRestaurant(feature, restaurant) {
+	const properties = feature.properties || {};
+	if (String(properties.countrycode || "").toLowerCase() !== "us") return false;
+	if (normalizePlaceText(properties.name) !== normalizePlaceText(restaurant.name)) return false;
+	const expectedCity = normalizePlaceText((restaurant.city || "").split(",")[0]);
+	if (expectedCity && normalizePlaceText(properties.city) !== expectedCity) return false;
+	if (restaurant.city?.toLowerCase().includes("tx") && normalizePlaceText(properties.state) !== "texas") return false;
+
+	const address = (restaurant.address || "").split(",")[0].trim();
+	const number = address.match(/^\s*(\d+[a-z]?)/i)?.[1]?.toLowerCase();
+	if (number && String(properties.housenumber || "").toLowerCase() !== number) return false;
+	const expectedStreet = streetNameOnly(address.replace(/^\s*\d+[a-z]?\s*/i, "").replace(/\b(?:suite|ste|unit|#)\b.*$/i, ""));
+	const resultStreet = streetNameOnly(properties.street || "");
+	if (expectedStreet && (!resultStreet || (!resultStreet.includes(expectedStreet) && !expectedStreet.includes(resultStreet)))) return false;
+	const coordinates = feature.geometry?.coordinates || [];
+	return coordinatesAreValid(coordinates[1], coordinates[0]);
+}
+
+function geocodeResultMatchesRestaurant(result, restaurant) {
+	const address = result.address || {};
+	if (address.country_code !== "us") return false;
+	const city = normalizePlaceText((restaurant.city || "").split(",")[0]);
+	const resultCities = [address.city, address.town, address.village, address.municipality, address.suburb, address.county]
+		.map(normalizePlaceText).filter(Boolean);
+	if (city && !resultCities.some((candidate) => candidate === city || candidate.includes(city) || city.includes(candidate))) return false;
+	const texas = normalizePlaceText(address.state || "");
+	if (restaurant.city?.toLowerCase().includes("tx") && !texas.includes("texas")) return false;
+
+	const street = (restaurant.address || "").split(",")[0].trim();
+	const requestedNumber = street.match(/^\s*(\d+[a-z]?)/i)?.[1]?.toLowerCase();
+	if (requestedNumber && String(address.house_number || "").toLowerCase() !== requestedNumber) return false;
+	const requestedRoad = normalizePlaceText(street.replace(/^\s*\d+[a-z]?\s*/i, "").replace(/\b(?:suite|ste|unit|#)\b.*$/i, ""));
+	const matchedRoad = normalizePlaceText(address.road || "");
+	if (requestedRoad && (!matchedRoad || (!matchedRoad.includes(requestedRoad) && !requestedRoad.includes(matchedRoad)))) return false;
+	return coordinatesAreValid(result.lat, result.lon);
+}
+
+// Geocode only saved addresses when the user opens Map; cache only exact city/street matches.
+async function geocodeMissingSavedRestaurants() {
+	if (geocodeInProgress) return;
+	const missing = getSavedRestaurants().filter((restaurant) => !coordinatesAreValid(restaurant.latitude, restaurant.longitude) && restaurant.address);
+	if (!missing.length) return;
+	geocodeInProgress = true;
+	const status = document.querySelector("#saved-map-status");
+	let resolved = 0;
+	let requestsMade = 0;
+	for (const restaurant of missing) {
+		if (savedView !== "map") break;
+		if (requestsMade > 0) await new Promise((resolve) => window.setTimeout(resolve, 1100));
+		requestsMade += 1;
+		const query = encodeURIComponent(`${restaurant.address}, ${(restaurant.city || "").split(",")[0]}, United States`);
+		try {
+			let coordinates = null;
+			const photonResponse = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(`${restaurant.name}, ${restaurant.address}, ${(restaurant.city || "").split(",")[0]}, United States`)}&limit=5&lang=en`, {
+				headers: { Accept: "application/json" },
+			});
+			if (photonResponse.ok) {
+				const photonResults = await photonResponse.json();
+				const feature = photonResults.features?.find((candidate) => photonResultMatchesRestaurant(candidate, restaurant));
+				if (feature) coordinates = { latitude: Number(feature.geometry.coordinates[1]), longitude: Number(feature.geometry.coordinates[0]) };
+			}
+			if (!coordinates) {
+				const response = await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=3&countrycodes=us&q=${query}`, {
+					headers: { Accept: "application/json" },
+				});
+				if (!response.ok) continue;
+				const results = await response.json();
+				const match = results.find((result) => geocodeResultMatchesRestaurant(result, restaurant));
+				if (!match) continue;
+				coordinates = { latitude: Number(match.lat), longitude: Number(match.lon) };
+			}
+			const savedIndex = savedItems.restaurants.findIndex((entry) => String(typeof entry === "object" ? entry.id : entry) === String(restaurant.id));
+			if (savedIndex < 0) continue;
+			savedItems.restaurants[savedIndex] = {
+				...completeSavedRestaurant(savedItems.restaurants[savedIndex]),
+				latitude: coordinates.latitude,
+				longitude: coordinates.longitude,
+				placeId: restaurant.placeId || null,
+				googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=${coordinates.latitude},${coordinates.longitude}`,
+			};
+			resolved += 1;
+		} catch {
+			continue;
+		}
+	}
+	if (resolved) saveItems();
+	geocodeInProgress = false;
+	if (status && savedView === "map") {
+		status.textContent = resolved ? `Located ${resolved} saved restaurant${resolved === 1 ? "" : "s"}.` : "Some saved addresses could not be matched exactly; those restaurants remain in List.";
+	}
+	renderSavedRestaurantMap();
+}
+
+function distanceInMiles(from, to) {
+	const radians = (degrees) => degrees * Math.PI / 180;
+	const latDelta = radians(to.latitude - from.latitude);
+	const lonDelta = radians(to.longitude - from.longitude);
+	const a = Math.sin(latDelta / 2) ** 2
+		+ Math.cos(radians(from.latitude)) * Math.cos(radians(to.latitude)) * Math.sin(lonDelta / 2) ** 2;
+	return 3958.7613 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function formatDistance(miles) {
+	return miles < 0.1 ? `${(miles * 5280).toFixed(0)} ft` : `${miles.toFixed(1)} mi`;
+}
+
+function directionsUrl(restaurant) {
+	const destination = coordinatesAreValid(restaurant.latitude, restaurant.longitude)
+		? `${restaurant.latitude},${restaurant.longitude}`
+		: `${restaurant.name}, ${restaurant.address || ""}, ${restaurant.city || ""}`;
+	const params = new URLSearchParams({ api: "1", destination });
+	if (restaurant.placeId) params.set("destination_place_id", restaurant.placeId);
+	return `https://www.google.com/maps/dir/?${params.toString()}`;
+}
+
+function savedRestaurantPopup(restaurant, rank) {
+	const image = restaurant.mainImage || (restaurant.images?.[0] && (typeof restaurant.images[0] === "string" ? restaurant.images[0] : restaurant.images[0].url));
+	const distance = savedUserCoordinates && coordinatesAreValid(restaurant.latitude, restaurant.longitude)
+		? `<p>${formatDistance(distanceInMiles(savedUserCoordinates, restaurant))} from you</p>` : "";
+	const photo = image ? `<img src="${escapeHTML(image)}" alt="" loading="lazy">` : "";
+	return `<div class="saved-map-popup">${photo}<h3>${escapeHTML(restaurant.name)}</h3><p>${escapeHTML(restaurant.cuisine || "Restaurant")}${restaurant.price ? ` · ${escapeHTML(restaurant.price)}` : ""}</p><p>${escapeHTML(restaurant.address || "Address unavailable")}</p><p>${escapeHTML(restaurant.city || "")}</p>${distance}<div class="saved-map-popup-actions"><button type="button" data-map-view-restaurant="${escapeHTML(restaurant.id)}">View Restaurant</button><a href="${escapeHTML(directionsUrl(restaurant))}" target="_blank" rel="noopener noreferrer">Directions</a></div></div>`;
+}
+
+function ensureSavedRestaurantMap() {
+	if (savedRestaurantMap || !window.L) return Boolean(savedRestaurantMap);
+	savedRestaurantMap = window.L.map("saved-map", { scrollWheelZoom: true, zoomControl: true }).setView([39.5, -98.35], 4);
+	window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+		maxZoom: 19,
+		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors',
+	}).addTo(savedRestaurantMap);
+	const emptyMessage = document.createElement("div");
+	emptyMessage.className = "saved-map-empty-overlay";
+	emptyMessage.id = "saved-map-empty-overlay";
+	emptyMessage.hidden = true;
+	document.querySelector("#saved-map").append(emptyMessage);
+	return true;
+}
+
+function focusSavedRestaurant(restaurant) {
+	if (!savedRestaurantMap || !coordinatesAreValid(restaurant.latitude, restaurant.longitude)) return;
+	selectedSavedMapRestaurantId = restaurant.id;
+	savedRestaurantMap.setView([restaurant.latitude, restaurant.longitude], Math.max(savedRestaurantMap.getZoom(), 14));
+	savedRestaurantMarkers.get(String(restaurant.id))?.openPopup();
+	document.querySelectorAll(".saved-nearest button").forEach((button) => {
+		button.classList.toggle("is-selected", button.dataset.restaurantId === String(restaurant.id));
+	});
+}
+
+function renderClosestRestaurants(restaurants) {
+	const panel = document.querySelector("#saved-nearest");
+	const list = document.querySelector("#saved-nearest-list");
+	const count = document.querySelector("#saved-nearest-count");
+	if (!savedUserCoordinates) {
+		panel.hidden = true;
+		list.replaceChildren();
+		return;
+	}
+	const nearby = restaurants.filter((restaurant) => coordinatesAreValid(restaurant.latitude, restaurant.longitude))
+		.map((restaurant) => ({ restaurant, miles: distanceInMiles(savedUserCoordinates, restaurant) }))
+		.sort((a, b) => a.miles - b.miles);
+	panel.hidden = false;
+	count.textContent = nearby.length ? `${nearby.length} located` : "No located restaurants";
+	list.innerHTML = nearby.map(({ restaurant, miles }, index) => `<li><button type="button" data-restaurant-id="${escapeHTML(restaurant.id)}"><span class="saved-nearest-rank">${index + 1}.</span><span class="saved-nearest-name">${escapeHTML(restaurant.name)}</span><span class="saved-nearest-distance">${formatDistance(miles)}</span></button></li>`).join("");
+	list.querySelectorAll("[data-restaurant-id]").forEach((button) => {
+		button.addEventListener("click", () => {
+			const restaurant = nearby.find((entry) => String(entry.restaurant.id) === button.dataset.restaurantId)?.restaurant;
+			if (restaurant) focusSavedRestaurant(restaurant);
+		});
+	});
+}
+
+function renderSavedRestaurantMap() {
+	if (savedView !== "map") return;
+	if (!ensureSavedRestaurantMap()) {
+		document.querySelector("#saved-map-status").textContent = "The map library could not load. Your saved restaurant list is still available.";
+		return;
+	}
+	renderSavedMapCityOptions();
+	const visibleRestaurants = getVisibleSavedMapRestaurants();
+	savedRestaurantMarkers.forEach((marker) => marker.remove());
+	savedRestaurantMarkers.clear();
+	const bounds = [];
+	visibleRestaurants.forEach((restaurant, index) => {
+		if (!coordinatesAreValid(restaurant.latitude, restaurant.longitude)) return;
+		const markerIcon = window.L.divIcon({
+			className: "saved-map-marker-wrap",
+			iconSize: [27, 32],
+			iconAnchor: [13, 30],
+			popupAnchor: [0, -28],
+			html: `<span class="saved-map-marker"><span>${index + 1}</span></span>`,
+		});
+		const marker = window.L.marker([restaurant.latitude, restaurant.longitude], { icon: markerIcon }).addTo(savedRestaurantMap);
+		marker.bindPopup(savedRestaurantPopup(restaurant, index + 1), { maxWidth: 260 });
+		marker.on("popupopen", (event) => {
+			event.popup.getElement()?.querySelector("[data-map-view-restaurant]")?.addEventListener("click", (clickEvent) => {
+				savedRestaurantMap.closePopup();
+				openDetails("restaurant", restaurant, clickEvent.currentTarget);
+			});
+		});
+		savedRestaurantMarkers.set(String(restaurant.id), marker);
+		bounds.push([restaurant.latitude, restaurant.longitude]);
+	});
+	if (savedUserCoordinates) {
+		if (savedUserMarker) savedUserMarker.remove();
+		const userIcon = window.L.divIcon({
+			className: "saved-map-marker-wrap",
+			iconSize: [20, 20],
+			iconAnchor: [10, 10],
+			html: '<span class="saved-map-marker is-user" aria-label="Your location"></span>',
+		});
+		savedUserMarker = window.L.marker([savedUserCoordinates.latitude, savedUserCoordinates.longitude], { icon: userIcon, zIndexOffset: 1000 }).addTo(savedRestaurantMap);
+		savedUserMarker.bindPopup("You are here");
+		bounds.push([savedUserCoordinates.latitude, savedUserCoordinates.longitude]);
+	}
+	if (bounds.length > 1) savedRestaurantMap.fitBounds(bounds, { padding: [28, 28], maxZoom: 15 });
+	else if (bounds.length === 1) savedRestaurantMap.setView(bounds[0], 14);
+	else savedRestaurantMap.setView([39.5, -98.35], 4);
+	const emptyMessage = document.querySelector("#saved-map-empty-overlay");
+	if (emptyMessage) {
+		if (visibleRestaurants.length === 0) {
+			emptyMessage.textContent = "Save a restaurant to see it on your map.";
+			emptyMessage.hidden = false;
+		} else if (bounds.length === 0) {
+			emptyMessage.textContent = "No saved restaurant has a confirmed map location yet. They remain in List.";
+			emptyMessage.hidden = false;
+		} else {
+			emptyMessage.hidden = true;
+		}
+	}
+	window.requestAnimationFrame(() => savedRestaurantMap.invalidateSize());
+	renderClosestRestaurants(visibleRestaurants);
+}
+
+async function showSavedRestaurantMap() {
+	savedView = "map";
+	document.querySelector("#saved-list-button").classList.remove("is-active");
+	document.querySelector("#saved-list-button").setAttribute("aria-pressed", "false");
+	document.querySelector("#saved-map-button").classList.add("is-active");
+	document.querySelector("#saved-map-button").setAttribute("aria-pressed", "true");
+	document.querySelector("#saved-list-view").hidden = true;
+	document.querySelector("#saved-map-view").hidden = false;
+	document.querySelector("#saved-map-status").textContent = "Showing saved restaurants with verified coordinates.";
+	persistUIState();
+	if (pages.saved.hidden) return;
+	renderSavedRestaurantMap();
+	window.requestAnimationFrame(() => document.querySelector("#saved-map").scrollIntoView({ block: "nearest", behavior: "smooth" }));
+	await geocodeMissingSavedRestaurants();
+}
+
+function showSavedRestaurantList() {
+	savedView = "list";
+	document.querySelector("#saved-list-button").classList.add("is-active");
+	document.querySelector("#saved-list-button").setAttribute("aria-pressed", "true");
+	document.querySelector("#saved-map-button").classList.remove("is-active");
+	document.querySelector("#saved-map-button").setAttribute("aria-pressed", "false");
+	document.querySelector("#saved-list-view").hidden = false;
+	document.querySelector("#saved-map-view").hidden = true;
+	if (savedRestaurantMap) window.setTimeout(() => savedRestaurantMap.invalidateSize(), 0);
+	persistUIState();
+}
+
+function requestSavedMapLocation() {
+	const status = document.querySelector("#saved-map-status");
+	if (!navigator.geolocation) {
+		status.textContent = "Location is not available in this browser.";
+		return;
+	}
+	status.textContent = "Requesting your location…";
+	navigator.geolocation.getCurrentPosition((position) => {
+		savedUserCoordinates = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+		status.textContent = "Your location is shown. Distances are straight-line estimates.";
+		renderSavedRestaurantMap();
+	}, (error) => {
+		status.textContent = error.code === error.PERMISSION_DENIED
+			? "Location permission was denied. Saved restaurants are still shown."
+			: "Could not get your location. Saved restaurants are still shown.";
+	}, { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 });
 }
 
 function getAllRestaurants() {
@@ -1083,6 +1461,8 @@ function showPage(pageName) {
 
 	if (pageName === "saved") {
 		renderSavedItems();
+		if (savedView === "map") void showSavedRestaurantMap();
+		else showSavedRestaurantList();
 	}
 	persistUIState();
 }
@@ -1090,6 +1470,24 @@ function showPage(pageName) {
 tabs.forEach((tab) => {
 	tab.addEventListener("click", () => showPage(tab.dataset.page));
 });
+
+document.querySelector("#saved-list-button").addEventListener("click", showSavedRestaurantList);
+document.querySelector("#saved-map-button").addEventListener("click", () => { void showSavedRestaurantMap(); });
+document.querySelector("#saved-map-city").addEventListener("change", (event) => {
+	savedMapCity = event.target.value;
+	persistUIState();
+	renderSavedRestaurantMap();
+});
+document.querySelector("#saved-map-location").addEventListener("click", requestSavedMapLocation);
+
+document.querySelector("#saved-list-button").addEventListener("click", showSavedRestaurantList);
+document.querySelector("#saved-map-button").addEventListener("click", () => { void showSavedRestaurantMap(); });
+document.querySelector("#saved-map-city").addEventListener("change", (event) => {
+	savedMapCity = event.target.value;
+	persistUIState();
+	renderSavedRestaurantMap();
+});
+document.querySelector("#saved-map-location").addEventListener("click", requestSavedMapLocation);
 
 filters.home.addEventListener("change", () => {
 	positions.home = 0;

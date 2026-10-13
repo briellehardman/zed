@@ -1,14 +1,39 @@
 window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
   "13": [
     {
-      "url": "https://97westkitchenandbar.com/app/themes/97west/dist/images/Horse.png",
+      "url": "https://97westkitchenandbar.com/app/uploads/2021/12/20210628_Shot_13-0275.jpg",
       "attribution": "Official restaurant website",
       "sourceType": "official"
     },
     {
-      "url": "https://97westkitchenandbar.com/app/uploads/2021/12/20210628_Shot_13-0275.jpg",
-      "attribution": "Official restaurant website",
-      "sourceType": "official"
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/FbEaY7mFjsaTV3zT2l3E_g/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/2OMwusDpa3viXu8VbQI1XA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/d2ndQeo0kl9MPR-JWVm4og/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/gkZ8ZNQFkiLLhgjPB7GLRQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/apDWu3nbcvt7OMrg229i7A/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/TxNjie80cPCAewvphWEFZA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "14": [
@@ -67,14 +92,34 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
   ],
   "16": [
     {
-      "url": "https://d3r61dztkh60c0.cloudfront.net/temporary/img/close.webp",
-      "attribution": "Official restaurant website",
-      "sourceType": "official"
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/fhRbuGO59n8UhAcNRA3P1w/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     },
     {
-      "url": "https://d3r61dztkh60c0.cloudfront.net/temporary/img/reload.webp",
-      "attribution": "Official restaurant website",
-      "sourceType": "official"
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/-7s7uuNYdH0T6ZIEFLMnkQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/T6NjcDp9CcSeXSFH18rVig/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/9W6ppFnMNGoLWxDDoDfZ4w/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Ov-YwxF7X76ldWAQ1WWodQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/UrP_T_7Qc3WJmIE9D0p9aw/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "17": [
@@ -195,6 +240,11 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
   ],
   "20": [
     {
+      "url": "https://static.wixstatic.com/media/11f194_294955ac54ec451da44e4e6bad77d0ff~mv2.png/v1/fill/w_600,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/French%20Quarter%20MEETS%20Funky%20Town%20(2).png",
+      "attribution": "Official restaurant website",
+      "sourceType": "official"
+    },
+    {
       "url": "https://s3-media0.fl.yelpcdn.com/bphoto/7Cwkxn8jtCeamIUf9raIOQ/o.jpg",
       "attribution": "Yelp customer photo",
       "sourceType": "customer"
@@ -223,11 +273,6 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://s3-media0.fl.yelpcdn.com/bphoto/gbeTncb7D138Oegzv9e-rA/o.jpg",
       "attribution": "Yelp customer photo",
       "sourceType": "customer"
-    },
-    {
-      "url": "https://static.wixstatic.com/media/11f194_294955ac54ec451da44e4e6bad77d0ff~mv2.png/v1/fill/w_600,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/French%20Quarter%20MEETS%20Funky%20Town%20(2).png",
-      "attribution": "Official restaurant website",
-      "sourceType": "official"
     }
   ],
   "21": [
@@ -578,6 +623,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://pholittlesaigonfw.com/images/inside02.jpg",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/g6dDxcOjf6AFLLrOUk-cQg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/sbCmZ2iq7DXOict3UgBMjg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/WRbqWwCbXsDOujrUHPWR9w/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Wbqh4g_5pHRX5SOWlBBsfw/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/w0Oq3h78SlWFHwSFxX_q_w/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lWIUs8pObaZ9r1kIqOzCtg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "32": [
@@ -595,6 +670,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://pulidostx.com/wp-content/uploads/2025/06/2025-birthday-card.webp",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/EDyT9xpkwl9FGicumWW99Q/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/s_nU8K8NZetDAxcqIYK_ZQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/_NtUSI7RizCpW1MAzHaRhA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/IN6mJETqQh5lzbbhVDLt4w/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lDbtOgTemGsoQNG-KkvFsA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/qeZS9cmJ1e0XH2yzvtpTmA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "33": [
@@ -654,6 +759,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://www.w3.org/WAI/WCAG21/wcag2.1AA-v.png",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/NnprGR735CkB98E1uaF6YQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/0hLf4b29Tpmmj9Aek1VsiA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/2e1FY01EuB8zwiH3hJ7Ucg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/50jtZ9mPbPE0Dnb03Jq02Q/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/D36R0sPWJruxPguRnPxZCA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/2VCBCi1KqT_37Lwl959n0w/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "35": [
@@ -1378,6 +1513,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://thesourboule.com/assets/images/site/home-sourdough-story.webp",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/qZ7RYSOwyPq5NcDT9YQb4Q/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/CO2XXXz_XFazox5jqwsblg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/f0YBvveWq_BR_HrBnpMLLw/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/UH25dJjH2wEEbDozfN3Wjg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lypk6K8yY-cLjFKYa0WJdQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/SxvTaoKPhEVajEO36u2yQQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "60": [
@@ -1594,27 +1759,42 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
   ],
   "66": [
     {
-      "url": "https://goldeesbbq.com/cdn/shop/products/image_95cc6612-08c4-4c0c-824a-b1187d192ed4.jpg?v=1659506107&width=533",
+      "url": "https://goldeesbbq.com/photos/class-rub-demo-1440.webp",
       "attribution": "Official restaurant website",
       "sourceType": "official"
     },
     {
-      "url": "https://goldeesbbq.com/cdn/shop/files/IMG_1535.jpg?v=1739593776",
+      "url": "https://goldeesbbq.com/photos/class-rub-demo-2400.webp",
       "attribution": "Official restaurant website",
       "sourceType": "official"
     },
     {
-      "url": "https://goldeesbbq.com/cdn/shop/products/image_93c9d285-e84b-443a-b417-2e1c4120ebab.jpg?v=1659505292&width=533",
+      "url": "https://goldeesbbq.com/photos/tray-midservice-1440.webp",
       "attribution": "Official restaurant website",
       "sourceType": "official"
     },
     {
-      "url": "https://goldeesbbq.com/cdn/shop/products/image.jpg?v=1659503624&width=533",
+      "url": "https://goldeesbbq.com/photos/tray-midservice-2400.webp",
       "attribution": "Official restaurant website",
       "sourceType": "official"
     },
     {
-      "url": "https://goldeesbbq.com/cdn/shop/files/9781477332023.jpg?v=1752596468&width=1500",
+      "url": "https://cdn.shopify.com/s/files/1/0621/7125/0893/products/image_95cc6612-08c4-4c0c-824a-b1187d192ed4.jpg?v=1659506107&width=3000&height=3000&crop=center",
+      "attribution": "Official restaurant website",
+      "sourceType": "official"
+    },
+    {
+      "url": "https://goldeesbbq.com/photos/brisket-sliced-overhead-960.webp",
+      "attribution": "Official restaurant website",
+      "sourceType": "official"
+    },
+    {
+      "url": "https://goldeesbbq.com/photos/brisket-sliced-overhead-1440.webp",
+      "attribution": "Official restaurant website",
+      "sourceType": "official"
+    },
+    {
+      "url": "https://goldeesbbq.com/photos/knife-brisket-1440.webp",
       "attribution": "Official restaurant website",
       "sourceType": "official"
     }
@@ -2058,6 +2238,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://heimbbq.com/wp-content/uploads/2025/09/gold-belly.png",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/K8KIZfsXtbX7WEDSjSiyLw/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/P2YwfqCxAP6XP7nK0Dxgbw/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/M9KMVCzysTSNztM1E2cunw/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Ii7B_hc5ONrijujsVLCrgA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/7vO25R0TwaVL9elp5SNpUQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/2QQ08c_V6w3kAsqSuX6ZgA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "80": [
@@ -2107,6 +2317,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://cdn.spotapps.co/spothopper/image/fetch/f_auto,q_auto:best,c_fit,h_1200/http://static.spotapps.co/spots/94/0a1c29b0324815b07aab40cd396677/:original",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/q8nPnMOedzmmuaf81iQSQg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/kAI8mVB6f6pHIm4zd6eJ3w/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/AZnxqfZSzRG7qvjS4nQM6A/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/1k8JpThdrivLZuYu4RoYZQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Kp0Sr20d0DhqXpidWHfEZA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/nDlgBtrV9MUxed9U230WfA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "82": [
@@ -2161,6 +2401,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://images.squarespace-cdn.com/content/v1/6515af9e4c06e26cc19d6efb/a4783272-7c2b-437c-8421-0a1f89c10a90/risckys-10+2.JPG",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/UTWuLPVs542lsr69140HjA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/FCORjOmOFb4Xo-9qrACn-Q/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/4vDj2_j-TPwR2qYQ11C-DA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/np5Kkl6NcxEY7BipPAknlQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/wF7kSa3dmsG5u8sLnrAaVA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lxkOzwCTcebIAVIaEQdo_A/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "84": [
@@ -2360,6 +2630,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://61osteria.com/wp-content/uploads/2025/04/Mothers-Day-GRID-POST.zip-2-819x1024.png",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/pOiuCnFTsFoW1XH4Fa707w/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/uZSv8G1noTD_zfh8QAMyIg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/cOiga1kRs1PaWtW0wXLSSQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/AC_Kdqy8kkSVEUhGYjYNnA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/bWcXDR21X73a-FFzUm8Yvg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lfVGZrq-2polVZJ9oZ1gmA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "91": [
@@ -2488,6 +2788,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://images.squarespace-cdn.com/content/v1/55c9f9bce4b0423ff5aafd5f/867f76a5-383c-401d-b9bd-3dbc9585ed26/2021+-+Order+Delivery+on+Doordash+image+copy.jpg",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/yNxgpZ1vUmAxt6lWKOc3oQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Zw1nuHJdEtEKLIMf29GEbQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/REhis4a30yA_L8itqkM5hQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Sgno1tFBl8lsGCGDka4zfA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Au4qGp9Uz8T_BtCdC2lR4Q/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/df0wsikK7pKsDQN9n5wWoA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "95": [
@@ -2707,6 +3037,36 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
       "url": "https://h3ranch.com/wood-frame.webp",
       "attribution": "Official restaurant website",
       "sourceType": "official"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/fWpmaE7a69YmCSWLpaDvdA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/5RUmi-H3ftZ93if7jNHMGg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/DQ62-KsLgVdKxIzRTDNTWg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/uN4lw5dLzLZpiUC0tEm3aQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/vQnhoMXN4Dyf8hhLQNbQWw/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/1trpkoj3i6p3PuF9rES7cw/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "102": [
@@ -2972,14 +3332,39 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
   ],
   "110": [
     {
-      "url": "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/97397delfriscos_favi.png?w=1200&fit=max&auto=compress,format&cs=origin|resize(786)",
+      "url": "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/34481DEL_Fort_Worth_First_Floor_Bar_crop.jpeg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600",
       "attribution": "Official restaurant website",
       "sourceType": "official"
     },
     {
-      "url": "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/34481DEL_Fort_Worth_First_Floor_Bar_crop.jpeg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600",
-      "attribution": "Official restaurant website",
-      "sourceType": "official"
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/a3DZk1po-1hIVJViHwAgYQ/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/EVtqLWYW32W86ul50LwODg/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/UTXaccesQXbYVdxvs7g5XA/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/gxULazuuNwagfd3s6abh_w/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/TkMozjyBcfXwAJwfB3ny1Q/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
+    },
+    {
+      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/WhFmWTIYaf-mRcI39h8yAw/o.jpg",
+      "attribution": "Yelp customer photo",
+      "sourceType": "customer"
     }
   ],
   "111": [

@@ -11,17 +11,42 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "description": "A Fort Worth steakhouse spot known for Popular Dishes, Chicken Fried Steak, Antelope.",
     "images": [
       {
-        "url": "https://97westkitchenandbar.com/app/themes/97west/dist/images/Horse.png",
+        "url": "https://97westkitchenandbar.com/app/uploads/2021/12/20210628_Shot_13-0275.jpg",
         "attribution": "Official restaurant website",
         "sourceType": "official"
       },
       {
-        "url": "https://97westkitchenandbar.com/app/uploads/2021/12/20210628_Shot_13-0275.jpg",
-        "attribution": "Official restaurant website",
-        "sourceType": "official"
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/FbEaY7mFjsaTV3zT2l3E_g/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/2OMwusDpa3viXu8VbQI1XA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/d2ndQeo0kl9MPR-JWVm4og/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/gkZ8ZNQFkiLLhgjPB7GLRQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/apDWu3nbcvt7OMrg229i7A/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/TxNjie80cPCAewvphWEFZA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
-    "mainImage": "https://97westkitchenandbar.com/app/themes/97west/dist/images/Horse.png",
+    "mainImage": "https://97westkitchenandbar.com/app/uploads/2021/12/20210628_Shot_13-0275.jpg",
     "imageSourceType": "official",
     "imageSelectionReviewed": true,
     "popularDishes": [
@@ -119,7 +144,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/zLPts1AjY1ESPbknu4ePGg/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Al Pastor Tacos",
@@ -143,19 +168,39 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "description": "A Fort Worth mexican spot known for Birria Taco, Flautas, Quesadilla.",
     "images": [
       {
-        "url": "https://d3r61dztkh60c0.cloudfront.net/temporary/img/close.webp",
-        "attribution": "Official restaurant website",
-        "sourceType": "official"
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/fhRbuGO59n8UhAcNRA3P1w/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       },
       {
-        "url": "https://d3r61dztkh60c0.cloudfront.net/temporary/img/reload.webp",
-        "attribution": "Official restaurant website",
-        "sourceType": "official"
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/-7s7uuNYdH0T6ZIEFLMnkQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/T6NjcDp9CcSeXSFH18rVig/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/9W6ppFnMNGoLWxDDoDfZ4w/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Ov-YwxF7X76ldWAQ1WWodQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/UrP_T_7Qc3WJmIE9D0p9aw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
-    "mainImage": "https://d3r61dztkh60c0.cloudfront.net/temporary/img/close.webp",
-    "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/fhRbuGO59n8UhAcNRA3P1w/o.jpg",
+    "imageSourceType": "customer",
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Birria Taco",
       "Flautas",
@@ -211,7 +256,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/iIt8X8vBIHebC-FfUsoXeA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Quesadillas",
       "Classic Street Taco",
@@ -277,7 +322,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://cherry-coffee.com/cdn/shop/files/cherry-coffee-aeropress-micro-filters01.jpg?crop=center&height=1620&v=1717614301&width=1080",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Drinks",
       "Cherry Latte",
@@ -343,7 +388,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://thechumleyhouse.com/wp-content/uploads/2024/11/food.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Beef Wellington",
       "Blue Crab Pot Pie",
@@ -366,6 +411,11 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "address": "411 S Main St, Ste 109, Fort Worth, TX",
     "description": "A Fort Worth bakery & desserts spot known for French Quarter Beignets, Cowtown King Cake, Bourbon Street.",
     "images": [
+      {
+        "url": "https://static.wixstatic.com/media/11f194_294955ac54ec451da44e4e6bad77d0ff~mv2.png/v1/fill/w_600,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/French%20Quarter%20MEETS%20Funky%20Town%20(2).png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
       {
         "url": "https://s3-media0.fl.yelpcdn.com/bphoto/7Cwkxn8jtCeamIUf9raIOQ/o.jpg",
         "attribution": "Yelp customer photo",
@@ -395,15 +445,10 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://s3-media0.fl.yelpcdn.com/bphoto/gbeTncb7D138Oegzv9e-rA/o.jpg",
         "attribution": "Yelp customer photo",
         "sourceType": "customer"
-      },
-      {
-        "url": "https://static.wixstatic.com/media/11f194_294955ac54ec451da44e4e6bad77d0ff~mv2.png/v1/fill/w_600,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/French%20Quarter%20MEETS%20Funky%20Town%20(2).png",
-        "attribution": "Official restaurant website",
-        "sourceType": "official"
       }
     ],
-    "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/7Cwkxn8jtCeamIUf9raIOQ/o.jpg",
-    "imageSourceType": "customer",
+    "mainImage": "https://static.wixstatic.com/media/11f194_294955ac54ec451da44e4e6bad77d0ff~mv2.png/v1/fill/w_600,h_267,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/French%20Quarter%20MEETS%20Funky%20Town%20(2).png",
+    "imageSourceType": "official",
     "imageSelectionReviewed": true,
     "popularDishes": [
       "French Quarter Beignets",
@@ -460,7 +505,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/Z-A0Dce8nB-cAa4RlhUpvw/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Deli",
       "Pesto Pasta Salad",
@@ -516,7 +561,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/NQtTyMZ_4E-U5mnH9W_u7Q/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Duck Confit",
       "Garden Beet Salad",
@@ -582,7 +627,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/63f59979d5fa9a3b051a2fef/7a1f459e-c73a-4f8c-858b-e83c4c50d078/Freds-Texas-Cafe-Burger-Joint.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [],
     "websiteUrl": "https://www.fredstexascafe.com/",
     "menuUrl": "",
@@ -632,7 +677,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/d0VfwNgNOMbcafvxd_nxhQ/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Salmon Sashimi",
       "Bay Scallop",
@@ -717,7 +762,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/6387d4f5186c68589699c113/9ea9a167-caa9-4288-860c-1a49f82587d7/7.21.22_Joe+T+Garcias_Onboarding+Shoot_Night_Outside+090.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Cheese Enchiladas",
       "Chicken Fajitas",
@@ -783,7 +828,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/6932fe3a1328b96dad017422/0dbadd6e-044e-4dc7-8b7b-e0169e2294bc/Kincaids_Burger-Stamp_Texture-v2.png",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Cowtown Deluxe Burger",
       "Pimento Cheese Burger",
@@ -849,7 +894,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://www.lemargottx.com/images/margot_slim1.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Braised Short Rib",
@@ -915,7 +960,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://cdn.prod.website-files.com/682e5392d6045de8dc29dfb1/682f7a09e0b7e1575c8a60e9_gallery-6.webp",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Love Burger",
@@ -966,7 +1011,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://www.panthercitybbq.com/wp-content/uploads/2021/07/lunch.png",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Pork Belly Burnt Ends",
       "Brisket Elote Cup",
@@ -1003,6 +1048,31 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://pholittlesaigonfw.com/images/inside02.jpg",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/g6dDxcOjf6AFLLrOUk-cQg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/sbCmZ2iq7DXOict3UgBMjg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/WRbqWwCbXsDOujrUHPWR9w/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Wbqh4g_5pHRX5SOWlBBsfw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/w0Oq3h78SlWFHwSFxX_q_w/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://pholittlesaigonfw.com/images/pho-little-saigon-2.png",
@@ -1044,11 +1114,36 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://pulidostx.com/wp-content/uploads/2025/06/2025-birthday-card.webp",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/EDyT9xpkwl9FGicumWW99Q/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/s_nU8K8NZetDAxcqIYK_ZQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/_NtUSI7RizCpW1MAzHaRhA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/IN6mJETqQh5lzbbhVDLt4w/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lDbtOgTemGsoQNG-KkvFsA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://pulidostx.com/wp-content/uploads/2025/01/happyhour_june2026.webp",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Puffy Taco Dinner",
@@ -1114,7 +1209,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/5aa6c4eee2ccd1c9e6399d93/1522111428414-1CMG6SQDNYSHXVH4BOZ3/RF_Exterior_05809.JPG",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Deviled Eggs",
@@ -1151,11 +1246,36 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://www.w3.org/WAI/WCAG21/wcag2.1AA-v.png",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/NnprGR735CkB98E1uaF6YQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/0hLf4b29Tpmmj9Aek1VsiA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/2e1FY01EuB8zwiH3hJ7Ucg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/50jtZ9mPbPE0Dnb03Jq02Q/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/D36R0sPWJruxPguRnPxZCA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://waterstexas.com/golf/proto/waterstexas/images/design/home.webp",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Crab Cakes",
@@ -1211,7 +1331,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/uT123TwezuTIN86RVxzmsA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Chicken Fried Steak",
       "Chicken Fried Chicken",
@@ -1267,7 +1387,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/iVVylKWORVRv8dB22K84nQ/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Boneless Rib Eye",
       "Cauliflower Soup",
@@ -1352,7 +1472,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/64f206bbbc2bb132392d3c41/efae3db9-1e84-446e-912f-f7c5f1bb4e4b/BOW_Dine_Bar_0790_Fnl_WebSize+%2833%29.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "French Toast",
       "Crab Cake Louise",
@@ -1408,7 +1528,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/mm-onyBIoXfYBUjkdxYO6w/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Grilled Octopus",
@@ -1464,7 +1584,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/KJMa48lXcSexnDJpll2i6Q/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Chicken Fried Steak",
@@ -1530,7 +1650,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/644d5699aeceb31a677eb83f/505dd025-1a1b-4f84-b46c-3c256d514062/IMG_4801.jpeg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Everything Bagel Toasted",
       "Rosemary Salt Bagel",
@@ -1596,7 +1716,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://dos-molinas-mexican.shop/public/media/dos-molinas-mexican-shop/1.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Spicy Chile-verde",
@@ -1652,7 +1772,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/2g5h9BLWRkaD7BqSJUCFCg/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Fried Chicken",
       "Smothered Pork Chops",
@@ -1718,7 +1838,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://static.showit.co/800/20hWX3HJ9rJXgGo_TOff8Q/shared/enduro_coffee_roaster_2.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [],
     "websiteUrl": "http://endurocoffee.com",
     "menuUrl": "",
@@ -1763,7 +1883,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://static.spotapps.co/assets/admin/hybrid_approach/holiday_party/website_neutral.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Italian Cold Cut",
       "Cheeseburger",
@@ -1819,7 +1939,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/ktqSpgnoowXW20RU1p-Wzw/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Shawarma",
       "Chicken Shawarma",
@@ -1885,7 +2005,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/66a7ac6b4d849a280dca20cb/1725902559465-TPU9BQRYADP5KUGW0V5J/image-asset.jpeg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Power Salad",
@@ -1960,7 +2080,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/cmZJInFJqw380HhUSjW1ig/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Chicken Fried Chicken",
       "Smothered Pork Chops",
@@ -2016,7 +2136,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/x2U0znOZILAaXVyueePqvQ/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Cowboy Kiss",
@@ -2062,7 +2182,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://cdn.prod.website-files.com/697d0c734c6d11b24e68dcaa/698237c330be6b766cc6839e_ozziog2.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Meat Lover Pizzas",
       "La Vodka Pizza",
@@ -2118,7 +2238,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/qy5xVcNvBx1wJMDWiLd0QA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Beef Bourguignon",
@@ -2174,7 +2294,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/XgyVKDg8kzkFuT29WlZwEQ/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Lasagna",
@@ -2240,7 +2360,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://www.quincesma.com/images/fw_food_1.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Rock Shrimp Tempura",
@@ -2296,7 +2416,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/TlHmAHQgtmJDQUufKfH7Qw/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "French Onion Soup",
@@ -2371,7 +2491,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/3Lf-Y3R9uIZpVS9btoAf2g/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Hot Oil Wontons",
       "Pork Soup Dumplings",
@@ -2427,7 +2547,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/fgoxEVhCKvuHvI48FP69eA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Take Home Loaf",
@@ -2454,11 +2574,41 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://thesourboule.com/assets/images/site/home-sourdough-story.webp",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/qZ7RYSOwyPq5NcDT9YQb4Q/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/CO2XXXz_XFazox5jqwsblg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/f0YBvveWq_BR_HrBnpMLLw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/UH25dJjH2wEEbDozfN3Wjg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lypk6K8yY-cLjFKYa0WJdQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/SxvTaoKPhEVajEO36u2yQQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://thesourboule.com/assets/images/site/home-sourdough-story.webp",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Breakfast Sandwich",
       "Stuffed Bagel",
@@ -2524,7 +2674,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.getbento.com/accounts/158ac34084c857d6a780aac17de5a791/media/images/23716IMG_3759.jpeg?w=1200&fit=crop&auto=compress,format&cs=origin&crop=focalpoint&fp-x=0.5&fp-y=0.5",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Rotisserie Chicken",
       "Crispy Octopus",
@@ -2580,7 +2730,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/QKJ8aim2ALts5TVd6YzMTg/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Deviled Egg Trio",
       "Brisket Tacos",
@@ -2646,7 +2796,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/67e289663dcce120abf3bd22/76d63a51-7d99-417a-a2ca-e7ad1857f082/walloons-restaurant-square2-e1692667485940-1024x837.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Lobster Roll",
       "Redfish Beignets",
@@ -2702,7 +2852,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/mx1QZRntAI9A0gboalTRKA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Omakase Box",
@@ -2758,7 +2908,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/lPQi_shOfYNKzNgMmYUBuw/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Adana Kebab Lunch",
@@ -2814,7 +2964,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/_x8Wwzuz2E24s5GaCiSiwQ/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Sweet Corn Fritters",
@@ -2838,34 +2988,49 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "description": "A Fort Worth texas barbecue spot known for Pork Ribs, Pork Belly, Beef Rib.",
     "images": [
       {
-        "url": "https://goldeesbbq.com/cdn/shop/products/image_95cc6612-08c4-4c0c-824a-b1187d192ed4.jpg?v=1659506107&width=533",
+        "url": "https://goldeesbbq.com/photos/class-rub-demo-1440.webp",
         "attribution": "Official restaurant website",
         "sourceType": "official"
       },
       {
-        "url": "https://goldeesbbq.com/cdn/shop/files/IMG_1535.jpg?v=1739593776",
+        "url": "https://goldeesbbq.com/photos/class-rub-demo-2400.webp",
         "attribution": "Official restaurant website",
         "sourceType": "official"
       },
       {
-        "url": "https://goldeesbbq.com/cdn/shop/products/image_93c9d285-e84b-443a-b417-2e1c4120ebab.jpg?v=1659505292&width=533",
+        "url": "https://goldeesbbq.com/photos/tray-midservice-1440.webp",
         "attribution": "Official restaurant website",
         "sourceType": "official"
       },
       {
-        "url": "https://goldeesbbq.com/cdn/shop/products/image.jpg?v=1659503624&width=533",
+        "url": "https://goldeesbbq.com/photos/tray-midservice-2400.webp",
         "attribution": "Official restaurant website",
         "sourceType": "official"
       },
       {
-        "url": "https://goldeesbbq.com/cdn/shop/files/9781477332023.jpg?v=1752596468&width=1500",
+        "url": "https://cdn.shopify.com/s/files/1/0621/7125/0893/products/image_95cc6612-08c4-4c0c-824a-b1187d192ed4.jpg?v=1659506107&width=3000&height=3000&crop=center",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://goldeesbbq.com/photos/brisket-sliced-overhead-960.webp",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://goldeesbbq.com/photos/brisket-sliced-overhead-1440.webp",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://goldeesbbq.com/photos/knife-brisket-1440.webp",
         "attribution": "Official restaurant website",
         "sourceType": "official"
       }
     ],
-    "mainImage": "https://goldeesbbq.com/cdn/shop/products/image_95cc6612-08c4-4c0c-824a-b1187d192ed4.jpg?v=1659506107&width=533",
+    "mainImage": "https://goldeesbbq.com/photos/class-rub-demo-1440.webp",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Pork Ribs",
       "Pork Belly",
@@ -2931,7 +3096,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://cdn.prod.website-files.com/68307ceda71cd90384a5938e/6832a409b33146129b77fb78_Opengraph%20Image.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Egg Benedict Plates",
       "Chicken Fried Steak",
@@ -2997,7 +3162,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://www.avocacoffee.com/wp-content/uploads/2024/08/Homepage3-1-1.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Drinks",
       "New Orleans Style Cold Brew",
@@ -3063,7 +3228,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/5b6054907e3c3a51dc1a7f2f/1544643499903-X5PB2XYG00BW9VXJM1WN/image-asset.jpeg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Bacon Cheddar",
       "Tres Leches",
@@ -3124,7 +3289,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://static.wixstatic.com/media/d42876_05a8ea999ffd475a881bbe6bc66c3b1e%7Emv2.png/v1/fit/w_2500,h_1330,al_c/d42876_05a8ea999ffd475a881bbe6bc66c3b1e%7Emv2.png",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [],
     "websiteUrl": "http://www.vaquerocoffeeco.com",
     "menuUrl": "",
@@ -3174,7 +3339,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/kI-kEVeAMt9nNyES9EtocQ/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Popular Dishes",
       "Hola Hovito",
@@ -3229,7 +3394,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/LYTKqVbhFxwf9m8D5lNb4Q/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Butter Chicken",
       "Chicken Tikka Masala",
@@ -3285,7 +3450,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/4HcJIHpSPaXprwrDccCDtA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Pad Thai",
       "Crispy Spring Rolls",
@@ -3346,7 +3511,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://static.wixstatic.com/media/9c4a72_eb66be4bc9c34a5d8e80ce79eb8eb4b6~mv2.jpg/v1/fill/w_2500,h_1897,al_c/9c4a72_eb66be4bc9c34a5d8e80ce79eb8eb4b6~mv2.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Mediterranean",
       "Lamb Shank",
@@ -3402,7 +3567,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/ze8yRXgTHRDxPqTlWx4JtA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Pad Thai",
       "Papaya Salad",
@@ -3453,7 +3618,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "http://static1.squarespace.com/static/619e7a60da91434e9cf7249b/t/64ee519231de612cd7e6afda/1693340059540/1.png?format=1500w",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Chicken Kabobs",
       "Mediterranean Branzino",
@@ -3575,7 +3740,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://paxandbeneficia.com/cdn/shop/files/FW2.png?v=1730760664&width=480",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Thanksgiving Day",
       "Black Friday",
@@ -3607,11 +3772,41 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://heimbbq.com/wp-content/uploads/2025/09/gold-belly.png",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/K8KIZfsXtbX7WEDSjSiyLw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/P2YwfqCxAP6XP7nK0Dxgbw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/M9KMVCzysTSNztM1E2cunw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Ii7B_hc5ONrijujsVLCrgA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/7vO25R0TwaVL9elp5SNpUQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/2QQ08c_V6w3kAsqSuX6ZgA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://heimbbq.com/wp-content/uploads/2025/09/HeroImage_WithText_bc9e4c42e52fd22ff41eda620350ec20.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Potato Salad",
       "Banana Pudding",
@@ -3667,7 +3862,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/5qA5NDH43qFqHxO2WPJcBg/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Chopped Beef Sandwich",
       "Chopped Brisket Sandwiches",
@@ -3704,11 +3899,36 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://cdn.spotapps.co/spothopper/image/fetch/f_auto,q_auto:best,c_fit,h_1200/http://static.spotapps.co/spots/94/0a1c29b0324815b07aab40cd396677/:original",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/q8nPnMOedzmmuaf81iQSQg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/kAI8mVB6f6pHIm4zd6eJ3w/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/AZnxqfZSzRG7qvjS4nQM6A/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/1k8JpThdrivLZuYu4RoYZQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Kp0Sr20d0DhqXpidWHfEZA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://static.spotapps.co/web/railheadsmokehouse--com/custom/events_fallback.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Sliced Brisket Sandwich",
       "Pulled Pork Sandwich",
@@ -3774,7 +3994,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://coopersbbqfortworth.com/wp-content/uploads/2024/03/Tray1-opt.png",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Beef Ribs",
       "Pork Chop",
@@ -3806,11 +4026,41 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://images.squarespace-cdn.com/content/v1/6515af9e4c06e26cc19d6efb/a4783272-7c2b-437c-8421-0a1f89c10a90/risckys-10+2.JPG",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/UTWuLPVs542lsr69140HjA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/FCORjOmOFb4Xo-9qrACn-Q/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/4vDj2_j-TPwR2qYQ11C-DA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/np5Kkl6NcxEY7BipPAknlQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/wF7kSa3dmsG5u8sLnrAaVA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lxkOzwCTcebIAVIaEQdo_A/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/6515af9e4c06e26cc19d6efb/a8752d37-1cac-4fed-8ae6-0b4dd009283a/Risckys+October+23-50.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Chicken Fried Steak",
       "Smoked Catfish",
@@ -3866,7 +4116,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/7BYHYPNcB-jgy-pQm_QwEA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Rabbit-rattlesnake Sausage",
       "Wild Boar Ribs",
@@ -3922,7 +4172,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/tUVYjZrgsvob4Xa73uEhjg/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Carne Asada",
       "Tenderloin Tamales",
@@ -3988,7 +4238,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/67fd7a32487773251488ad49/cc6fc79f-3bde-4716-a051-60584b70e70a/CP+Bar.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Concept development",
       "Design services",
@@ -4034,7 +4284,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://www.bonnellstexas.com/images/design/home-2.webp",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Buffalo Tenderloin",
       "Elk Tacos",
@@ -4090,7 +4340,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/V9BPjNowv2_zhclAeaQ3AA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Chicken Fried Steak",
       "Lobster Bisque",
@@ -4146,7 +4396,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/PqIfJxQmELRVa1kIaxf9Vw/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Grace",
       "Thanksgiving Day",
@@ -4173,11 +4423,41 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://61osteria.com/wp-content/uploads/2025/04/Mothers-Day-GRID-POST.zip-2-819x1024.png",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/pOiuCnFTsFoW1XH4Fa707w/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/uZSv8G1noTD_zfh8QAMyIg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/cOiga1kRs1PaWtW0wXLSSQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/AC_Kdqy8kkSVEUhGYjYNnA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/bWcXDR21X73a-FFzUm8Yvg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lfVGZrq-2polVZJ9oZ1gmA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://61osteria.com/wp-content/uploads/2025/04/Mothers-Day-GRID-POST.zip-2-819x1024.png",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Olive Oil Cake",
       "Rotollo",
@@ -4238,7 +4518,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/68068781b37c85514aa941c9/6d6d5774-3858-4adf-86a7-70c63fefff4c/1.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Cacio E Pepe",
       "Tagliatelle Bolognese",
@@ -4304,7 +4584,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/68ed1ed4c8a1f43a8f8c806c/acd60da6-6abc-44db-8f10-7c7038b31f0a/DSCF5172.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Bocca Osteria Romana",
       "Thanksgiving Day",
@@ -4360,7 +4640,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/F4lLlTRJtl4-kX5pVrIJyA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Nonna Tata",
       "Thanksgiving Day",
@@ -4397,11 +4677,36 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://images.squarespace-cdn.com/content/v1/55c9f9bce4b0423ff5aafd5f/867f76a5-383c-401d-b9bd-3dbc9585ed26/2021+-+Order+Delivery+on+Doordash+image+copy.jpg",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/yNxgpZ1vUmAxt6lWKOc3oQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Zw1nuHJdEtEKLIMf29GEbQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/REhis4a30yA_L8itqkM5hQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Sgno1tFBl8lsGCGDka4zfA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Au4qGp9Uz8T_BtCdC2lR4Q/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/55c9f9bce4b0423ff5aafd5f/1441148147932-JNS99MWELTFIWIVLY8VE/image-asset.jpeg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Cane Rosso",
       "Thanksgiving Day",
@@ -4467,7 +4772,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/5eea554c939c95360b7dff60/2b75ba0d-d40a-4042-8031-77e3cdc83418/53189995520_cb48c9e68e_k.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Gooey Butter Cake",
       "Meatballs",
@@ -4523,7 +4828,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/-2f4njbno5c_Kmts1gs3yA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Prosciutto Pizza",
       "Workshop Salad",
@@ -4639,7 +4944,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.getbento.com/accounts/75dafbb2bbfe6dc52128064ba7596f71/media/images/90843BJL_0648.jpg?w=1200&fit=max&auto=compress,format&cs=origin",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Meat Lovers Pizza",
       "Boneless Wings",
@@ -4751,7 +5056,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://static.hungerrush.com/menufy/width=1920,height=1080,fit=scale-down,format=auto/639138661353544994+2014392.png",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Dutch Burger",
       "Bacon Blue Cheeseburger",
@@ -4778,11 +5083,41 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://h3ranch.com/wood-frame.webp",
         "attribution": "Official restaurant website",
         "sourceType": "official"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/fWpmaE7a69YmCSWLpaDvdA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/5RUmi-H3ftZ93if7jNHMGg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/DQ62-KsLgVdKxIzRTDNTWg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/uN4lw5dLzLZpiUC0tEm3aQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/vQnhoMXN4Dyf8hhLQNbQWw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/1trpkoj3i6p3PuF9rES7cw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
     "mainImage": "https://h3ranch.com/wood-frame.webp",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "H3 Ranch",
       "Thanksgiving Day",
@@ -4898,7 +5233,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/Rp8DcEfO-Rll1CwydYHNfw/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "The Lobster Roll",
       "Chicken Parm",
@@ -4954,7 +5289,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/8a-z4JdR5EHqE4kDrqCAKA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "The Capital Grille",
       "Lobster and Crab Cakes",
@@ -5055,7 +5390,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/67c5eba1ba161009af49bd32/ff82f8d6-1c30-47a6-9319-24159761b12e/403_dining.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Oysters",
       "Redfish",
@@ -5111,7 +5446,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/b5N0iHUjCC_BjPMMMJIm2g/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Bananas Foster Butter Cake",
       "Jumbo Lump Crab Cake",
@@ -5177,7 +5512,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://images.squarespace-cdn.com/content/v1/62f1545dd5f31b6dd6261d2c/1727725016881-BTWEGBBAQ439D8ENYQ07/image-asset.jpeg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Colorado Lamb Chops",
       "Amarillo Ceviche",
@@ -5223,7 +5558,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://texasdebrazil.com/wp-content/uploads/2026/02/Main-Dining-Texas-de-Brazil-Fort-Worth.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Lobster Bisque",
       "Filet Mignon",
@@ -5247,17 +5582,42 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "description": "A Fort Worth steakhouse spot known for Thanksgiving Day, Black Friday, Christmas Eve.",
     "images": [
       {
-        "url": "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/97397delfriscos_favi.png?w=1200&fit=max&auto=compress,format&cs=origin|resize(786)",
+        "url": "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/34481DEL_Fort_Worth_First_Floor_Bar_crop.jpeg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600",
         "attribution": "Official restaurant website",
         "sourceType": "official"
       },
       {
-        "url": "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/34481DEL_Fort_Worth_First_Floor_Bar_crop.jpeg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600",
-        "attribution": "Official restaurant website",
-        "sourceType": "official"
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/a3DZk1po-1hIVJViHwAgYQ/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/EVtqLWYW32W86ul50LwODg/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/UTXaccesQXbYVdxvs7g5XA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/gxULazuuNwagfd3s6abh_w/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/TkMozjyBcfXwAJwfB3ny1Q/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/WhFmWTIYaf-mRcI39h8yAw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
       }
     ],
-    "mainImage": "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/97397delfriscos_favi.png?w=1200&fit=max&auto=compress,format&cs=origin|resize(786)",
+    "mainImage": "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/34481DEL_Fort_Worth_First_Floor_Bar_crop.jpeg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600",
     "imageSourceType": "official",
     "imageSelectionReviewed": true,
     "popularDishes": [
@@ -5315,7 +5675,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://static.spotapps.co/assets/admin/hybrid_approach/holiday_party/website_casual.jpg",
     "imageSourceType": "official",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "The Social House",
       "Braised Short Rib Pasta",
@@ -5371,7 +5731,7 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     ],
     "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/ceXB37NHDdv02_zqTeGVKA/o.jpg",
     "imageSourceType": "customer",
-    "imageSelectionReviewed": true,
+    "imageSelectionReviewed": false,
     "popularDishes": [
       "Thanksgiving Day",
       "Black Friday",

@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="css/styles.css?v=saved-map-3">
     <script src="js/recipe-data.js" defer></script>
     <script src="js/recipe-data-lunch.js" defer></script>
     <script src="js/recipe-data-dinner.js" defer></script>
@@ -18,6 +19,7 @@
     <script src="js/restaurant-photos.js" defer></script>
     <script src="js/restaurant-data-more.js" defer></script>
     <script src="js/restaurant-photos-more.js" defer></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
     <script src="js/app.js" defer></script>
 </head>
 <body class="app-initializing">
@@ -112,9 +114,16 @@
                         <p class="eyebrow">THE GOOD ONES</p>
                         <h2>Your saved bites</h2>
                     </div>
-                    <p class="saved-hint">Tap the heart to keep a favorite here.</p>
+                    <div class="saved-view-tools">
+                        <div class="saved-view-toggle" role="group" aria-label="Saved view">
+                            <button class="saved-view-button is-active" id="saved-list-button" type="button" data-saved-view="list" aria-pressed="true">List</button>
+                            <button class="saved-view-button" id="saved-map-button" type="button" data-saved-view="map" aria-pressed="false">Map</button>
+                        </div>
+                        <p class="saved-hint">Tap the heart to keep a favorite here.</p>
+                    </div>
                 </div>
-                <div class="saved-groups">
+                <div class="saved-list-view" id="saved-list-view">
+                  <div class="saved-groups">
                     <section class="saved-group" aria-labelledby="saved-recipes-title">
                         <div class="saved-group-heading">
                             <h3 id="saved-recipes-title">Recipes</h3>
@@ -129,7 +138,27 @@
                         </div>
                         <div class="saved-grid" id="saved-places"></div>
                     </section>
+                  </div>
                 </div>
+                <section class="saved-map-view" id="saved-map-view" aria-label="Map of saved restaurants" hidden>
+                    <div class="saved-map-toolbar">
+                        <label class="saved-map-city-filter" for="saved-map-city">City
+                            <select id="saved-map-city"><option value="__all__">All Cities</option></select>
+                        </label>
+                        <button class="saved-map-location-button" id="saved-map-location" type="button">Use My Location</button>
+                        <p class="saved-map-status" id="saved-map-status" aria-live="polite"></p>
+                    </div>
+                    <div class="saved-map-layout">
+                        <div class="saved-map-canvas" id="saved-map" role="application" aria-label="Map showing saved restaurants"></div>
+                        <aside class="saved-nearest" id="saved-nearest" aria-live="polite" hidden>
+                            <div class="saved-nearest-heading">
+                                <h3>Closest to Me</h3>
+                                <span id="saved-nearest-count"></span>
+                            </div>
+                            <ol id="saved-nearest-list"></ol>
+                        </aside>
+                    </div>
+                </section>
             </section>
         </main>
 
