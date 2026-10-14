@@ -607,10 +607,28 @@ p {
 	font-size: 12px;
 }
 
+.saved-restaurants-heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 12px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--line);
+}
+
+.saved-restaurants-heading .saved-group-heading {
+	min-width: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
 .saved-view-tools {
 	display: flex;
 	align-items: center;
 	gap: 14px;
+	flex: 0 0 auto;
 }
 
 .saved-view-toggle {
@@ -679,6 +697,28 @@ p {
 	border-color: var(--green);
 }
 
+.saved-map-closest-button {
+	min-height: 35px;
+	padding: 0 12px;
+	border: 1px solid var(--line);
+	border-radius: 4px;
+	background: var(--card);
+	color: var(--muted);
+	font-size: 12px;
+	font-weight: 600;
+}
+
+.saved-map-closest-button[aria-pressed="true"] {
+	border-color: #d6e9dd;
+	background: #f1f7f2;
+	color: var(--green-dark);
+}
+
+.saved-map-closest-button:disabled {
+	opacity: 0.48;
+	cursor: not-allowed;
+}
+
 .saved-map-status {
 	flex: 1;
 	margin: 0;
@@ -689,9 +729,13 @@ p {
 
 .saved-map-layout {
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) 270px;
+	grid-template-columns: minmax(0, 1fr);
 	gap: 16px;
 	align-items: stretch;
+}
+
+.saved-map-layout.has-nearest {
+	grid-template-columns: minmax(0, 1fr) 270px;
 }
 
 .saved-map-canvas {
@@ -907,7 +951,12 @@ p {
 	gap: 32px;
 }
 
+.saved-groups.is-map-active > .saved-group[aria-labelledby="saved-places-title"] {
+	grid-column: 1 / -1;
+}
+
 .saved-group-heading {
+	min-width: 0;
 	display: flex;
 	align-items: center;
 	gap: 9px;
@@ -1182,10 +1231,46 @@ p {
 		gap: 24px;
 	}
 
+	.saved-group,
+	.saved-map-view,
+	.saved-map-layout {
+		width: 100%;
+		min-width: 0;
+	}
+
+	.saved-restaurants-heading {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+
+	.saved-restaurants-heading .saved-view-tools {
+		width: 100%;
+		justify-content: flex-start;
+	}
+
+	.saved-map-toolbar {
+		width: 100%;
+		min-width: 0;
+	}
+
+	.saved-map-city-filter {
+		min-width: 0;
+	}
+
+	.saved-map-city-filter select {
+		min-width: 0;
+		max-width: 100%;
+	}
+
 	.saved-view-tools {
 		align-items: flex-end;
 		flex-direction: column;
 		gap: 7px;
+	}
+
+	.saved-restaurants-heading .saved-view-tools {
+		align-items: center;
+		flex-direction: row;
 	}
 
 	.saved-map-toolbar {

@@ -220,6 +220,8 @@ let selectedCity = availableCities.includes(restoredUIState.city) ? restoredUISt
 let currentPage = ["home", "out", "saved"].includes(restoredUIState.page) ? restoredUIState.page : "home";
 let savedView = restoredUIState.savedView === "map" ? "map" : "list";
 let savedMapCity = restoredUIState.savedMapCity || "__all__";
+let closestMode = Boolean(restoredUIState.closestMode);
+let locationModeWasEnabled = Boolean(restoredUIState.locationModeWasEnabled);
 
 const tabs = document.querySelectorAll(".main-tab");
 const pages = {
@@ -277,6 +279,8 @@ function persistUIState() {
 			city: selectedCity,
 			savedView,
 			savedMapCity,
+			closestMode,
+			locationModeWasEnabled,
 			homeIndex: positions.home,
 			outIndex: positions.out,
 			homeId: homeItem?.id ?? null,
@@ -1268,6 +1272,7 @@ function directionsUrl(restaurant) {
 		? `${restaurant.latitude},${restaurant.longitude}`
 		: `${restaurant.name}, ${restaurant.address || ""}, ${restaurant.city || ""}`;
 	const params = new URLSearchParams({ api: "1", destination });
+	if (savedUserCoordinates) params.set("origin", `${savedUserCoordinates.latitude},${savedUserCoordinates.longitude}`);
 	if (restaurant.placeId) params.set("destination_place_id", restaurant.placeId);
 	return `https://www.google.com/maps/dir/?${params.toString()}`;
 }
@@ -1309,8 +1314,14 @@ function renderClosestRestaurants(restaurants) {
 	const panel = document.querySelector("#saved-nearest");
 	const list = document.querySelector("#saved-nearest-list");
 	const count = document.querySelector("#saved-nearest-count");
-	if (!savedUserCoordinates) {
+	const layout = document.querySelector(".saved-map-layout");
+	const toggle = document.querySelector("#saved-map-closest");
+	toggle.disabled = !savedUserCoordinates;
+	toggle.setAttribute("aria-pressed", String(closestMode));
+	toggle.classList.toggle("is-active", closestMode);
+	if (!savedUserCoordinates || !closestMode) {
 		panel.hidden = true;
+		layout.classList.remove("has-nearest");
 		list.replaceChildren();
 		return;
 	}
@@ -1318,6 +1329,7 @@ function renderClosestRestaurants(restaurants) {
 		.map((restaurant) => ({ restaurant, miles: distanceInMiles(savedUserCoordinates, restaurant) }))
 		.sort((a, b) => a.miles - b.miles);
 	panel.hidden = false;
+	layout.classList.add("has-nearest");
 	count.textContent = nearby.length ? `${nearby.length} located` : "No located restaurants";
 	list.innerHTML = nearby.map(({ restaurant, miles }, index) => `<li><button type="button" data-restaurant-id="${escapeHTML(restaurant.id)}"><span class="saved-nearest-rank">${index + 1}.</span><span class="saved-nearest-name">${escapeHTML(restaurant.name)}</span><span class="saved-nearest-distance">${formatDistance(miles)}</span></button></li>`).join("");
 	list.querySelectorAll("[data-restaurant-id]").forEach((button) => {
@@ -1369,7 +1381,13 @@ function renderSavedRestaurantMap() {
 		});
 		savedUserMarker = window.L.marker([savedUserCoordinates.latitude, savedUserCoordinates.longitude], { icon: userIcon, zIndexOffset: 1000 }).addTo(savedRestaurantMap);
 		savedUserMarker.bindPopup("You are here");
-		bounds.push([savedUserCoordinates.latitude, savedUserCoordinates.longitude]);
+		if (savedMapCity === "__all__") bounds.push([savedUserCoordinates.latitude, savedUserCoordinates.longitude]);
+	}
+	if (closestMode && savedUserCoordinates && bounds.length > 1) {
+		const closest = visibleRestaurants
+			.filter((restaurant) => coordinatesAreValid(restaurant.latitude, restaurant.longitude))
+			.sort((a, b) => distanceInMiles(savedUserCoordinates, a) - distanceInMiles(savedUserCoordinates, b))[0];
+		if (closest) bounds.push([closest.latitude, closest.longitude]);
 	}
 	if (bounds.length > 1) savedRestaurantMap.fitBounds(bounds, { padding: [28, 28], maxZoom: 15 });
 	else if (bounds.length === 1) savedRestaurantMap.setView(bounds[0], 14);
@@ -1392,22 +1410,28 @@ function renderSavedRestaurantMap() {
 
 async function showSavedRestaurantMap() {
 	savedView = "map";
+	document.querySelector("#saved-groups").classList.add("is-map-active");
 	document.querySelector("#saved-list-button").classList.remove("is-active");
 	document.querySelector("#saved-list-button").setAttribute("aria-pressed", "false");
 	document.querySelector("#saved-map-button").classList.add("is-active");
 	document.querySelector("#saved-map-button").setAttribute("aria-pressed", "true");
 	document.querySelector("#saved-list-view").hidden = true;
 	document.querySelector("#saved-map-view").hidden = false;
-	document.querySelector("#saved-map-status").textContent = "Showing saved restaurants with verified coordinates.";
+	document.querySelector("#saved-map-status").textContent = locationModeWasEnabled
+		? "Map © OpenStreetMap · Tap Use My Location to resume distances."
+		: "Map © OpenStreetMap · Address lookup by Photon";
 	persistUIState();
 	if (pages.saved.hidden) return;
 	renderSavedRestaurantMap();
-	window.requestAnimationFrame(() => document.querySelector("#saved-map").scrollIntoView({ block: "nearest", behavior: "smooth" }));
+	if (window.innerWidth <= 390) {
+		window.requestAnimationFrame(() => document.querySelector("#saved-map").scrollIntoView({ block: "center", behavior: "smooth" }));
+	}
 	await geocodeMissingSavedRestaurants();
 }
 
 function showSavedRestaurantList() {
 	savedView = "list";
+	document.querySelector("#saved-groups").classList.remove("is-map-active");
 	document.querySelector("#saved-list-button").classList.add("is-active");
 	document.querySelector("#saved-list-button").setAttribute("aria-pressed", "true");
 	document.querySelector("#saved-map-button").classList.remove("is-active");
@@ -1427,9 +1451,13 @@ function requestSavedMapLocation() {
 	status.textContent = "Requesting your location…";
 	navigator.geolocation.getCurrentPosition((position) => {
 		savedUserCoordinates = { latitude: position.coords.latitude, longitude: position.coords.longitude };
+		locationModeWasEnabled = true;
 		status.textContent = "Your location is shown. Distances are straight-line estimates.";
+		persistUIState();
 		renderSavedRestaurantMap();
 	}, (error) => {
+		locationModeWasEnabled = false;
+		persistUIState();
 		status.textContent = error.code === error.PERMISSION_DENIED
 			? "Location permission was denied. Saved restaurants are still shown."
 			: "Could not get your location. Saved restaurants are still shown.";
@@ -1479,6 +1507,12 @@ document.querySelector("#saved-map-city").addEventListener("change", (event) => 
 	renderSavedRestaurantMap();
 });
 document.querySelector("#saved-map-location").addEventListener("click", requestSavedMapLocation);
+document.querySelector("#saved-map-closest").addEventListener("click", () => {
+	if (!savedUserCoordinates) return;
+	closestMode = !closestMode;
+	persistUIState();
+	renderSavedRestaurantMap();
+});
 
 document.querySelector("#saved-list-button").addEventListener("click", showSavedRestaurantList);
 document.querySelector("#saved-map-button").addEventListener("click", () => { void showSavedRestaurantMap(); });
