@@ -16,12 +16,6 @@ const restaurants = [
 		latitude: 32.7301318,
 		longitude: -97.3603587,
 		placeId: null,
-		latitude: 32.7301318,
-		longitude: -97.3603587,
-		placeId: null,
-		latitude: 32.7301318,
-		longitude: -97.3603587,
-		placeId: null,
 		description: "A classic Fort Worth diner known for pancakes, breakfast plates and late-night breakfast.",
 		images: [],
 		popularDishes: ["Pancakes", "Breakfast Plates", "French Toast"],
@@ -38,6 +32,8 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "West 7th",
 		address: "2150 W 7th St Suite 108, Fort Worth, TX 76107",
+		latitude: 32.7512958,
+		longitude: -97.348778,
 		description: "A colorful breakfast and brunch restaurant with pancakes, breakfast hashes, benedicts and other creative breakfast dishes.",
 		images: [],
 		popularDishes: ["Pancakes", "Breakfast Hash", "Eggs Benedict"],
@@ -54,6 +50,8 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "West 7th",
 		address: "2421 W 7th St Ste 109, Fort Worth, TX 76107",
+		latitude: 32.750726,
+		longitude: -97.352071,
 		description: "A casual neighborhood cafe serving breakfast plates, pancakes, waffles, burgers and comfort food.",
 		images: [],
 		popularDishes: ["Pancakes", "Waffles", "Breakfast Plates"],
@@ -70,12 +68,6 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "Clearfork",
 		address: "4801 Edwards Ranch Rd #105, Fort Worth, TX 76109",
-		latitude: 32.7071096,
-		longitude: -97.3947754,
-		placeId: null,
-		latitude: 32.7071096,
-		longitude: -97.3947754,
-		placeId: null,
 		latitude: 32.7071096,
 		longitude: -97.3947754,
 		placeId: null,
@@ -98,12 +90,6 @@ const restaurants = [
 		latitude: 32.7555406,
 		longitude: -97.3317522,
 		placeId: null,
-		latitude: 32.7555406,
-		longitude: -97.3317522,
-		placeId: null,
-		latitude: 32.7555406,
-		longitude: -97.3317522,
-		placeId: null,
 		description: "A downtown breakfast restaurant serving pancakes, omelets, benedicts, French toast and lunch dishes.",
 		images: [],
 		popularDishes: ["French Toast", "Pancakes", "Omelets"],
@@ -120,6 +106,8 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "Near Southside",
 		address: "1116 8th Ave, Fort Worth, TX 76104",
+		latitude: 32.732519,
+		longitude: -97.3440657,
 		description: "Texas barbecue with Tex-Mex influences, smoked meats, tacos and barbecue plates.",
 		images: [],
 		popularDishes: ["Brisket", "Barbecue Tacos", "Smoked Meats"],
@@ -137,12 +125,6 @@ const restaurants = [
 		neighborhood: "Near Southside",
 		address: "1314 W Magnolia Ave, Fort Worth, TX 76104",
 		latitude: 32.73081,
-		longitude: -97.3401273,
-		placeId: null,
-		latitude: 32.7308100,
-		longitude: -97.3401273,
-		placeId: null,
-		latitude: 32.7308100,
 		longitude: -97.3401273,
 		placeId: null,
 		description: "A Fort Worth vegan diner serving plant-based comfort food for breakfast, lunch and dinner.",
@@ -164,12 +146,6 @@ const restaurants = [
 		latitude: 32.7305196,
 		longitude: -97.3379376,
 		placeId: null,
-		latitude: 32.7305196,
-		longitude: -97.3379376,
-		placeId: null,
-		latitude: 32.7305196,
-		longitude: -97.3379376,
-		placeId: null,
 		description: "A Fort Worth small-batch ice cream shop with rotating flavors and seasonal creations.",
 		images: [],
 		popularDishes: ["Small-Batch Ice Cream", "Seasonal Flavors", "Ice Cream Cones"],
@@ -186,6 +162,8 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "West Fort Worth",
 		address: "3936 W Vickery Blvd, Fort Worth, TX 76107",
+		latitude: 32.7295274,
+		longitude: -97.3741009,
 		description: "A longtime Fort Worth bakery known for cakes, pastries and its famous Black Forest cake.",
 		images: [],
 		popularDishes: ["Black Forest Cake", "Pastries", "Éclairs"],
@@ -202,12 +180,6 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "Clearfork",
 		address: "5274 Monahans Ave, Fort Worth, TX 76107",
-		latitude: 32.7096209,
-		longitude: -97.4012847,
-		placeId: null,
-		latitude: 32.7096209,
-		longitude: -97.4012847,
-		placeId: null,
 		latitude: 32.7096209,
 		longitude: -97.4012847,
 		placeId: null,
@@ -230,12 +202,6 @@ const restaurants = [
 		latitude: 32.7618908,
 		longitude: -97.38477,
 		placeId: null,
-		latitude: 32.7618908,
-		longitude: -97.3847700,
-		placeId: null,
-		latitude: 32.7618908,
-		longitude: -97.3847700,
-		placeId: null,
 		description: "A casual Italian restaurant from chef Tim Love serving pizza, pasta and Italian-inspired dishes.",
 		images: [],
 		popularDishes: ["Pizza", "Pasta", "Italian Small Plates"],
@@ -252,6 +218,8 @@ const restaurants = [
 		price: "$$$",
 		neighborhood: "Cultural District",
 		address: "3268 W 7th St, Fort Worth, TX 76107",
+		latitude: 32.7513266,
+		longitude: -97.3639604,
 		description: "An upscale restaurant focused on the food and traditions of northern Mexico.",
 		images: [],
 		popularDishes: ["Barbacoa Tacos", "Cabrito", "Tamal de Cerdo"],
@@ -417,17 +385,23 @@ function completeSavedRestaurant(savedRestaurant) {
 	const saved = savedRestaurant && typeof savedRestaurant === "object" ? savedRestaurant : { id: savedRestaurant };
 	const current = restaurants.find((restaurant) => String(restaurant.id) === String(saved.id));
 	const merged = { ...(current || {}), ...saved };
-	const savedHasCoordinates = coordinatesAreValid(saved.latitude, saved.longitude);
 	const catalogHasCoordinates = coordinatesAreValid(current?.latitude, current?.longitude);
-	const coordinateSource = savedHasCoordinates ? saved : catalogHasCoordinates ? current : null;
+	const savedHasCoordinates = coordinatesAreValid(saved.latitude, saved.longitude);
+	const coordinateSource = catalogHasCoordinates ? current : savedHasCoordinates ? saved : null;
 	merged.latitude = coordinateSource ? Number(coordinateSource.latitude) : null;
 	merged.longitude = coordinateSource ? Number(coordinateSource.longitude) : null;
+	["name", "city", "address", "cuisine", "price", "category"].forEach((field) => {
+		merged[field] = current?.[field] || saved[field] || "";
+	});
 	const savedAddressHasStreetNumber = /^\s*\d+[a-z]?\b/i.test(saved.address || "");
 	if (!savedAddressHasStreetNumber && current?.address) merged.address = current.address;
 	if (current?.city) merged.city = current.city;
 	merged.placeId = merged.placeId || merged.googlePlaceId || null;
-	merged.mainImage = merged.mainImage || (Array.isArray(merged.images) ? (typeof merged.images[0] === "string" ? merged.images[0] : merged.images[0]?.url) : "") || "";
-	merged.images = Array.isArray(merged.images) ? merged.images : [];
+	merged.images = Array.isArray(saved.images) && saved.images.length
+		? saved.images
+		: Array.isArray(current?.images) ? current.images : [];
+	merged.mainImage = saved.mainImage || current?.mainImage
+		|| (Array.isArray(merged.images) ? (typeof merged.images[0] === "string" ? merged.images[0] : merged.images[0]?.url) : "") || "";
 	merged.popularDishes = Array.isArray(merged.popularDishes) ? merged.popularDishes : [];
 	merged.googleMapsUrl = coordinateSource ? mapsUrlForRestaurant(merged) : merged.googleMapsUrl || mapsUrlForRestaurant(merged);
 	return merged;
@@ -1317,7 +1291,7 @@ function renderSavedRestaurantMap() {
 	const visibleRestaurants = getVisibleSavedMapRestaurants();
 	savedRestaurantMarkers.forEach((marker) => marker.remove());
 	savedRestaurantMarkers.clear();
-	const bounds = [];
+	const restaurantCoordinates = [];
 	visibleRestaurants.forEach((restaurant, index) => {
 		if (!coordinatesAreValid(restaurant.latitude, restaurant.longitude)) return;
 		const markerIcon = window.L.divIcon({
@@ -1336,7 +1310,7 @@ function renderSavedRestaurantMap() {
 			});
 		});
 		savedRestaurantMarkers.set(String(restaurant.id), marker);
-		bounds.push([restaurant.latitude, restaurant.longitude]);
+		restaurantCoordinates.push([Number(restaurant.latitude), Number(restaurant.longitude)]);
 	});
 	if (savedUserCoordinates) {
 		if (savedUserMarker) savedUserMarker.remove();
@@ -1348,23 +1322,22 @@ function renderSavedRestaurantMap() {
 		});
 		savedUserMarker = window.L.marker([savedUserCoordinates.latitude, savedUserCoordinates.longitude], { icon: userIcon, zIndexOffset: 1000 }).addTo(savedRestaurantMap);
 		savedUserMarker.bindPopup("You are here");
-		if (savedMapCity === "__all__") bounds.push([savedUserCoordinates.latitude, savedUserCoordinates.longitude]);
 	}
-	if (closestMode && savedUserCoordinates && bounds.length > 1) {
-		const closest = visibleRestaurants
-			.filter((restaurant) => coordinatesAreValid(restaurant.latitude, restaurant.longitude))
-			.sort((a, b) => distanceInMiles(savedUserCoordinates, a) - distanceInMiles(savedUserCoordinates, b))[0];
-		if (closest) bounds.push([closest.latitude, closest.longitude]);
+	if (restaurantCoordinates.length > 1) {
+		savedRestaurantMap.fitBounds(window.L.latLngBounds(restaurantCoordinates), { padding: [40, 40], maxZoom: 14 });
+	} else if (restaurantCoordinates.length === 1) {
+		savedRestaurantMap.setView(restaurantCoordinates[0], 14);
+	} else if (savedMapCity === "Fort Worth, TX") {
+		savedRestaurantMap.setView([32.7555, -97.3308], 11);
+	} else if (savedMapCity === "__all__") {
+		savedRestaurantMap.setView([39.5, -98.35], 4);
 	}
-	if (bounds.length > 1) savedRestaurantMap.fitBounds(bounds, { padding: [28, 28], maxZoom: 15 });
-	else if (bounds.length === 1) savedRestaurantMap.setView(bounds[0], 14);
-	else savedRestaurantMap.setView([39.5, -98.35], 4);
 	const emptyMessage = document.querySelector("#saved-map-empty-overlay");
 	if (emptyMessage) {
 		if (visibleRestaurants.length === 0) {
 			emptyMessage.textContent = "Save a restaurant to see it on your map.";
 			emptyMessage.hidden = false;
-		} else if (bounds.length === 0) {
+		} else if (restaurantCoordinates.length === 0) {
 			emptyMessage.textContent = "No saved restaurant has a confirmed map location yet. They remain in List.";
 			emptyMessage.hidden = false;
 		} else {
@@ -1465,14 +1438,6 @@ tabs.forEach((tab) => {
 	tab.addEventListener("click", () => showPage(tab.dataset.page));
 });
 
-document.querySelector("#saved-list-button").addEventListener("click", showSavedRestaurantList);
-document.querySelector("#saved-map-button").addEventListener("click", () => { void showSavedRestaurantMap(); });
-document.querySelector("#saved-map-city").addEventListener("change", (event) => {
-	savedMapCity = event.target.value;
-	persistUIState();
-	renderSavedRestaurantMap();
-});
-document.querySelector("#saved-map-location").addEventListener("click", requestSavedMapLocation);
 document.querySelector("#saved-map-closest").addEventListener("click", () => {
 	if (!savedUserCoordinates) return;
 	closestMode = !closestMode;

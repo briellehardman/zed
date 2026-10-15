@@ -2580,34 +2580,29 @@ window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS = {
   ],
   "85": [
     {
-      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/tUVYjZrgsvob4Xa73uEhjg/o.jpg",
-      "attribution": "Yelp customer photo",
-      "sourceType": "customer"
+      "url": "https://reata.net/wp-content/uploads/2016/02/FortWorth-R.jpg",
+      "attribution": "Official restaurant website",
+      "sourceType": "official"
     },
     {
-      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/Ali6olWC10szit6ieeEitA/o.jpg",
-      "attribution": "Yelp customer photo",
-      "sourceType": "customer"
+      "url": "https://reata.net/wp-content/uploads/2016/02/Cherry-Limeade.jpg",
+      "attribution": "Official restaurant website",
+      "sourceType": "official"
     },
     {
-      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/CxDZ-qEAK3SE7li--4oZAQ/o.jpg",
-      "attribution": "Yelp customer photo",
-      "sourceType": "customer"
+      "url": "https://reata.net/wp-content/uploads/2016/02/History-Ranch.jpg",
+      "attribution": "Official restaurant website",
+      "sourceType": "official"
     },
     {
-      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/fmvHSkbY7Mx6baqLbdXSYw/o.jpg",
-      "attribution": "Yelp customer photo",
-      "sourceType": "customer"
+      "url": "https://reata.net/wp-content/uploads/2016/02/slide.jpg",
+      "attribution": "Official restaurant website",
+      "sourceType": "official"
     },
     {
-      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/ERfdZwZjdClhxJ08QeJqNQ/o.jpg",
-      "attribution": "Yelp customer photo",
-      "sourceType": "customer"
-    },
-    {
-      "url": "https://s3-media0.fl.yelpcdn.com/bphoto/hUaZI7l8yzm-Q5EO97yajw/o.jpg",
-      "attribution": "Yelp customer photo",
-      "sourceType": "customer"
+      "url": "https://reata.net/wp-content/uploads/Reata-Tower-Street.jpg",
+      "attribution": "Official restaurant website",
+      "sourceType": "official"
     }
   ],
   "86": [
