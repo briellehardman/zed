@@ -8,6 +8,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Stockyards",
     "address": "200 Mule Alley Dr, Fort Worth, TX",
+    "latitude": 32.7870095,
+    "longitude": -97.3475133,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Popular Dishes, Chicken Fried Steak, Antelope.",
     "images": [
       {
@@ -68,7 +71,10 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "cuisine": "American",
     "price": "",
     "neighborhood": "",
-    "address": "Fort Worth, TX",
+    "address": "2315 N Main St, Fort Worth, TX 76164",
+    "latitude": 32.7869094,
+    "longitude": -97.3494472,
+    "placeId": null,
     "description": "A Fort Worth restaurant serving american cuisine.",
     "images": [
       {
@@ -109,6 +115,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "1904 Hemphill St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Popular Dishes, Al Pastor Tacos, Birria Tacos.",
     "images": [
       {
@@ -165,6 +174,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Southside",
     "address": "2108 E Rosedale St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Birria Taco, Flautas, Quesadilla.",
     "images": [
       {
@@ -221,6 +233,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Arlington Heights",
     "address": "612 Carroll St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Quesadillas, Classic Street Taco, Blue Corn Cheese Enchilada.",
     "images": [
       {
@@ -277,6 +292,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "1121 W Magnolia Ave, Fort Worth, TX",
+    "latitude": 32.7305189,
+    "longitude": -97.3375533,
+    "placeId": null,
     "description": "A Fort Worth coffee & cafe spot known for Popular Drinks, Cherry Latte, Cold Brew.",
     "images": [
       {
@@ -343,6 +361,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Cultural District",
     "address": "3230 Camp Bowie Blvd, Ste 150, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Beef Wellington, Blue Crab Pot Pie, Butter Chicken Pie.",
     "images": [
       {
@@ -409,6 +430,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$",
     "neighborhood": "Southside",
     "address": "411 S Main St, Ste 109, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth bakery & desserts spot known for French Quarter Beignets, Cowtown King Cake, Bourbon Street.",
     "images": [
       {
@@ -470,6 +494,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "",
     "address": "1540 S University Dr, Ste 100, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth bakery & desserts spot known for Deli, Pesto Pasta Salad, Chicken Caesar Wrap.",
     "images": [
       {
@@ -526,6 +553,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Southside",
     "address": "1501 W Magnolia Ave, Fort Worth, TX",
+    "latitude": 32.7303635,
+    "longitude": -97.3422168,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Duck Confit, Garden Beet Salad, Shortbreads.",
     "images": [
       {
@@ -582,6 +612,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "",
     "address": "Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth restaurant serving american cuisine.",
     "images": [
       {
@@ -642,6 +675,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Cultural District",
     "address": "907 Foch St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth japanese spot known for Salmon Sashimi, Bay Scallop, Hokkaido Scallop.",
     "images": [
       {
@@ -692,21 +728,71 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
   {
     "id": 25,
     "name": "Italianni's Restaurant",
-    "city": "Fort Worth, TX",
+    "city": "Hurst, TX",
     "category": "Dinner",
     "cuisine": "Italian",
-    "price": "",
+    "price": "$$",
     "neighborhood": "",
-    "address": "1601 Precinct Line Rd, Fort Worth, TX",
-    "description": "A Fort Worth restaurant serving italian cuisine.",
-    "images": [],
-    "mainImage": "",
-    "imageSourceType": "",
+    "address": "1601 Precinct Line Rd, Hurst, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
+    "description": "A Fort Worth italian spot known for Lobster Bisque, Baked Cheese Ravioli, Farfalle Rustica.",
+    "images": [
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/64c6b79e99e40a37a4813f77/1739856934626-EZUT6LYJ672WDT1C8EGM/image-asset.jpeg",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/64c6b79e99e40a37a4813f77/48e2e106-d4ec-4564-9218-32903484dddb/bestof2026startelegram.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/64c6b79e99e40a37a4813f77/7b2cdcc1-a055-4d50-a3a3-c33364d4d677/IMG_3910.JPG",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/64c6b79e99e40a37a4813f77/847009be-7a51-4693-b5e8-960ee17c423e/Italiannis_0060.jpg",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/64c6b79e99e40a37a4813f77/20e1baf8-b147-4643-aaa0-cbbd142ea2fd/Italiannis_0023.jpg",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/64c6b79e99e40a37a4813f77/09f206e2-5731-4d2a-9c2e-be76245c736b/IMG_4255.JPG",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/64c6b79e99e40a37a4813f77/189363c5-7ba7-4968-b075-0d200e2b1b06/group+photo.jpeg",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://images.squarespace-cdn.com/content/v1/64c6b79e99e40a37a4813f77/23e819b6-02d9-4ceb-ad3d-88ddc0588a53/Artboard+1+copya.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      }
+    ],
+    "mainImage": "https://images.squarespace-cdn.com/content/v1/64c6b79e99e40a37a4813f77/1739856934626-EZUT6LYJ672WDT1C8EGM/image-asset.jpeg",
+    "imageSourceType": "official",
     "imageSelectionReviewed": false,
-    "popularDishes": [],
-    "websiteUrl": "",
+    "popularDishes": [
+      "Lobster Bisque",
+      "Baked Cheese Ravioli",
+      "Farfalle Rustica",
+      "Smoked Seafood Pasta",
+      "Grilled Chicken Caprese"
+    ],
+    "websiteUrl": "http://italiannishurst.com",
     "menuUrl": "",
-    "yelpUrl": ""
+    "yelpUrl": "https://www.yelp.com/biz/italiannis-restaurant-hurst"
   },
   {
     "id": 26,
@@ -717,6 +803,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Stockyards",
     "address": "2201 N Commerce St, Fort Worth, TX",
+    "latitude": 32.7849242,
+    "longitude": -97.3483651,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Cheese Enchiladas, Chicken Fajitas, Beef Fajitas.",
     "images": [
       {
@@ -783,6 +872,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Arlington Heights",
     "address": "4901 Camp Bowie Blvd, Fort Worth, TX",
+    "latitude": 32.7374098,
+    "longitude": -97.3933369,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Cowtown Deluxe Burger, Pimento Cheese Burger, Deviled Eggs.",
     "images": [
       {
@@ -849,6 +941,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "",
     "address": "3150 S Hulen St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Popular Dishes, Braised Short Rib, Tenderloin Steak Frites.",
     "images": [
       {
@@ -915,6 +1010,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$",
     "neighborhood": "Stockyards",
     "address": "110 E Exchange St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Love Burger, Dirty Love Burger.",
     "images": [
       {
@@ -981,6 +1079,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "201 E Hattie St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth texas barbecue spot known for Pork Belly Burnt Ends, Brisket Elote Cup, Cowtown Platter.",
     "images": [
       {
@@ -1032,6 +1133,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Far West",
     "address": "1712 Mall Cir, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth texas barbecue spot known for Spring Rolls, BBQ Pork Pho, Lemongrass Chicken Wings.",
     "images": [
       {
@@ -1098,10 +1202,18 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$",
     "neighborhood": "Arlington Heights",
     "address": "2900 Pulido St, Fort Worth, TX",
+    "latitude": 32.7314743,
+    "longitude": -97.3653721,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Popular Dishes, Puffy Taco Dinner, Old Fashioned Enchiladas Dinner.",
     "images": [
       {
         "url": "https://pulidostx.com/wp-content/uploads/2025/01/happyhour_june2026.webp",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://pulidostx.com/wp-content/uploads/2026/10/5house-marg_eastland.png",
         "attribution": "Official restaurant website",
         "sourceType": "official"
       },
@@ -1114,31 +1226,6 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
         "url": "https://pulidostx.com/wp-content/uploads/2025/06/2025-birthday-card.webp",
         "attribution": "Official restaurant website",
         "sourceType": "official"
-      },
-      {
-        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/EDyT9xpkwl9FGicumWW99Q/o.jpg",
-        "attribution": "Yelp customer photo",
-        "sourceType": "customer"
-      },
-      {
-        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/s_nU8K8NZetDAxcqIYK_ZQ/o.jpg",
-        "attribution": "Yelp customer photo",
-        "sourceType": "customer"
-      },
-      {
-        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/_NtUSI7RizCpW1MAzHaRhA/o.jpg",
-        "attribution": "Yelp customer photo",
-        "sourceType": "customer"
-      },
-      {
-        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/IN6mJETqQh5lzbbhVDLt4w/o.jpg",
-        "attribution": "Yelp customer photo",
-        "sourceType": "customer"
-      },
-      {
-        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/lDbtOgTemGsoQNG-KkvFsA/o.jpg",
-        "attribution": "Yelp customer photo",
-        "sourceType": "customer"
       }
     ],
     "mainImage": "https://pulidostx.com/wp-content/uploads/2025/01/happyhour_june2026.webp",
@@ -1164,6 +1251,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Cultural District",
     "address": "3405 W 7th St, Fort Worth, TX",
+    "latitude": 32.7510989,
+    "longitude": -97.3665521,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Deviled Eggs, Toasted Pistachio Guacamole.",
     "images": [
       {
@@ -1230,6 +1320,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Sundance Square",
     "address": "301 Main St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Crab Cakes, Dirty Dozen Oysters.",
     "images": [
       {
@@ -1296,6 +1389,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "",
     "address": "7950 Camp Bowie W, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth breakfast & brunch spot known for Chicken Fried Steak, Chicken Fried Chicken, Chicken and Dumplings.",
     "images": [
       {
@@ -1352,6 +1448,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Sundance Square",
     "address": "512 Main St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Boneless Rib Eye, Cauliflower Soup, Olive Oil Cake.",
     "images": [
       {
@@ -1402,21 +1501,61 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
   {
     "id": 37,
     "name": "Breakfast Brothers",
-    "city": "Fort Worth, TX",
+    "city": "Arlington, TX",
     "category": "Breakfast",
     "cuisine": "Breakfast & Brunch",
-    "price": "",
+    "price": "$$",
     "neighborhood": "",
-    "address": "130 E Bardin Rd, Ste 128, Fort Worth, TX",
-    "description": "A Fort Worth restaurant serving breakfast & brunch cuisine.",
-    "images": [],
-    "mainImage": "",
-    "imageSourceType": "",
+    "address": "130 E Bardin Rd, Ste 128, Arlington, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
+    "description": "A Fort Worth breakfast & brunch spot known for Popular Dishes, Chicken and Waffles, Pork Chop Basket.",
+    "images": [
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/S7MNHz7cgc_6gUTy08yv8A/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/byeXUSR2F6jtIUMXoV64ig/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/z84Kn17b5yOMiWyUn7EuJw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/2UrWQM1myfkY46tOVvASZA/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/pC-d8ZvlPXbCDcysnvArdw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      },
+      {
+        "url": "https://s3-media0.fl.yelpcdn.com/bphoto/VuZ9jaXad3xa0_xFOMaRtw/o.jpg",
+        "attribution": "Yelp customer photo",
+        "sourceType": "customer"
+      }
+    ],
+    "mainImage": "https://s3-media0.fl.yelpcdn.com/bphoto/S7MNHz7cgc_6gUTy08yv8A/o.jpg",
+    "imageSourceType": "customer",
     "imageSelectionReviewed": false,
-    "popularDishes": [],
-    "websiteUrl": "",
+    "popularDishes": [
+      "Popular Dishes",
+      "Chicken and Waffles",
+      "Pork Chop Basket",
+      "Chicken and Red Velvet Waffle",
+      "Veggie Omelette"
+    ],
+    "websiteUrl": "https://www.breakfastbrothers.com",
     "menuUrl": "",
-    "yelpUrl": ""
+    "yelpUrl": "https://www.yelp.com/biz/breakfast-brothers-arlington-2"
   },
   {
     "id": 38,
@@ -1427,6 +1566,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Arlington Heights",
     "address": "3700 Camp Bowie Blvd, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for French Toast, Crab Cake Louise, Smokies in a Blanket.",
     "images": [
       {
@@ -1493,6 +1635,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Sundance Square",
     "address": "150 Throckmorton St, Ste 140, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Grilled Octopus, Chicken Piccata.",
     "images": [
       {
@@ -1549,6 +1694,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Stockyards",
     "address": "2458 N Main St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Popular Dishes, Chicken Fried Steak, Filet Mignon.",
     "images": [
       {
@@ -1605,6 +1753,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Berkeley Place",
     "address": "2430 Forest Park Blvd, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth breakfast & brunch spot known for Everything Bagel Toasted, Rosemary Salt Bagel, Plain.",
     "images": [
       {
@@ -1671,6 +1822,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$",
     "neighborhood": "Stockyards",
     "address": "404 NW 25th St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Popular Dishes, Spicy Chile-verde, Chicken Enchiladas.",
     "images": [
       {
@@ -1737,6 +1891,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Arlington Heights",
     "address": "5701 Curzon Ave, Fort Worth, TX",
+    "latitude": 32.7299284,
+    "longitude": -97.4081386,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Fried Chicken, Smothered Pork Chops, Fried Catfish.",
     "images": [
       {
@@ -1793,6 +1950,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Northeast",
     "address": "400 Oakhurst Scenic Dr, Fort Worth, TX",
+    "latitude": 32.77046,
+    "longitude": -97.3110893,
+    "placeId": null,
     "description": "A Fort Worth restaurant serving coffee & cafe cuisine.",
     "images": [
       {
@@ -1853,6 +2013,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$",
     "neighborhood": "",
     "address": "5817 Camp Bowie Blvd, Fort Worth, TX",
+    "latitude": 32.7305078,
+    "longitude": -97.4104032,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Italian Cold Cut, Cheeseburger, Cheesesteak.",
     "images": [
       {
@@ -1904,6 +2067,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "508 W Rosedale St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Shawarma, Chicken Shawarma, Kabob.",
     "images": [
       {
@@ -1960,6 +2126,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "",
     "address": "4548 Hartwood Dr, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Power Salad, Chicken Caesar Salad.",
     "images": [
       {
@@ -2020,21 +2189,51 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
   {
     "id": 48,
     "name": "Los Jimadores Tex-Mex Tequila Factory",
-    "city": "Fort Worth, TX",
+    "city": "Bedford, TX",
     "category": "Lunch",
     "cuisine": "Mexican",
-    "price": "",
+    "price": "$$",
     "neighborhood": "",
-    "address": "3314 Harwood Rd, Fort Worth, TX",
-    "description": "A Fort Worth restaurant serving mexican cuisine.",
-    "images": [],
-    "mainImage": "",
-    "imageSourceType": "",
+    "address": "3314 Harwood Rd, Bedford, TX",
+    "latitude": 32.8507228,
+    "longitude": -97.1136854,
+    "placeId": null,
+    "description": "A Fort Worth mexican spot known for Popular Dishes, Chicken Tortilla Soup, Top Shelf Guacamole.",
+    "images": [
+      {
+        "url": "https://img1.wsimg.com/isteam/ip/78decd01-6b1f-47bf-a55f-5b1c12547cb1/ALTOS%20TEQUILA.jpg/:/cr=t:5.56%25,l:0%25,w:100%25,h:88.89%25/rs=w:388,h:194,cg:true",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://img1.wsimg.com/isteam/ip/78decd01-6b1f-47bf-a55f-5b1c12547cb1/fb_597252199074637_1674x2021.jpg/:/cr=t:29.29%25,l:0%25,w:100%25,h:41.42%25/rs=w:388,h:194,cg:true",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://img1.wsimg.com/isteam/ip/78decd01-6b1f-47bf-a55f-5b1c12547cb1/Private%202.jpg/:/cr=t:0%25,l:21.88%25,w:56.25%25,h:100%25/rs=w:388,h:517.3333333333334,cg:true",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://img1.wsimg.com/isteam/ip/78decd01-6b1f-47bf-a55f-5b1c12547cb1/Today%20-%204.PNG/:/cr=t:35.3%25,l:0%25,w:100%25,h:29.41%25/rs=w:515,h:234,cg:true",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      }
+    ],
+    "mainImage": "https://img1.wsimg.com/isteam/ip/78decd01-6b1f-47bf-a55f-5b1c12547cb1/ALTOS%20TEQUILA.jpg/:/cr=t:5.56%25,l:0%25,w:100%25,h:88.89%25/rs=w:388,h:194,cg:true",
+    "imageSourceType": "official",
     "imageSelectionReviewed": false,
-    "popularDishes": [],
-    "websiteUrl": "",
+    "popularDishes": [
+      "Popular Dishes",
+      "Chicken Tortilla Soup",
+      "Top Shelf Guacamole",
+      "Chicken Enchiladas",
+      "Pollo Xochitl"
+    ],
+    "websiteUrl": "https://losjimadoresfw.com",
     "menuUrl": "",
-    "yelpUrl": ""
+    "yelpUrl": "https://www.yelp.com/biz/los-jimadores-tex-mex-tequila-factory-bedford"
   },
   {
     "id": 49,
@@ -2045,6 +2244,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Far South",
     "address": "1019 W Enon Ave, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Chicken Fried Chicken, Smothered Pork Chops, Broccoli Rice Casserole.",
     "images": [
       {
@@ -2101,6 +2303,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Sundance Square",
     "address": "512 Main St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Cowboy Kiss, Nikuya Cut Roll.",
     "images": [
       {
@@ -2157,6 +2362,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Far Southwest",
     "address": "6249 Altamesa Blvd, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Meat Lover Pizzas, La Vodka Pizza, White Mushroom.",
     "images": [
       {
@@ -2203,6 +2411,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Cultural District",
     "address": "3324 W 7th St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Beef Bourguignon, Dover Sole.",
     "images": [
       {
@@ -2259,6 +2470,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Wedgwood",
     "address": "6108 S Hulen St, Fort Worth, TX",
+    "latitude": 32.6582348,
+    "longitude": -97.3991202,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Popular Dishes, Lasagna, Ravioli.",
     "images": [
       {
@@ -2315,6 +2529,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "",
     "address": "1701 River Run, Ste 181, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Rock Shrimp Tempura, Aji Pepper Risotto.",
     "images": [
       {
@@ -2381,6 +2598,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Monticello",
     "address": "3617 W 7th St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, French Onion Soup, Dover Sole.",
     "images": [
       {
@@ -2431,21 +2651,71 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
   {
     "id": 56,
     "name": "Sabaidee Lao & Thai Street Food",
-    "city": "Fort Worth, TX",
+    "city": "Dallas, TX",
     "category": "Lunch",
     "cuisine": "Thai & Lao",
-    "price": "",
+    "price": "$$",
     "neighborhood": "",
-    "address": "5200 Lemmon Ave, Ste 100, Fort Worth, TX",
-    "description": "A Fort Worth restaurant serving thai & lao cuisine.",
-    "images": [],
-    "mainImage": "",
-    "imageSourceType": "",
+    "address": "5200 Lemmon Ave, Ste 100, Dallas, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
+    "description": "A Fort Worth thai & lao spot known for Popular Dishes, Pad Thai, Drunken Noodles.",
+    "images": [
+      {
+        "url": "https://sabaidee.us/wp-content/uploads/2024/01/Basil-Stir-Fry-Sabaidee.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://sabaidee.us/wp-content/uploads/2024/01/Yellow-Curry-Sabaidee.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://sabaidee.us/wp-content/uploads/2024/01/Nam-Khao-Sabaidee.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://sabaidee.us/wp-content/uploads/2024/01/Basil-Rice-Sabaidee.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://sabaidee.us/wp-content/uploads/2024/01/Pad-Thai-Sabaidee.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://sabaidee.us/wp-content/uploads/2022/02/f-pad-thai.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://sabaidee.us/wp-content/uploads/2022/02/f-basil-fried-rice.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      },
+      {
+        "url": "https://sabaidee.us/wp-content/uploads/2022/02/f-nam-khao.png",
+        "attribution": "Official restaurant website",
+        "sourceType": "official"
+      }
+    ],
+    "mainImage": "https://sabaidee.us/wp-content/uploads/2024/01/Basil-Stir-Fry-Sabaidee.png",
+    "imageSourceType": "official",
     "imageSelectionReviewed": false,
-    "popularDishes": [],
-    "websiteUrl": "",
+    "popularDishes": [
+      "Popular Dishes",
+      "Pad Thai",
+      "Drunken Noodles",
+      "Papaya Salad",
+      "Lao Fried Rice"
+    ],
+    "websiteUrl": "http://www.sabaidee.us",
     "menuUrl": "",
-    "yelpUrl": ""
+    "yelpUrl": "https://www.yelp.com/biz/sabaidee-lao-and-thai-street-food-dallas"
   },
   {
     "id": 57,
@@ -2456,6 +2726,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "812 W Rosedale St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth chinese spot known for Hot Oil Wontons, Pork Soup Dumplings, Orange Chicken.",
     "images": [
       {
@@ -2512,6 +2785,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "",
     "address": "4729 Saint Amand Cir, Ste 105, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Take Home Loaf, Oysters.",
     "images": [
       {
@@ -2568,6 +2844,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "",
     "address": "3801 Southwest Blvd, Fort Worth, TX",
+    "latitude": 32.717183,
+    "longitude": -97.4413015,
+    "placeId": null,
     "description": "A Fort Worth breakfast & brunch spot known for Breakfast Sandwich, Stuffed Bagel, Rosemary Garlic Sourdough.",
     "images": [
       {
@@ -2629,6 +2908,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Southside",
     "address": "113 S Main St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Rotisserie Chicken, Crispy Octopus, Tuna Tostadas.",
     "images": [
       {
@@ -2695,6 +2977,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Cultural District",
     "address": "2948 Crockett St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Deviled Egg Trio, Brisket Tacos, Lemon Ricotta.",
     "images": [
       {
@@ -2751,6 +3036,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Southside",
     "address": "701 West Magnolia Ave, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Lobster Roll, Redfish Beignets, Braised Short Rib.",
     "images": [
       {
@@ -2817,6 +3105,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Southside",
     "address": "711 W Magnolia Ave, Fort Worth, TX",
+    "latitude": 32.7305224,
+    "longitude": -97.3318839,
+    "placeId": null,
     "description": "A Fort Worth japanese spot known for Popular Dishes, Omakase Box, Wagyu.",
     "images": [
       {
@@ -2873,6 +3164,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Southside",
     "address": "1216 6th Ave, Fort Worth, TX",
+    "latitude": 32.7313248,
+    "longitude": -97.3404398,
+    "placeId": null,
     "description": "A Fort Worth mediterranean spot known for Popular Dishes, Adana Kebab Lunch, Chicken Delight Lunch.",
     "images": [
       {
@@ -2929,6 +3223,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "1229 8th Ave, Ste 227, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Popular Dishes, Sweet Corn Fritters, Spicy Miso Ramen.",
     "images": [
       {
@@ -2985,6 +3282,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Far South",
     "address": "4645 Dick Price Rd, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth texas barbecue spot known for Pork Ribs, Pork Belly, Beef Rib.",
     "images": [
       {
@@ -3051,6 +3351,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Far West",
     "address": "9316 Clifford St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Egg Benedict Plates, Chicken Fried Steak, Crab Cake Benedict.",
     "images": [
       {
@@ -3117,6 +3420,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$",
     "neighborhood": "Southside",
     "address": "1311 W Magnolia Ave, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth coffee & cafe spot known for Popular Drinks, New Orleans Style Cold Brew, Charlie Sheen.",
     "images": [
       {
@@ -3183,6 +3489,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$",
     "neighborhood": "Southside",
     "address": "804 S Main St, Ste 120, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Bacon Cheddar, Tres Leches, Pour Overs.",
     "images": [
       {
@@ -3249,6 +3558,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Sundance Square",
     "address": "109 Houston St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth restaurant serving coffee & cafe cuisine.",
     "images": [
       {
@@ -3304,6 +3616,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$",
     "neighborhood": "Southside",
     "address": "120 Saint Louis Ave, Ste 101, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Popular Dishes, Hola Hovito, Beignets.",
     "images": [
       {
@@ -3359,6 +3674,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "",
     "address": "7355 N Beach St, Fort Worth, TX",
+    "latitude": 32.8725373,
+    "longitude": -97.2918146,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Butter Chicken, Chicken Tikka Masala, Gobi Manchurian.",
     "images": [
       {
@@ -3415,6 +3733,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Arlington Heights",
     "address": "4601 West Fwy 206, Ste 206, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth thai & lao spot known for Pad Thai, Crispy Spring Rolls, Drunken Noodle.",
     "images": [
       {
@@ -3471,6 +3792,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Sundance Square",
     "address": "401 Throckmorton St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mediterranean spot known for Mediterranean, Lamb Shank, Gyro.",
     "images": [
       {
@@ -3532,6 +3856,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Northeast",
     "address": "3301 NE 28th St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth thai & lao spot known for Pad Thai, Papaya Salad, Drunken Noodles.",
     "images": [
       {
@@ -3588,6 +3915,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Cultural District",
     "address": "2932 Crockett St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mediterranean spot known for Chicken Kabobs, Mediterranean Branzino, Mezza.",
     "images": [
       {
@@ -3639,6 +3969,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Downtown",
     "address": "250 W Lancaster Ave, Ste 140, Fort Worth, TX",
+    "latitude": 32.7469649,
+    "longitude": -97.329193,
+    "placeId": null,
     "description": "A Fort Worth coffee & cafe spot known for Liberty Latte, Chai Tea Latte, Ice Vanilla Oat Milk Latte.",
     "images": [
       {
@@ -3705,6 +4038,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Sundance Square",
     "address": "101 W 5th St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth coffee & cafe spot known for Thanksgiving Day, Black Friday, Christmas Eve.",
     "images": [
       {
@@ -3761,6 +4097,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "1109 W Magnolia Ave, Fort Worth, TX",
+    "latitude": 32.7304658,
+    "longitude": -97.3373855,
+    "placeId": null,
     "description": "A Fort Worth texas barbecue spot known for Potato Salad, Banana Pudding, Candy.",
     "images": [
       {
@@ -3827,6 +4166,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Northside",
     "address": "2533 White Settlement Rd, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth texas barbecue spot known for Chopped Beef Sandwich, Chopped Brisket Sandwiches, Smoked Mac.",
     "images": [
       {
@@ -3883,6 +4225,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Arlington Heights",
     "address": "2900 Montgomery St, Fort Worth, TX",
+    "latitude": 32.7312271,
+    "longitude": -97.3705481,
+    "placeId": null,
     "description": "A Fort Worth texas barbecue spot known for Sliced Brisket Sandwich, Pulled Pork Sandwich, Rib Plate.",
     "images": [
       {
@@ -3949,6 +4294,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Stockyards",
     "address": "301 Stockyards Blvd, Fort Worth, TX",
+    "latitude": 32.7924943,
+    "longitude": -97.3478313,
+    "placeId": null,
     "description": "A Fort Worth texas barbecue spot known for Beef Ribs, Pork Chop, Pork Ribs.",
     "images": [
       {
@@ -4015,6 +4363,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Stockyards",
     "address": "120 E Exchange Ave, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Chicken Fried Steak, Smoked Catfish, Buffalo Sirloin 8oz.",
     "images": [
       {
@@ -4081,6 +4432,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Stockyards",
     "address": "2406 N Main St, Fort Worth, TX",
+    "latitude": 32.7883624,
+    "longitude": -97.3489729,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Rabbit-rattlesnake Sausage, Wild Boar Ribs, Hamachi Tostadas.",
     "images": [
       {
@@ -4137,6 +4491,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Sundance Square",
     "address": "530 Throckmorton St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Carne Asada, Tenderloin Tamales, Chicken Fried Steak.",
     "images": [
       {
@@ -4193,6 +4550,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Arlington Heights",
     "address": "2731 White Settlement Rd, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Concept development, Design services, Entertainment booking.",
     "images": [
       {
@@ -4259,6 +4619,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "",
     "address": "4259 Bryant Irvin Rd, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Buffalo Tenderloin, Elk Tacos, Mixed Grill.",
     "images": [
       {
@@ -4305,6 +4668,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Arlington Heights",
     "address": "4700 Camp Bowie Blvd, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Chicken Fried Steak, Lobster Bisque, Lobster Roll.",
     "images": [
       {
@@ -4361,6 +4727,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Sundance Square",
     "address": "777 Main St, Fort Worth, TX",
+    "latitude": 32.7529601,
+    "longitude": -97.329954,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Grace, Thanksgiving Day, Black Friday.",
     "images": [
       {
@@ -4417,6 +4786,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Downtown",
     "address": "500 W 7th St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Olive Oil Cake, Rotollo, Rosemary Focaccia.",
     "images": [
       {
@@ -4478,6 +4850,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "",
     "address": "5924 Convair Dr, Ste 412, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Cacio E Pepe, Tagliatelle Bolognese, Calamari.",
     "images": [
       {
@@ -4539,6 +4914,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Southside",
     "address": "411 S Main St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Bocca Osteria Romana, Thanksgiving Day, Black Friday.",
     "images": [
       {
@@ -4605,6 +4983,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "1400 W Magnolia Ave, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Nonna Tata, Thanksgiving Day, Black Friday.",
     "images": [
       {
@@ -4661,6 +5042,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "815 W Magnolia Ave, Fort Worth, TX",
+    "latitude": 32.730469,
+    "longitude": -97.3330644,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Cane Rosso, Thanksgiving Day, Black Friday.",
     "images": [
       {
@@ -4727,6 +5111,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Arlington Heights",
     "address": "3501 Hulen St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Gooey Butter Cake, Meatballs, Small Pepperoni Pizza.",
     "images": [
       {
@@ -4793,6 +5180,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Southside",
     "address": "1301 W Magnolia Ave, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Prosciutto Pizza, Workshop Salad, Goat Cheese Fondue.",
     "images": [
       {
@@ -4848,7 +5238,10 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "cuisine": "Italian",
     "price": "",
     "neighborhood": "",
-    "address": "1907 8th Ave, Fort Worth, TX",
+    "address": "Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth restaurant serving italian cuisine.",
     "images": [
       {
@@ -4899,6 +5292,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Sundance Square",
     "address": "415 Throckmorton, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth italian spot known for Meat Lovers Pizza, Boneless Wings, Buffalo Wings.",
     "images": [
       {
@@ -4965,6 +5361,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Cultural District",
     "address": "2836 Bledsoe St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Rodeo Goat, Thanksgiving Day, Black Friday.",
     "images": [
       {
@@ -5031,6 +5430,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "",
     "address": "3009 S University Ave, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Dutch Burger, Bacon Blue Cheeseburger, Blue Cheese Bacon Burger.",
     "images": [
       {
@@ -5077,6 +5479,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Stockyards",
     "address": "109 E Exchange Ave, Fort Worth, TX",
+    "latitude": 32.7887443,
+    "longitude": -97.3487059,
+    "placeId": null,
     "description": "A Fort Worth american spot known for H3 Ranch, Thanksgiving Day, Black Friday.",
     "images": [
       {
@@ -5137,7 +5542,10 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "cuisine": "Bakery & Desserts",
     "price": "",
     "neighborhood": "",
-    "address": "512 Main St, Fort Worth, TX",
+    "address": "Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth restaurant serving bakery & desserts cuisine.",
     "images": [
       {
@@ -5198,6 +5606,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Arlington Heights",
     "address": "4600 Dexter Ave, Fort Worth, TX",
+    "latitude": 32.7407868,
+    "longitude": -97.3879049,
+    "placeId": null,
     "description": "A Fort Worth american spot known for The Lobster Roll, Chicken Parm, Hudson House.",
     "images": [
       {
@@ -5254,6 +5665,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Sundance Square",
     "address": "800 Main St, Fort Worth, TX",
+    "latitude": 32.7524491,
+    "longitude": -97.3299119,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for The Capital Grille, Lobster and Crab Cakes, Thanksgiving Day.",
     "images": [
       {
@@ -5309,7 +5723,10 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "cuisine": "American",
     "price": "",
     "neighborhood": "",
-    "address": "5121 Pershing Ave, Fort Worth, TX",
+    "address": "Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth restaurant serving american cuisine.",
     "images": [
       {
@@ -5355,6 +5772,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "",
     "address": "5289 Marathon Ave, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Oysters, Redfish, Bacon Wrapped Shrimp.",
     "images": [
       {
@@ -5411,6 +5831,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Cultural District",
     "address": "3100 W 7th St, Fort Worth, TX",
+    "latitude": 32.751625,
+    "longitude": -97.3622708,
+    "placeId": null,
     "description": "A Fort Worth mexican spot known for Bananas Foster Butter Cake, Jumbo Lump Crab Cake, Chilean Sea Bass.",
     "images": [
       {
@@ -5467,6 +5890,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Sundance Square",
     "address": "200 Main St, Ste B, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Colorado Lamb Chops, Amarillo Ceviche, Potatoes Three Ways.",
     "images": [
       {
@@ -5533,6 +5959,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$",
     "neighborhood": "Sundance Square",
     "address": "101 N Houston St, Fort Worth, TX",
+    "latitude": 32.7567849,
+    "longitude": -97.3341043,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Lobster Bisque, Filet Mignon, Lamb Chops.",
     "images": [
       {
@@ -5579,6 +6008,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$$$",
     "neighborhood": "Sundance Square",
     "address": "812 Main St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for Thanksgiving Day, Black Friday, Christmas Eve.",
     "images": [
       {
@@ -5640,6 +6072,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "$$",
     "neighborhood": "Cultural District",
     "address": "840 Currie St, Fort Worth, TX",
+    "latitude": null,
+    "longitude": null,
+    "placeId": null,
     "description": "A Fort Worth steakhouse spot known for The Social House, Braised Short Rib Pasta, Chicken Fried Steak.",
     "images": [
       {
@@ -5696,6 +6131,9 @@ window.SWIPE_BITE_MORE_RESTAURANTS = [
     "price": "",
     "neighborhood": "Cultural District",
     "address": "3300 Camp Bowie Blvd, Fort Worth, TX",
+    "latitude": 32.7505223,
+    "longitude": -97.3649487,
+    "placeId": null,
     "description": "A Fort Worth american spot known for Thanksgiving Day, Black Friday, Christmas Eve.",
     "images": [
       {

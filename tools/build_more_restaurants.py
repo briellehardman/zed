@@ -44,8 +44,55 @@ WEBSITE_OVERRIDES = {
     92: "https://www.themodern.org/caf%C3%A9-modern",
 }
 
-# These saved Yelp matches resolve to a different city/location than the requested card.
-NONLOCAL_YELP_INDEXES = {12, 24, 35, 43}
+ADDRESS_OVERRIDES = {
+    1: "2315 N Main St, Fort Worth, TX 76164",
+}
+
+ADDRESS_OVERRIDES = {
+    1: "2315 N Main St, Fort Worth, TX 76164",
+}
+
+# These saved Yelp listings are the verified branches in their actual nearby cities.
+VERIFIED_OTHER_CITY_LISTINGS = {
+    12: ("italiannis-restaurant-hurst", "Hurst"),
+    24: ("breakfast-brothers-arlington-2", "Arlington"),
+    35: ("los-jimadores-tex-mex-tequila-factory-bedford", "Bedford"),
+    43: ("sabaidee-lao-and-thai-street-food-dallas", "Dallas"),
+}
+
+# One-time Photon results, accepted only when the returned house number, street, city, and state matched the catalog address.
+VERIFIED_COORDINATES = {
+    13: (32.7870095, -97.3475133),
+    14: (32.7869094, -97.3494472),
+    18: (32.7305189, -97.3375533),
+    22: (32.7303635, -97.3422168),
+    26: (32.7849242, -97.3483651),
+    27: (32.7374098, -97.3933369),
+    32: (32.7314743, -97.3653721),
+    33: (32.7510989, -97.3665521),
+    43: (32.7299284, -97.4081386),
+    44: (32.7704600, -97.3110893),
+    45: (32.7305078, -97.4104032),
+    48: (32.8507228, -97.1136854),
+    53: (32.6582348, -97.3991202),
+    59: (32.7171830, -97.4413015),
+    63: (32.7305224, -97.3318839),
+    64: (32.7313248, -97.3404398),
+    72: (32.8725373, -97.2918146),
+    77: (32.7469649, -97.3291930),
+    79: (32.7304658, -97.3373855),
+    81: (32.7312271, -97.3705481),
+    82: (32.7924943, -97.3478313),
+    84: (32.7883624, -97.3489729),
+    89: (32.7529601, -97.3299540),
+    94: (32.7304690, -97.3330644),
+    101: (32.7887443, -97.3487059),
+    103: (32.7407868, -97.3879049),
+    104: (32.7524491, -97.3299119),
+    107: (32.7516250, -97.3622708),
+    109: (32.7567849, -97.3341043),
+    112: (32.7505223, -97.3649487),
+}
 
 CURATED_FIRST_IMAGES = {
     0: ["https://97westkitchenandbar.com/app/uploads/2021/12/20210628_Shot_13-0275.jpg"],
@@ -80,6 +127,39 @@ CURATED_FIRST_IMAGES = {
         "https://images.getbento.com/accounts/532b8149fcdb0e1cb7ac97b632998012/media/images/34481DEL_Fort_Worth_First_Floor_Bar_crop.jpeg?w=1200&fit=crop&auto=compress,format&cs=origin&h=600",
     ],
 }
+
+VERIFIED_COORDINATES = {
+        13: (32.7870095, -97.3475133),
+        14: (32.7869094, -97.3494472),
+        18: (32.7305189, -97.3375533),
+        22: (32.7303635, -97.3422168),
+        26: (32.7849242, -97.3483651),
+        27: (32.7374098, -97.3933369),
+        32: (32.7314743, -97.3653721),
+        33: (32.7510989, -97.3665521),
+        43: (32.7299284, -97.4081386),
+        44: (32.7704600, -97.3110893),
+        45: (32.7305078, -97.4104032),
+        48: (32.8507228, -97.1136854),
+        53: (32.6582348, -97.3991202),
+        59: (32.7171830, -97.4413015),
+        63: (32.7305224, -97.3318839),
+        64: (32.7313248, -97.3404398),
+        72: (32.8725373, -97.2918146),
+        77: (32.7469649, -97.3291930),
+        79: (32.7304658, -97.3373855),
+        81: (32.7312271, -97.3705481),
+        82: (32.7924943, -97.3478313),
+        84: (32.7883624, -97.3489729),
+        89: (32.7529601, -97.3299540),
+        94: (32.7304690, -97.3330644),
+        101: (32.7887443, -97.3487059),
+        103: (32.7407868, -97.3879049),
+        104: (32.7524491, -97.3299119),
+        107: (32.7516250, -97.3622708),
+        109: (32.7567849, -97.3341043),
+        112: (32.7505223, -97.3649487),
+    }
 
 CURATED_YELP_PHOTO_ORDER = {64: [2, 1, 0, 3, 4, 5]}
 
@@ -262,7 +342,12 @@ def load_rows():
 def listing_is_relevant(index, row):
     if index in {84, 92}:
         return False
-    if not row.get("slug") or row.get("city") != "Fort Worth":
+    if not row.get("slug"):
+        return False
+    other_city = VERIFIED_OTHER_CITY_LISTINGS.get(index)
+    if other_city:
+        return row.get("slug") == other_city[0] and row.get("city") == other_city[1]
+    if row.get("city") != "Fort Worth":
         return False
     requested = norm(NAMES[index])
     slug = norm(row.get("slug", ""))
@@ -305,7 +390,7 @@ def main():
         for index, name in enumerate(NAMES):
             row = rows.get(index, {})
             website = WEBSITE_OVERRIDES.get(index, row.get("web", "") if listing_is_relevant(index, row) else "")
-            if website and index not in NONLOCAL_YELP_INDEXES:
+            if website:
                 futures[pool.submit(official_images, {"web": website})] = index
         for future, index in futures.items():
             website_images[index + 13] = future.result()
@@ -338,13 +423,15 @@ def main():
     yelp_site_photos = {}
     for index, name in enumerate(NAMES):
         row = rows.get(index, {})
-        valid = listing_is_relevant(index, row) and index not in NONLOCAL_YELP_INDEXES
+        valid = listing_is_relevant(index, row)
         category, cuisine = classify(name, row)
-        address = row.get("addr", "")
-        if address and "Fort Worth" not in address:
-            address += ", Fort Worth, TX"
+        city_name = row.get("city", "Fort Worth") if valid else "Fort Worth"
+        city = f"{city_name}, TX"
+        address = ADDRESS_OVERRIDES.get(index, row.get("addr", "") if valid else "")
+        if address and index not in ADDRESS_OVERRIDES:
+            address += f", {city_name}, TX"
         if not address:
-            address = "Fort Worth, TX"
+            address = city
         website = WEBSITE_OVERRIDES.get(index, row.get("web", "") if valid else "")
         slug = row.get("slug", "") if valid else ""
         images = website_images.get(index + 13, [])
@@ -384,12 +471,15 @@ def main():
         restaurants.append({
             "id": index + 13,
             "name": name,
-            "city": "Fort Worth, TX",
+            "city": city,
             "category": category,
             "cuisine": cuisine,
             "price": row.get("price", "") if valid else "",
             "neighborhood": row.get("hood", "") if valid else "",
             "address": address,
+            "latitude": VERIFIED_COORDINATES.get(index + 13, (None, None))[0],
+            "longitude": VERIFIED_COORDINATES.get(index + 13, (None, None))[1],
+            "placeId": None,
             "description": description,
             "images": images[:8] if images and isinstance(images[0], dict) else [],
             "mainImage": images[0]["url"] if images else "",

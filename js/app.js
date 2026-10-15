@@ -13,6 +13,15 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "University / TCU Area",
 		address: "1509 S University Dr, Fort Worth, TX 76107",
+		latitude: 32.7301318,
+		longitude: -97.3603587,
+		placeId: null,
+		latitude: 32.7301318,
+		longitude: -97.3603587,
+		placeId: null,
+		latitude: 32.7301318,
+		longitude: -97.3603587,
+		placeId: null,
 		description: "A classic Fort Worth diner known for pancakes, breakfast plates and late-night breakfast.",
 		images: [],
 		popularDishes: ["Pancakes", "Breakfast Plates", "French Toast"],
@@ -61,6 +70,15 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "Clearfork",
 		address: "4801 Edwards Ranch Rd #105, Fort Worth, TX 76109",
+		latitude: 32.7071096,
+		longitude: -97.3947754,
+		placeId: null,
+		latitude: 32.7071096,
+		longitude: -97.3947754,
+		placeId: null,
+		latitude: 32.7071096,
+		longitude: -97.3947754,
+		placeId: null,
 		description: "An all-day cafe by the Trinity Trails with breakfast, salads, sandwiches, burgers and entrees.",
 		images: [],
 		popularDishes: ["Burgers", "Salads", "Brunch"],
@@ -77,6 +95,15 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "Downtown",
 		address: "305 Main St, Fort Worth, TX 76102",
+		latitude: 32.7555406,
+		longitude: -97.3317522,
+		placeId: null,
+		latitude: 32.7555406,
+		longitude: -97.3317522,
+		placeId: null,
+		latitude: 32.7555406,
+		longitude: -97.3317522,
+		placeId: null,
 		description: "A downtown breakfast restaurant serving pancakes, omelets, benedicts, French toast and lunch dishes.",
 		images: [],
 		popularDishes: ["French Toast", "Pancakes", "Omelets"],
@@ -109,6 +136,15 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "Near Southside",
 		address: "1314 W Magnolia Ave, Fort Worth, TX 76104",
+		latitude: 32.73081,
+		longitude: -97.3401273,
+		placeId: null,
+		latitude: 32.7308100,
+		longitude: -97.3401273,
+		placeId: null,
+		latitude: 32.7308100,
+		longitude: -97.3401273,
+		placeId: null,
 		description: "A Fort Worth vegan diner serving plant-based comfort food for breakfast, lunch and dinner.",
 		images: [],
 		popularDishes: ["Biscuits and Gravy", "Breakfast Burrito", "Vegan Burgers"],
@@ -125,6 +161,15 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "Magnolia",
 		address: "1201 W Magnolia Ave Ste 115, Fort Worth, TX 76104",
+		latitude: 32.7305196,
+		longitude: -97.3379376,
+		placeId: null,
+		latitude: 32.7305196,
+		longitude: -97.3379376,
+		placeId: null,
+		latitude: 32.7305196,
+		longitude: -97.3379376,
+		placeId: null,
 		description: "A Fort Worth small-batch ice cream shop with rotating flavors and seasonal creations.",
 		images: [],
 		popularDishes: ["Small-Batch Ice Cream", "Seasonal Flavors", "Ice Cream Cones"],
@@ -157,6 +202,15 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "Clearfork",
 		address: "5274 Monahans Ave, Fort Worth, TX 76107",
+		latitude: 32.7096209,
+		longitude: -97.4012847,
+		placeId: null,
+		latitude: 32.7096209,
+		longitude: -97.4012847,
+		placeId: null,
+		latitude: 32.7096209,
+		longitude: -97.4012847,
+		placeId: null,
 		description: "An Italian gelato shop known for flower-shaped gelato cones, crepes and other desserts.",
 		images: [],
 		popularDishes: ["Gelato", "Rose-Shaped Cone", "Crepes"],
@@ -173,6 +227,15 @@ const restaurants = [
 		price: "$$",
 		neighborhood: "River District",
 		address: "4400 White Settlement Rd, Fort Worth, TX 76114",
+		latitude: 32.7618908,
+		longitude: -97.38477,
+		placeId: null,
+		latitude: 32.7618908,
+		longitude: -97.3847700,
+		placeId: null,
+		latitude: 32.7618908,
+		longitude: -97.3847700,
+		placeId: null,
 		description: "A casual Italian restaurant from chef Tim Love serving pizza, pasta and Italian-inspired dishes.",
 		images: [],
 		popularDishes: ["Pizza", "Pasta", "Italian Small Plates"],
@@ -324,10 +387,11 @@ function loadSavedItems() {
 			return recipes.find((recipe) => String(recipe.id) === String(savedRecipe));
 		}).filter(Boolean);
 
-		return {
-			recipes: normalizedRecipes,
-			restaurants: Array.isArray(saved.restaurants) ? saved.restaurants.map(completeSavedRestaurant) : [],
-		};
+		const normalizedRestaurants = Array.isArray(saved.restaurants) ? saved.restaurants.map(completeSavedRestaurant) : [];
+		if (JSON.stringify(saved.restaurants || []) !== JSON.stringify(normalizedRestaurants)) {
+			localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...saved, recipes: storedRecipes, restaurants: normalizedRestaurants }));
+		}
+		return { recipes: normalizedRecipes, restaurants: normalizedRestaurants };
 	} catch {
 		return { recipes: [], restaurants: [] };
 	}
@@ -353,14 +417,19 @@ function completeSavedRestaurant(savedRestaurant) {
 	const saved = savedRestaurant && typeof savedRestaurant === "object" ? savedRestaurant : { id: savedRestaurant };
 	const current = restaurants.find((restaurant) => String(restaurant.id) === String(saved.id));
 	const merged = { ...(current || {}), ...saved };
-	const hasCoordinates = coordinatesAreValid(merged.latitude, merged.longitude);
-	merged.latitude = hasCoordinates ? Number(merged.latitude) : null;
-	merged.longitude = hasCoordinates ? Number(merged.longitude) : null;
+	const savedHasCoordinates = coordinatesAreValid(saved.latitude, saved.longitude);
+	const catalogHasCoordinates = coordinatesAreValid(current?.latitude, current?.longitude);
+	const coordinateSource = savedHasCoordinates ? saved : catalogHasCoordinates ? current : null;
+	merged.latitude = coordinateSource ? Number(coordinateSource.latitude) : null;
+	merged.longitude = coordinateSource ? Number(coordinateSource.longitude) : null;
+	const savedAddressHasStreetNumber = /^\s*\d+[a-z]?\b/i.test(saved.address || "");
+	if (!savedAddressHasStreetNumber && current?.address) merged.address = current.address;
+	if (current?.city) merged.city = current.city;
 	merged.placeId = merged.placeId || merged.googlePlaceId || null;
 	merged.mainImage = merged.mainImage || (Array.isArray(merged.images) ? (typeof merged.images[0] === "string" ? merged.images[0] : merged.images[0]?.url) : "") || "";
 	merged.images = Array.isArray(merged.images) ? merged.images : [];
 	merged.popularDishes = Array.isArray(merged.popularDishes) ? merged.popularDishes : [];
-	merged.googleMapsUrl = merged.googleMapsUrl || mapsUrlForRestaurant(merged);
+	merged.googleMapsUrl = coordinateSource ? mapsUrlForRestaurant(merged) : merged.googleMapsUrl || mapsUrlForRestaurant(merged);
 	return merged;
 }
 
@@ -1120,7 +1189,6 @@ let savedRestaurantMarkers = new Map();
 let savedUserMarker = null;
 let savedUserCoordinates = null;
 let selectedSavedMapRestaurantId = null;
-let geocodeInProgress = false;
 
 function escapeHTML(value) {
 	return String(value ?? "").replace(/[&<>"']/g, (character) => ({
@@ -1151,107 +1219,6 @@ function renderSavedMapCityOptions() {
 function getVisibleSavedMapRestaurants() {
 	const restaurants = getSavedRestaurants();
 	return savedMapCity === "__all__" ? restaurants : restaurants.filter((restaurant) => restaurant.city === savedMapCity);
-}
-
-function normalizePlaceText(value) {
-	return String(value || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, " ").trim();
-}
-
-function streetNameOnly(value) {
-	return normalizePlaceText(value).replace(/\b(street|st|road|rd|avenue|ave|boulevard|blvd|drive|dr|lane|ln|way|suite|ste|unit)\b/g, "").trim();
-}
-
-function photonResultMatchesRestaurant(feature, restaurant) {
-	const properties = feature.properties || {};
-	if (String(properties.countrycode || "").toLowerCase() !== "us") return false;
-	if (normalizePlaceText(properties.name) !== normalizePlaceText(restaurant.name)) return false;
-	const expectedCity = normalizePlaceText((restaurant.city || "").split(",")[0]);
-	if (expectedCity && normalizePlaceText(properties.city) !== expectedCity) return false;
-	if (restaurant.city?.toLowerCase().includes("tx") && normalizePlaceText(properties.state) !== "texas") return false;
-
-	const address = (restaurant.address || "").split(",")[0].trim();
-	const number = address.match(/^\s*(\d+[a-z]?)/i)?.[1]?.toLowerCase();
-	if (number && String(properties.housenumber || "").toLowerCase() !== number) return false;
-	const expectedStreet = streetNameOnly(address.replace(/^\s*\d+[a-z]?\s*/i, "").replace(/\b(?:suite|ste|unit|#)\b.*$/i, ""));
-	const resultStreet = streetNameOnly(properties.street || "");
-	if (expectedStreet && (!resultStreet || (!resultStreet.includes(expectedStreet) && !expectedStreet.includes(resultStreet)))) return false;
-	const coordinates = feature.geometry?.coordinates || [];
-	return coordinatesAreValid(coordinates[1], coordinates[0]);
-}
-
-function geocodeResultMatchesRestaurant(result, restaurant) {
-	const address = result.address || {};
-	if (address.country_code !== "us") return false;
-	const city = normalizePlaceText((restaurant.city || "").split(",")[0]);
-	const resultCities = [address.city, address.town, address.village, address.municipality, address.suburb, address.county]
-		.map(normalizePlaceText).filter(Boolean);
-	if (city && !resultCities.some((candidate) => candidate === city || candidate.includes(city) || city.includes(candidate))) return false;
-	const texas = normalizePlaceText(address.state || "");
-	if (restaurant.city?.toLowerCase().includes("tx") && !texas.includes("texas")) return false;
-
-	const street = (restaurant.address || "").split(",")[0].trim();
-	const requestedNumber = street.match(/^\s*(\d+[a-z]?)/i)?.[1]?.toLowerCase();
-	if (requestedNumber && String(address.house_number || "").toLowerCase() !== requestedNumber) return false;
-	const requestedRoad = normalizePlaceText(street.replace(/^\s*\d+[a-z]?\s*/i, "").replace(/\b(?:suite|ste|unit|#)\b.*$/i, ""));
-	const matchedRoad = normalizePlaceText(address.road || "");
-	if (requestedRoad && (!matchedRoad || (!matchedRoad.includes(requestedRoad) && !requestedRoad.includes(matchedRoad)))) return false;
-	return coordinatesAreValid(result.lat, result.lon);
-}
-
-// Geocode only saved addresses when the user opens Map; cache only exact city/street matches.
-async function geocodeMissingSavedRestaurants() {
-	if (geocodeInProgress) return;
-	const missing = getSavedRestaurants().filter((restaurant) => !coordinatesAreValid(restaurant.latitude, restaurant.longitude) && restaurant.address);
-	if (!missing.length) return;
-	geocodeInProgress = true;
-	const status = document.querySelector("#saved-map-status");
-	let resolved = 0;
-	let requestsMade = 0;
-	for (const restaurant of missing) {
-		if (savedView !== "map") break;
-		if (requestsMade > 0) await new Promise((resolve) => window.setTimeout(resolve, 1100));
-		requestsMade += 1;
-		const query = encodeURIComponent(`${restaurant.address}, ${(restaurant.city || "").split(",")[0]}, United States`);
-		try {
-			let coordinates = null;
-			const photonResponse = await fetch(`https://photon.komoot.io/api/?q=${encodeURIComponent(`${restaurant.name}, ${restaurant.address}, ${(restaurant.city || "").split(",")[0]}, United States`)}&limit=5&lang=en`, {
-				headers: { Accept: "application/json" },
-			});
-			if (photonResponse.ok) {
-				const photonResults = await photonResponse.json();
-				const feature = photonResults.features?.find((candidate) => photonResultMatchesRestaurant(candidate, restaurant));
-				if (feature) coordinates = { latitude: Number(feature.geometry.coordinates[1]), longitude: Number(feature.geometry.coordinates[0]) };
-			}
-			if (!coordinates) {
-				const response = await fetch(`https://nominatim.openstreetmap.org/search?format=jsonv2&addressdetails=1&limit=3&countrycodes=us&q=${query}`, {
-					headers: { Accept: "application/json" },
-				});
-				if (!response.ok) continue;
-				const results = await response.json();
-				const match = results.find((result) => geocodeResultMatchesRestaurant(result, restaurant));
-				if (!match) continue;
-				coordinates = { latitude: Number(match.lat), longitude: Number(match.lon) };
-			}
-			const savedIndex = savedItems.restaurants.findIndex((entry) => String(typeof entry === "object" ? entry.id : entry) === String(restaurant.id));
-			if (savedIndex < 0) continue;
-			savedItems.restaurants[savedIndex] = {
-				...completeSavedRestaurant(savedItems.restaurants[savedIndex]),
-				latitude: coordinates.latitude,
-				longitude: coordinates.longitude,
-				placeId: restaurant.placeId || null,
-				googleMapsUrl: `https://www.google.com/maps/search/?api=1&query=${coordinates.latitude},${coordinates.longitude}`,
-			};
-			resolved += 1;
-		} catch {
-			continue;
-		}
-	}
-	if (resolved) saveItems();
-	geocodeInProgress = false;
-	if (status && savedView === "map") {
-		status.textContent = resolved ? `Located ${resolved} saved restaurant${resolved === 1 ? "" : "s"}.` : "Some saved addresses could not be matched exactly; those restaurants remain in List.";
-	}
-	renderSavedRestaurantMap();
 }
 
 function distanceInMiles(from, to) {
@@ -1408,7 +1375,7 @@ function renderSavedRestaurantMap() {
 	renderClosestRestaurants(visibleRestaurants);
 }
 
-async function showSavedRestaurantMap() {
+function showSavedRestaurantMap() {
 	savedView = "map";
 	document.querySelector("#saved-groups").classList.add("is-map-active");
 	document.querySelector("#saved-list-button").classList.remove("is-active");
@@ -1419,14 +1386,13 @@ async function showSavedRestaurantMap() {
 	document.querySelector("#saved-map-view").hidden = false;
 	document.querySelector("#saved-map-status").textContent = locationModeWasEnabled
 		? "Map © OpenStreetMap · Tap Use My Location to resume distances."
-		: "Map © OpenStreetMap · Address lookup by Photon";
+		: "Map © OpenStreetMap · Restaurant locations are stored with the Saved data.";
 	persistUIState();
 	if (pages.saved.hidden) return;
 	renderSavedRestaurantMap();
 	if (window.innerWidth <= 390) {
 		window.requestAnimationFrame(() => document.querySelector("#saved-map").scrollIntoView({ block: "center", behavior: "smooth" }));
 	}
-	await geocodeMissingSavedRestaurants();
 }
 
 function showSavedRestaurantList() {
