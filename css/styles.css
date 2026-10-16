@@ -487,6 +487,33 @@ p {
 	overflow: hidden;
 }
 
+.card-title-row {
+	min-width: 0;
+	display: flex;
+	align-items: flex-start;
+	gap: 8px;
+	overflow: hidden;
+}
+
+.card-title-row h3 {
+	flex: 1 1 auto;
+}
+
+.card-rating {
+	flex: 0 0 auto;
+	margin-top: 4px;
+	padding: 3px 6px;
+	border: 1px solid rgba(176, 127, 33, 0.22);
+	border-radius: 4px;
+	background: #fbf5e5;
+	color: #8b641b;
+	font-size: 11px;
+	font-weight: 700;
+	font-variant-numeric: tabular-nums;
+	line-height: 1.2;
+	white-space: nowrap;
+}
+
 .card-content > p {
 	min-height: 0;
 	margin: 0;
@@ -907,12 +934,14 @@ p {
 
 .saved-map-popup-actions {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 7px;
 	margin-top: 9px;
 }
 
 .saved-map-popup-actions button,
 .saved-map-popup-actions a {
+	flex: 1 1 auto;
 	min-height: 30px;
 	display: inline-flex;
 	align-items: center;

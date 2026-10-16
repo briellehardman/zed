@@ -1,6 +1,34 @@
 const STORAGE_KEY = "swipe-and-bite.saved";
 const UI_STORAGE_KEY = "swipe-and-bite.ui-state";
 const SWIPE_LOCK_MS = 180;
+const MIN_RESTAURANT_IMAGE_WIDTH = 400;
+const failedRestaurantImageUrls = new Set();
+const restaurantPhotoExclusions = {
+	3: ["1vuofcve7yfulhgt", "mv5huolw", "gbvdjlgw", "banner_image"],
+	9: ["swiss-pastry-shop-1.jpg", "swiss-pastry-shop-2.jpg"],
+	20: ["french quarter meets funky town"],
+	30: ["/lunch.png", "/catering.png"],
+	31: ["pho-little-saigon-2.png", "pho-little-saigon.png"],
+	32: ["happyhour_june2026", "5house-marg_eastland", "closed-holiday", "pulidos-holiday-hours", "birthday-card"],
+	41: ["img_4801.jpeg"],
+	44: ["enduro_coffee_roaster_2.jpg", "enduro_coffee-08.jpg", "enduro_coffee-01.jpg"],
+	45: ["holiday_party", "parties_1.jpg"],
+	48: ["altos tequila.jpg", "today - 4.png"],
+	65: ["_x8wwzuz2e24s5gacisiwq"],
+	67: ["opengraph image", "pattern.png", "bee-happy"],
+	70: ["05a8ea999ffd475a881bbe6bc66c3b1e"],
+	76: ["/1.png", "terra+white.png", "terra+tagline"],
+	77: ["qnvyeMq0s9clndnerr_a8w", "mockupcoldbrew_"],
+	79: ["heroimage_withtext", "gold-belly.png"],
+	81: ["events_fallback.jpg"],
+	85: ["fortworth-r.jpg"],
+	90: ["mothers-day-grid-post"],
+	94: ["1441148147932-jns99mweltfiwivly8ve", "1441148089518-ibmbvait56nmv7ubh5fd", "delivery"],
+	100: ["639138661353544994+2014392.png"],
+	101: ["wood-frame.webp"],
+	106: ["403_dining.jpg"],
+	111: ["holiday_party", "website_casual.jpg"],
+};
 const recipes = window.SWIPE_BITE_RECIPES;
 
 const restaurants = [
@@ -382,6 +410,67 @@ function mapsUrlForRestaurant(restaurant) {
 	return `https://www.google.com/maps/search/?api=1&query=${query}`;
 }
 
+function getRestaurantRating(restaurant) {
+	if (restaurant.ratingSource !== "Yelp") return null;
+	if (restaurant.googleRating !== undefined || restaurant.userRatingsTotal !== undefined || restaurant.ratingPlaceId !== undefined) return null;
+	if (typeof restaurant.rating !== "number" || !Number.isFinite(restaurant.rating) || restaurant.rating < 1 || restaurant.rating > 5) return null;
+	try {
+		const listing = new URL(restaurant.yelpUrl);
+		if (listing.hostname !== "www.yelp.com" || !/^\/biz\/[^/]+\/?$/.test(listing.pathname)) return null;
+	} catch {
+			return null;
+	}
+	const reviewCount = restaurant.reviewCount === undefined || restaurant.reviewCount === null
+		? null
+		: Number.isInteger(restaurant.reviewCount) && restaurant.reviewCount > 0 ? restaurant.reviewCount : null;
+	return { rating: restaurant.rating, reviewCount };
+}
+
+function restaurantRatingMarkup(restaurant) {
+	const data = getRestaurantRating(restaurant);
+	if (!data) return "";
+	const count = data.reviewCount ? ` (${new Intl.NumberFormat("en", { notation: data.reviewCount >= 1000 ? "compact" : "standard", maximumFractionDigits: 1 }).format(data.reviewCount)})` : "";
+	return `<span class="card-rating" aria-label="${data.rating.toFixed(1)} out of 5 stars">★ ${data.rating.toFixed(1)}${count}</span>`;
+}
+
+async function shareRestaurant(restaurant, button) {
+	const url = restaurant.googleMapsUrl || mapsUrlForRestaurant(restaurant) || restaurant.websiteUrl || window.location.href;
+	const shareData = { title: restaurant.name, text: `Check out ${restaurant.name} on Swipe & Bite`, url };
+	if (typeof navigator.share === "function") {
+		try {
+			await navigator.share(shareData);
+			return;
+		} catch (error) {
+			if (error?.name === "AbortError") return;
+		}
+	}
+	try {
+		if (navigator.clipboard?.writeText) {
+			await navigator.clipboard.writeText(url);
+		} else {
+			const input = document.createElement("textarea");
+			input.value = url;
+			input.setAttribute("readonly", "");
+			input.style.position = "fixed";
+			input.style.opacity = "0";
+			document.body.append(input);
+			input.select();
+			const copied = document.execCommand("copy");
+			input.remove();
+			if (!copied) throw new Error("Clipboard unavailable");
+		}
+		if (button) {
+			const originalText = button.textContent;
+			button.textContent = "Link copied";
+			window.setTimeout(() => {
+				if (button.isConnected) button.textContent = originalText;
+			}, 1800);
+		}
+	} catch {
+		if (button) button.textContent = "Could not copy";
+	}
+}
+
 // Merge older saved IDs with current restaurant data, keeping any coordinates saved previously.
 function completeSavedRestaurant(savedRestaurant) {
 	const saved = savedRestaurant && typeof savedRestaurant === "object" ? savedRestaurant : { id: savedRestaurant };
@@ -400,11 +489,16 @@ function completeSavedRestaurant(savedRestaurant) {
 	if (current?.city) merged.city = current.city;
 	merged.placeId = merged.placeId || merged.googlePlaceId || null;
 	merged.images = Array.isArray(saved.images) && saved.images.length
-		? saved.images
+		? (Array.isArray(current?.images) ? current.images : saved.images)
 		: Array.isArray(current?.images) ? current.images : [];
-	merged.mainImage = saved.mainImage || current?.mainImage
+	merged.mainImage = current?.mainImage || saved.mainImage
 		|| (Array.isArray(merged.images) ? (typeof merged.images[0] === "string" ? merged.images[0] : merged.images[0]?.url) : "") || "";
 	merged.popularDishes = Array.isArray(merged.popularDishes) ? merged.popularDishes : [];
+	if (current) {
+		["rating", "googleRating", "yelpRating", "reviewCount", "userRatingsTotal"].forEach((field) => {
+			merged[field] = current[field];
+		});
+	}
 	merged.googleMapsUrl = coordinateSource ? mapsUrlForRestaurant(merged) : merged.googleMapsUrl || mapsUrlForRestaurant(merged);
 	return merged;
 }
@@ -435,7 +529,13 @@ function preloadUpcomingImages(page) {
 		if (!url || preloadedCardImages.has(url)) continue;
 		const image = new window.Image();
 		image.decoding = "async";
-		image.addEventListener("error", () => preloadedCardImages.delete(url), { once: true });
+		image.addEventListener("error", () => {
+			if (page === "out") markRestaurantImageFailed(url);
+			preloadedCardImages.delete(url);
+		}, { once: true });
+		if (page === "out") image.addEventListener("load", () => {
+			if (image.naturalWidth < MIN_RESTAURANT_IMAGE_WIDTH) markRestaurantImageFailed(url);
+		}, { once: true });
 		preloadedCardImages.set(url, image);
 		image.src = url;
 	}
@@ -537,47 +637,79 @@ function undoLastSwipe(page) {
 }
 
 function getItemImages(item, type) {
-	const recipeOrCuratedImages = type === "recipe"
-		? [item.mainImage, ...(Array.isArray(item.images) ? item.images : [])].filter(Boolean)
-		: [item.mainImage, ...(Array.isArray(item.images) ? item.images : [])].filter(Boolean);
+	const customerPhotos = type === "restaurant" && Array.isArray(item.customerPhotos)
+		? item.customerPhotos.map((photo) => ({ ...photo, attribution: photo.attribution || "Yelp customer photo", sourceType: "customer" }))
+		: [];
+	const recipeOrCuratedImages = [item.mainImage, ...(Array.isArray(item.images) ? item.images : []), ...customerPhotos].filter(Boolean);
 	const seenRestaurantPhotos = new Set();
-	const canonicalPhotoKey = (url) => {
-		try {
-			const parsed = new URL(url, window.location.href);
-			parsed.pathname = parsed.pathname.replace(/-\d{2,4}x\d{2,4}(?=\.[a-z0-9]+$)/i, "");
-			[...parsed.searchParams.keys()].forEach((key) => {
-				if (["w", "width", "h", "height", "format", "quality", "fit", "crop", "auto", "cs", "lossy", "strip", "webp", "compress", "dpr", "resize", "fill", "variant"].includes(key.toLowerCase())) parsed.searchParams.delete(key);
-			});
-			parsed.hash = "";
-			return `${parsed.hostname.toLowerCase()}${parsed.pathname.toLowerCase()}?${parsed.searchParams.toString()}`;
-		} catch {
-			return url;
-		}
-	};
 	const normalizeImages = (images) => images
 		.map((image) => typeof image === "string" ? { url: image, attribution: type === "restaurant" ? "Official restaurant website" : "" } : image)
 		.filter((image) => typeof image?.url === "string" && image.url.trim())
-		.filter((image) => type !== "restaurant" || !/(?:^|[\/_-])(logo|icon|badge|seal|placeholder|sprite|dummy|close|reload)(?:[\/_?.-]|$)/i.test(image.url))
 		.filter((image) => {
 			if (type !== "restaurant") return true;
-			const key = canonicalPhotoKey(image.url);
+			const imagePath = decodeURIComponent(new URL(image.url, window.location.href).pathname).toLowerCase();
+			const rejected = /(?:^|[\/_ .-])(logo|logotype|wordmark|favicon|icon|badge|seal|placeholder|sprite|dummy|close|reload|texture|pattern|gift.?card|award|certificate|screenshot|opengraph|og.?image|holiday.?party|mother.?s.?day|happy.?hour|closed.?holiday)(?:[\/_?. -]|$)/i.test(imagePath)
+				|| (restaurantPhotoExclusions[String(item.id)] || []).some((fragment) => imagePath.includes(fragment.toLowerCase()))
+				|| /(?:^|[\/:?&,=])(?:w|width)[=_:/-]?(?:[1-3]\d{2})(?:[,/&_-]|$)/i.test(image.url)
+				|| /(?:^|[\/_-])\d{2,3}x\d{2,3}(?:[\/_?.&-]|$)/i.test(imagePath);
+			return !rejected && !failedRestaurantImageUrls.has(canonicalRestaurantPhotoKey(image.url));
+		})
+		.filter((image) => {
+			if (type !== "restaurant") return true;
+			const key = canonicalRestaurantPhotoKey(image.url);
 			if (seenRestaurantPhotos.has(key)) return false;
 			seenRestaurantPhotos.add(key);
 			return true;
 		});
 
+	const normalizedImages = normalizeImages(recipeOrCuratedImages);
 	if (type === "restaurant") {
-		return normalizeImages(recipeOrCuratedImages);
+		const photoScore = (image) => {
+			const path = decodeURIComponent(image.url).toLowerCase();
+			if (image.sourceType === "customer") return 0;
+			if (/(food|dish|plate|meal|taco|burger|pizza|pasta|steak|brisket|pho|pastry|beignet|dessert|gelato|sushi|dumpling|pancake|souffle|wings|ribs|prawn|flatbread|burrito|seafood|soup|salsa|enchilada|ramen|bao|sandwich|bacon|shrimp|cake|roll|sashimi|noodle|bread|fries)/i.test(path)) return 40;
+			if (/(coffee|cocktail|drink|wine|beer|beverage|latte)/i.test(path)) return 22;
+			if (/(interior|dining|room|patio|ambiance|atmosphere|inside|restaurant)/i.test(path)) return 12;
+			if (/(exterior|outside|front|building)/i.test(path)) return -5;
+			return 0;
+		};
+		return normalizedImages.map((image, index) => ({ image, index, score: photoScore(image) }))
+			.sort((a, b) => b.score - a.score || a.index - b.index)
+			.map(({ image }) => image)
+			.slice(0, 8);
 	}
-
-	return normalizeImages(recipeOrCuratedImages);
+	return type === "restaurant" ? normalizedImages.slice(0, 8) : normalizedImages;
 }
+
+function canonicalRestaurantPhotoKey(url) {
+	try {
+		const parsed = new URL(url, window.location.href);
+		parsed.pathname = parsed.pathname.replace(/-\d{2,4}x\d{2,4}(?=\.[a-z0-9]+$)/i, "");
+		[...parsed.searchParams.keys()].forEach((key) => {
+			if (["w", "width", "h", "height", "format", "quality", "fit", "crop", "auto", "cs", "lossy", "strip", "webp", "compress", "dpr", "resize", "fill", "variant"].includes(key.toLowerCase())) parsed.searchParams.delete(key);
+		});
+		parsed.hash = "";
+		return `${parsed.hostname.toLowerCase()}${parsed.pathname.toLowerCase()}?${parsed.searchParams.toString()}`;
+	} catch {
+		return url;
+	}
+}
+
+function markRestaurantImageFailed(url) {
+	failedRestaurantImageUrls.add(canonicalRestaurantPhotoKey(url));
+}
+
+restaurants.forEach((restaurant) => {
+	const images = getItemImages(restaurant, "restaurant");
+	restaurant.images = images;
+	restaurant.mainImage = images[0]?.url || "";
+});
 
 function imageOrPlaceholder(item, type, className = "") {
 	const images = getItemImages(item, type);
 	const image = images[0];
 	return image
-		? `<img class="${className}" src="${image.url}" alt="${item.name}" loading="lazy" data-photo-fallback data-fallback-images="${encodeURIComponent(JSON.stringify(images.map((candidate) => candidate.url)))}">`
+		? `<img class="${className}" src="${image.url}" alt="${item.name}" loading="lazy" data-photo-fallback data-photo-type="${type}" data-fallback-images="${encodeURIComponent(JSON.stringify(images.map((candidate) => candidate.url)))}">`
 		: `<div class="photo-placeholder ${className}" aria-label="No photo added for ${item.name}"><span>Photo not provided</span></div>`;
 }
 
@@ -589,9 +721,11 @@ function connectImageFallback(image) {
 	} catch {
 		fallbackImages = [];
 	}
-	const attemptedImages = new Set([image.currentSrc || image.src]);
+	const attemptedImages = new Set([new URL(image.currentSrc || image.src, window.location.href).href]);
 	image.addEventListener("error", () => {
-		const nextImage = fallbackImages.find((url) => !attemptedImages.has(new URL(url, window.location.href).href));
+		if (image.dataset.photoType === "restaurant") markRestaurantImageFailed(image.currentSrc || image.src);
+		const nextImage = fallbackImages.find((url) => !attemptedImages.has(new URL(url, window.location.href).href)
+			&& (image.dataset.photoType !== "restaurant" || !failedRestaurantImageUrls.has(canonicalRestaurantPhotoKey(url))));
 		if (nextImage) {
 			attemptedImages.add(new URL(nextImage, window.location.href).href);
 			image.src = nextImage;
@@ -601,7 +735,7 @@ function connectImageFallback(image) {
 		placeholder.className = "photo-placeholder image-error-placeholder";
 		placeholder.textContent = "Photo unavailable";
 		image.replaceWith(placeholder);
-	}, { once: true });
+	});
 }
 
 function galleryMarkup(item, type) {
@@ -619,7 +753,7 @@ function galleryMarkup(item, type) {
 		? `<button class="gallery-arrow gallery-previous" type="button" data-gallery-step="-1" aria-label="Previous photo">‹</button><button class="gallery-arrow gallery-next" type="button" data-gallery-step="1" aria-label="Next photo">›</button><span class="gallery-count" aria-live="polite">1 / ${images.length}</span>`
 		: "";
 
-	return `<div class="detail-gallery" data-gallery data-gallery-alt="${description}"><div class="gallery-main"><img class="detail-hero-image" src="${images[0].url}" alt="${description} 1 of ${images.length}" data-photo-fallback>${controls}<span class="gallery-credit" aria-live="polite"></span></div>${thumbnails}</div>`;
+	return `<div class="detail-gallery" data-gallery data-gallery-alt="${description}"><div class="gallery-main"><img class="detail-hero-image" src="${images[0].url}" alt="${description} 1 of ${images.length}" data-photo-fallback data-photo-type="${type}">${controls}<span class="gallery-credit" aria-live="polite"></span></div>${thumbnails}</div>`;
 }
 
 function normalizedCustomerPhotos(item) {
@@ -755,7 +889,7 @@ function openGuestGallery(item, startIndex = null) {
 function cardPhotoMarkup(item, type, label) {
 	const images = getItemImages(item, type);
 	const photo = images.length
-		? `<img class="card-gallery-image" src="${images[0].url}" alt="${item.name}" loading="eager" data-fallback-images="${encodeURIComponent(JSON.stringify(images.map((candidate) => candidate.url)))}">`
+		? `<img class="card-gallery-image" src="${images[0].url}" alt="${item.name}" loading="eager" data-photo-type="${type}" data-fallback-images="${encodeURIComponent(JSON.stringify(images.map((candidate) => candidate.url)))}">`
 		: imageOrPlaceholder(item, type);
 	const controls = images.length > 1
 		? `<button class="card-gallery-arrow card-gallery-previous" type="button" data-card-gallery-step="-1" aria-label="Previous ${item.name} photo">‹</button><button class="card-gallery-arrow card-gallery-next" type="button" data-card-gallery-step="1" aria-label="Next ${item.name} photo">›</button><span class="card-gallery-count" aria-live="polite">1 / ${images.length}</span>`
@@ -764,7 +898,7 @@ function cardPhotoMarkup(item, type, label) {
 	return `<div class="food-photo" data-card-gallery data-card-gallery-count="${images.length}">${photo}${controls}<span class="photo-label">${label}</span></div>`;
 }
 
-function connectCardGallery(card, images) {
+function connectCardGallery(card, images, isRestaurant) {
 	const photoArea = card.querySelector(".food-photo");
 	const image = photoArea.querySelector(".card-gallery-image");
 	if (!image) return;
@@ -773,8 +907,29 @@ function connectCardGallery(card, images) {
 	let fallback = null;
 	const attemptedImages = new Set([new URL(images[0].url, window.location.href).href]);
 
+	function tryNextImage() {
+		const nextIndex = images.findIndex((candidate) => !attemptedImages.has(new URL(candidate.url, window.location.href).href)
+			&& (!isRestaurant || !failedRestaurantImageUrls.has(canonicalRestaurantPhotoKey(candidate.url))));
+		if (nextIndex === -1) {
+			if (images.length > 1) photoArea.querySelectorAll(".card-gallery-arrow, .card-gallery-count").forEach((control) => control.remove());
+			if (!fallback) {
+				fallback = document.createElement("div");
+				fallback.className = "photo-placeholder card-gallery-fallback";
+				fallback.textContent = "Photo unavailable";
+				photoArea.append(fallback);
+			}
+			image.style.visibility = "hidden";
+			return false;
+		}
+		showImage(nextIndex);
+		return true;
+	}
+
 	function showImage(index) {
 		currentIndex = (index + images.length) % images.length;
+		for (let checked = 0; checked < images.length && isRestaurant && failedRestaurantImageUrls.has(canonicalRestaurantPhotoKey(images[currentIndex].url)); checked += 1) {
+			currentIndex = (currentIndex + 1) % images.length;
+		}
 		image.src = images[currentIndex].url;
 		attemptedImages.add(new URL(images[currentIndex].url, window.location.href).href);
 		image.alt = `${card.querySelector("h3").textContent}, photo ${currentIndex + 1} of ${images.length}`;
@@ -784,24 +939,15 @@ function connectCardGallery(card, images) {
 
 	image.addEventListener("error", () => {
 		const failedUrl = new URL(image.currentSrc || image.src, window.location.href).href;
-		const failedIndex = images.findIndex((candidate) => new URL(candidate.url, window.location.href).href === failedUrl);
-		if (failedIndex !== -1) {
-			const nextIndex = images.findIndex((candidate) => !attemptedImages.has(new URL(candidate.url, window.location.href).href));
-			if (nextIndex !== -1) {
-				currentIndex = nextIndex;
-				showImage(nextIndex);
-				return;
-			}
-		}
-		if (images.length > 1) photoArea.querySelectorAll(".card-gallery-arrow, .card-gallery-count").forEach((control) => control.remove());
-		if (fallback) return;
-		fallback = document.createElement("div");
-		fallback.className = "photo-placeholder card-gallery-fallback";
-		fallback.textContent = "Photo unavailable";
-		photoArea.append(fallback);
-		image.style.visibility = "hidden";
+		if (isRestaurant) markRestaurantImageFailed(failedUrl);
+		tryNextImage();
 	});
 	image.addEventListener("load", () => {
+		if (isRestaurant && image.naturalWidth < MIN_RESTAURANT_IMAGE_WIDTH) {
+			markRestaurantImageFailed(image.currentSrc || image.src);
+			tryNextImage();
+			return;
+		}
 		image.style.visibility = "visible";
 		fallback?.remove();
 		fallback = null;
@@ -822,7 +968,7 @@ function connectCardGallery(card, images) {
 	}, { passive: true });
 }
 
-function connectGallery(gallery, images) {
+function connectGallery(gallery, images, type) {
 	if (!gallery) return;
 	const credit = gallery.querySelector(".gallery-credit");
 	if (credit && images[0]?.attribution) credit.textContent = `Photo: ${images[0].attribution}`;
@@ -830,15 +976,17 @@ function connectGallery(gallery, images) {
 	let fallback = null;
 	let touchStartX = null;
 	mainImage.addEventListener("error", () => {
+		if (type === "restaurant") markRestaurantImageFailed(mainImage.currentSrc || mainImage.src);
 		if (dropImage(mainImage.getAttribute("src"))) return;
-		if (fallback) return;
-		fallback = document.createElement("div");
-		fallback.className = "photo-placeholder gallery-image-fallback";
-		fallback.textContent = "Photo unavailable";
-		gallery.querySelector(".gallery-main").append(fallback);
-		mainImage.style.visibility = "hidden";
+		showFallback();
 	});
 	mainImage.addEventListener("load", () => {
+		if (type === "restaurant" && mainImage.naturalWidth < MIN_RESTAURANT_IMAGE_WIDTH) {
+			markRestaurantImageFailed(mainImage.currentSrc || mainImage.src);
+			if (dropImage(mainImage.getAttribute("src"))) return;
+			showFallback();
+			return;
+		}
 		mainImage.style.visibility = "visible";
 		fallback?.remove();
 		fallback = null;
@@ -849,8 +997,18 @@ function connectGallery(gallery, images) {
 	if (images.length < 2) return;
 	let currentIndex = 0;
 
+	function showFallback() {
+		if (fallback) return;
+		fallback = document.createElement("div");
+		fallback.className = "photo-placeholder gallery-image-fallback";
+		fallback.textContent = "Photo unavailable";
+		gallery.querySelector(".gallery-main").append(fallback);
+		mainImage.style.visibility = "hidden";
+	}
+
 	function dropImage(url) {
 		const index = images.findIndex((image) => image.url === url);
+		if (type === "restaurant") markRestaurantImageFailed(url);
 		if (index === -1 || images.length < 2) return false;
 		images.splice(index, 1);
 		const thumbnails = [...gallery.querySelectorAll(".gallery-thumbnail")];
@@ -921,8 +1079,9 @@ function renderCard(page) {
 
 	const item = items[positions[page]];
 	const isRecipe = page === "home";
-	const detail = isRecipe ? item.cookTime : item.cuisine;
+	const detail = isRecipe ? item.cookTime : `${item.cuisine || ""}${item.price ? ` · ${item.price}` : ""}`;
 	const detailLabel = isRecipe ? "Ready in" : "Cuisine";
+	const rating = !isRecipe ? restaurantRatingMarkup(item) : "";
 	const descriptionText = item.description || "";
 	const itemImages = getItemImages(item, isRecipe ? "recipe" : "restaurant");
 	const undoDisabled = !undoIsAvailable(page) || swipeLocks[page];
@@ -935,7 +1094,7 @@ function renderCard(page) {
 					<span class="category-tag">${item.category}</span>
 					<span>${detail ? `${detailLabel} · ${detail}` : " "}</span>
 				</div>
-				<h3>${item.name}</h3>
+				<div class="card-title-row"><h3>${item.name}</h3>${rating}</div>
 				<p>${descriptionText}</p>
 			</div>
 			<div class="card-actions" aria-label="Choose what to do with ${item.name}">
@@ -961,7 +1120,7 @@ function renderCard(page) {
 	stage.querySelector("[data-action='like']").addEventListener("click", () => runSwipeAction(page, item, "like"));
 	stage.querySelector("[data-undo]").addEventListener("click", () => undoLastSwipe(page));
 	const card = stage.querySelector(".food-card");
-	connectCardGallery(card, itemImages);
+	connectCardGallery(card, itemImages, !isRecipe);
 	card.querySelectorAll("[data-photo-fallback]").forEach(connectImageFallback);
 	let pointerStart = null;
 	let suppressClick = false;
@@ -1093,6 +1252,7 @@ function openDetails(type, item, trigger) {
 					${customerPhotosMarkup(item, yelpUrl, mapsUrl)}
 					<div class="detail-actions">
 						<button class="detail-save-button" type="button" data-detail-save>${isItemSaved(type, item) ? "♥ Saved" : "♡ Save place"}</button>
+						<button class="detail-link-button" type="button" data-share-restaurant>Share</button>
 						<a class="detail-link-button" href="${menuUrl}" target="_blank" rel="noopener noreferrer">View Menu</a>
 						<a class="detail-link-button" href="${websiteUrl}" target="_blank" rel="noopener noreferrer">Visit Website</a>
 						<a class="detail-link-button" href="${mapsUrl}" target="_blank" rel="noopener noreferrer">Google Maps</a>
@@ -1102,7 +1262,7 @@ function openDetails(type, item, trigger) {
 			</div>`;
 	}
 
-	connectGallery(detailContent.querySelector("[data-gallery]"), images);
+	connectGallery(detailContent.querySelector("[data-gallery]"), images, type);
 	detailContent.querySelectorAll(".customer-photo img").forEach((photo) => {
 		photo.addEventListener("error", () => photo.closest(".customer-photo").remove(), { once: true });
 	});
@@ -1116,6 +1276,7 @@ function openDetails(type, item, trigger) {
 			? (nowSaved ? "♥ Saved" : "♡ Save recipe")
 			: (nowSaved ? "♥ Saved" : "♡ Save place");
 	});
+	detailContent.querySelector("[data-share-restaurant]")?.addEventListener("click", (event) => shareRestaurant(item, event.currentTarget));
 	detailDialog.showModal();
 	detailClose.focus({ preventScroll: true });
 	persistUIState();
@@ -1247,7 +1408,7 @@ function distanceInMiles(from, to) {
 }
 
 function formatDistance(miles) {
-	return miles < 0.1 ? `${(miles * 5280).toFixed(0)} ft` : `${miles.toFixed(1)} mi`;
+	return `${miles.toFixed(miles < 10 ? 2 : 1)} mi`;
 }
 
 function directionsUrl(restaurant) {
@@ -1261,11 +1422,13 @@ function directionsUrl(restaurant) {
 }
 
 function savedRestaurantPopup(restaurant, rank) {
-	const image = restaurant.mainImage || (restaurant.images?.[0] && (typeof restaurant.images[0] === "string" ? restaurant.images[0] : restaurant.images[0].url));
+	const images = getItemImages(restaurant, "restaurant");
+	const image = images[0];
 	const distance = savedUserCoordinates && coordinatesAreValid(restaurant.latitude, restaurant.longitude)
 		? `<p>${formatDistance(distanceInMiles(savedUserCoordinates, restaurant))} from you</p>` : "";
-	const photo = image ? `<img src="${escapeHTML(image)}" alt="" loading="lazy">` : "";
-	return `<div class="saved-map-popup">${photo}<h3>${escapeHTML(restaurant.name)}</h3><p>${escapeHTML(restaurant.cuisine || "Restaurant")}${restaurant.price ? ` · ${escapeHTML(restaurant.price)}` : ""}</p><p>${escapeHTML(restaurant.address || "Address unavailable")}</p><p>${escapeHTML(restaurant.city || "")}</p>${distance}<div class="saved-map-popup-actions"><button type="button" data-map-view-restaurant="${escapeHTML(restaurant.id)}">View Restaurant</button><a href="${escapeHTML(directionsUrl(restaurant))}" target="_blank" rel="noopener noreferrer">Directions</a></div></div>`;
+	const photo = image ? `<img src="${escapeHTML(image.url)}" alt="" loading="lazy" data-photo-fallback data-photo-type="restaurant" data-fallback-images="${encodeURIComponent(JSON.stringify(images.map((candidate) => candidate.url)))}">` : "";
+	const rating = restaurantRatingMarkup(restaurant);
+	return `<div class="saved-map-popup">${photo}<h3>${escapeHTML(restaurant.name)}</h3>${rating ? `<p>${rating}</p>` : ""}<p>${escapeHTML(restaurant.cuisine || "Restaurant")}${restaurant.price ? ` · ${escapeHTML(restaurant.price)}` : ""}</p><p>${escapeHTML(restaurant.address || "Address unavailable")}</p><p>${escapeHTML(restaurant.city || "")}</p>${distance}<div class="saved-map-popup-actions"><button type="button" data-map-view-restaurant="${escapeHTML(restaurant.id)}">View Restaurant</button><a href="${escapeHTML(directionsUrl(restaurant))}" target="_blank" rel="noopener noreferrer">Directions</a><button type="button" data-map-share-restaurant>Share</button></div></div>`;
 }
 
 function ensureSavedRestaurantMap() {
@@ -1334,10 +1497,17 @@ function renderSavedRestaurantMap() {
 	}
 	renderSavedMapCityOptions();
 	const visibleRestaurants = getVisibleSavedMapRestaurants();
+	const orderedRestaurants = closestMode && savedUserCoordinates
+		? [...visibleRestaurants].sort((a, b) => {
+			const distanceA = coordinatesAreValid(a.latitude, a.longitude) ? distanceInMiles(savedUserCoordinates, a) : Infinity;
+			const distanceB = coordinatesAreValid(b.latitude, b.longitude) ? distanceInMiles(savedUserCoordinates, b) : Infinity;
+			return distanceA - distanceB;
+		})
+		: visibleRestaurants;
 	savedRestaurantMarkers.forEach((marker) => marker.remove());
 	savedRestaurantMarkers.clear();
 	const restaurantCoordinates = [];
-	visibleRestaurants.forEach((restaurant, index) => {
+	orderedRestaurants.forEach((restaurant, index) => {
 		if (!coordinatesAreValid(restaurant.latitude, restaurant.longitude)) return;
 		const markerIcon = window.L.divIcon({
 			className: "saved-map-marker-wrap",
@@ -1349,10 +1519,13 @@ function renderSavedRestaurantMap() {
 		const marker = window.L.marker([restaurant.latitude, restaurant.longitude], { icon: markerIcon }).addTo(savedRestaurantMap);
 		marker.bindPopup(savedRestaurantPopup(restaurant, index + 1), { maxWidth: 260 });
 		marker.on("popupopen", (event) => {
-			event.popup.getElement()?.querySelector("[data-map-view-restaurant]")?.addEventListener("click", (clickEvent) => {
+			const popup = event.popup.getElement();
+			connectImageFallback(popup?.querySelector("[data-photo-fallback]"));
+			popup?.querySelector("[data-map-view-restaurant]")?.addEventListener("click", (clickEvent) => {
 				savedRestaurantMap.closePopup();
 				openDetails("restaurant", restaurant, clickEvent.currentTarget);
 			});
+			popup?.querySelector("[data-map-share-restaurant]")?.addEventListener("click", (clickEvent) => shareRestaurant(restaurant, clickEvent.currentTarget));
 		});
 		savedRestaurantMarkers.set(String(restaurant.id), marker);
 		restaurantCoordinates.push([Number(restaurant.latitude), Number(restaurant.longitude)]);
@@ -1368,8 +1541,16 @@ function renderSavedRestaurantMap() {
 		savedUserMarker = window.L.marker([savedUserCoordinates.latitude, savedUserCoordinates.longitude], { icon: userIcon, zIndexOffset: 1000 }).addTo(savedRestaurantMap);
 		savedUserMarker.bindPopup("You are here");
 	}
-	if (restaurantCoordinates.length > 1) {
-		savedRestaurantMap.fitBounds(window.L.latLngBounds(restaurantCoordinates), { padding: [40, 40], maxZoom: 14 });
+	const nearbyCoordinates = savedUserCoordinates
+		? restaurantCoordinates.filter(([latitude, longitude]) => distanceInMiles(savedUserCoordinates, { latitude, longitude }) <= 25)
+		: restaurantCoordinates;
+	const viewCoordinates = savedUserCoordinates
+		? [...nearbyCoordinates, [savedUserCoordinates.latitude, savedUserCoordinates.longitude]]
+		: restaurantCoordinates;
+	if (viewCoordinates.length > 1) {
+		savedRestaurantMap.fitBounds(window.L.latLngBounds(viewCoordinates), { padding: [40, 40], maxZoom: 14 });
+	} else if (savedUserCoordinates) {
+		savedRestaurantMap.setView([savedUserCoordinates.latitude, savedUserCoordinates.longitude], 12);
 	} else if (restaurantCoordinates.length === 1) {
 		savedRestaurantMap.setView(restaurantCoordinates[0], 14);
 	} else if (savedMapCity === "Fort Worth, TX") {
@@ -1429,7 +1610,10 @@ function showSavedRestaurantList() {
 function requestSavedMapLocation() {
 	const status = document.querySelector("#saved-map-status");
 	if (!navigator.geolocation) {
-		status.textContent = "Location is not available in this browser.";
+		status.textContent = "Location access is needed to show nearby restaurants.";
+		closestMode = false;
+		persistUIState();
+		renderClosestRestaurants(getVisibleSavedMapRestaurants());
 		return;
 	}
 	status.textContent = "Requesting your location…";
@@ -1441,10 +1625,15 @@ function requestSavedMapLocation() {
 		renderSavedRestaurantMap();
 	}, (error) => {
 		locationModeWasEnabled = false;
+		savedUserCoordinates = null;
+		closestMode = false;
+		savedUserMarker?.remove();
+		savedUserMarker = null;
 		persistUIState();
 		status.textContent = error.code === error.PERMISSION_DENIED
-			? "Location permission was denied. Saved restaurants are still shown."
+			? "Location access is needed to show nearby restaurants. Saved restaurants are still shown."
 			: "Could not get your location. Saved restaurants are still shown.";
+		renderSavedRestaurantMap();
 	}, { enableHighAccuracy: false, timeout: 12000, maximumAge: 60000 });
 }
 
