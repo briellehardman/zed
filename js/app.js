@@ -1229,13 +1229,14 @@ function savedRestaurantPopup(restaurant, rank) {
 function ensureSavedRestaurantMap() {
 	if (savedRestaurantMap || !window.L) return Boolean(savedRestaurantMap);
 	savedRestaurantMap = window.L.map("saved-map", { scrollWheelZoom: true, zoomControl: true }).setView([39.5, -98.35], 4);
-	const tileUrl = "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
-	console.log("Swipe & Bite map tile provider: CARTO");
-	console.log("Swipe & Bite map tile URL:", tileUrl);
-	window.L.tileLayer(tileUrl, {
-		subdomains: "abcd",
-		maxZoom: 20,
-		attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+	const styleUrl = "https://tiles.openfreemap.org/styles/liberty";
+	console.log("Map provider: OpenFreeMap via MapLibre");
+	console.log("Swipe & Bite map style URL:", styleUrl);
+	window.L.maplibreGL({
+		style: styleUrl,
+		attributionControl: {
+			customAttribution: '<a href="https://openfreemap.org/">OpenFreeMap</a> · <a href="https://www.openmaptiles.org/">© OpenMapTiles</a> · Data from <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+		},
 	}).addTo(savedRestaurantMap);
 	const emptyMessage = document.createElement("div");
 	emptyMessage.className = "saved-map-empty-overlay";
@@ -1362,8 +1363,8 @@ function showSavedRestaurantMap() {
 	document.querySelector("#saved-list-view").hidden = true;
 	document.querySelector("#saved-map-view").hidden = false;
 	document.querySelector("#saved-map-status").textContent = locationModeWasEnabled
-		? "Map © OpenStreetMap · CARTO · Tap Use My Location to resume distances."
-		: "Map © OpenStreetMap · CARTO · Restaurant locations are stored with the Saved data.";
+		? "Map © OpenFreeMap · OpenMapTiles · OpenStreetMap · Tap Use My Location to resume distances."
+		: "Map © OpenFreeMap · OpenMapTiles · OpenStreetMap · Restaurant locations are stored with the Saved data.";
 	persistUIState();
 	if (pages.saved.hidden) return;
 	renderSavedRestaurantMap();
