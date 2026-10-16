@@ -234,6 +234,8 @@ restaurants.push(...(window.SWIPE_BITE_MORE_RESTAURANTS || []));
 restaurants.forEach((restaurant) => {
 	restaurant.images = window.SWIPE_BITE_RESTAURANT_PHOTOS?.[restaurant.id] || window.SWIPE_BITE_MORE_RESTAURANT_PHOTOS?.[restaurant.id] || restaurant.images || [];
 	restaurant.customerPhotos = window.SWIPE_BITE_CUSTOMER_PHOTOS?.[restaurant.id] || window.SWIPE_BITE_MORE_CUSTOMER_PHOTOS?.[restaurant.id] || [];
+	restaurant.popularDishes = (restaurant.popularDishes || []).filter((dish) => dish.trim().toLowerCase() !== "popular dishes");
+	restaurant.description = (restaurant.description || "").replace(/known for Popular Dishes,?\s*/i, "known for ");
 	const leadImage = restaurant.images[0];
 	if (!restaurant.mainImage && leadImage) restaurant.mainImage = typeof leadImage === "string" ? leadImage : leadImage.url;
 	if (!restaurant.imageSourceType && leadImage) restaurant.imageSourceType = typeof leadImage === "object" ? leadImage.sourceType || (leadImage.attribution === "Yelp customer photo" ? "customer" : "official") : "official";
@@ -285,7 +287,7 @@ const undoHistory = {
 	out: restoredUIState.undo?.out || null,
 };
 let activeDetail = null;
-const preloadedRestaurantImages = new Map();
+const preloadedCardImages = new Map();
 let savedItems = loadSavedItems();
 let lastDetailTrigger = null;
 
@@ -422,6 +424,26 @@ function getVisibleItems(page) {
 	return allItems.filter((item) => item.category === selectedCategory);
 }
 
+function preloadUpcomingImages(page) {
+	if (typeof window.Image !== "function") return;
+	const items = getVisibleItems(page);
+	if (items.length < 2) return;
+	const type = page === "home" ? "recipe" : "restaurant";
+	for (let offset = 1; offset <= 2 && offset < items.length; offset += 1) {
+		const item = items[(positions[page] + offset) % items.length];
+		const url = getItemImages(item, type)[0]?.url;
+		if (!url || preloadedCardImages.has(url)) continue;
+		const image = new window.Image();
+		image.decoding = "async";
+		image.addEventListener("error", () => preloadedCardImages.delete(url), { once: true });
+		preloadedCardImages.set(url, image);
+		image.src = url;
+	}
+	while (preloadedCardImages.size > 4) {
+		preloadedCardImages.delete(preloadedCardImages.keys().next().value);
+	}
+}
+
 function itemIdMatches(item, id) {
 	return id !== null && id !== undefined && String(item.id) === String(id);
 }
@@ -552,15 +574,29 @@ function getItemImages(item, type) {
 }
 
 function imageOrPlaceholder(item, type, className = "") {
-	const image = getItemImages(item, type)[0];
+	const images = getItemImages(item, type);
+	const image = images[0];
 	return image
-		? `<img class="${className}" src="${image.url}" alt="${item.name}" loading="lazy" data-photo-fallback>`
+		? `<img class="${className}" src="${image.url}" alt="${item.name}" loading="lazy" data-photo-fallback data-fallback-images="${encodeURIComponent(JSON.stringify(images.map((candidate) => candidate.url)))}">`
 		: `<div class="photo-placeholder ${className}" aria-label="No photo added for ${item.name}"><span>Photo not provided</span></div>`;
 }
 
 function connectImageFallback(image) {
 	if (!image) return;
+	let fallbackImages = [];
+	try {
+		fallbackImages = JSON.parse(decodeURIComponent(image.dataset.fallbackImages || "[]"));
+	} catch {
+		fallbackImages = [];
+	}
+	const attemptedImages = new Set([image.currentSrc || image.src]);
 	image.addEventListener("error", () => {
+		const nextImage = fallbackImages.find((url) => !attemptedImages.has(new URL(url, window.location.href).href));
+		if (nextImage) {
+			attemptedImages.add(new URL(nextImage, window.location.href).href);
+			image.src = nextImage;
+			return;
+		}
 		const placeholder = document.createElement("div");
 		placeholder.className = "photo-placeholder image-error-placeholder";
 		placeholder.textContent = "Photo unavailable";
@@ -692,7 +728,6 @@ function openGuestGallery(item, startIndex = null) {
 		detailContent.querySelector("[data-guest-open]")?.focus();
 	});
 	viewer.querySelector(".guest-viewer-back").addEventListener("click", closeViewer);
-	preloadNextRestaurantImage(page);
 	viewer.querySelector(".guest-viewer-prev").addEventListener("click", () => showPhoto(current - 1));
 	viewer.querySelector(".guest-viewer-next").addEventListener("click", () => showPhoto(current + 1));
 	gallery.addEventListener("keydown", (event) => {
@@ -720,7 +755,7 @@ function openGuestGallery(item, startIndex = null) {
 function cardPhotoMarkup(item, type, label) {
 	const images = getItemImages(item, type);
 	const photo = images.length
-		? `<img class="card-gallery-image" src="${images[0].url}" alt="${item.name}" loading="eager">`
+		? `<img class="card-gallery-image" src="${images[0].url}" alt="${item.name}" loading="eager" data-fallback-images="${encodeURIComponent(JSON.stringify(images.map((candidate) => candidate.url)))}">`
 		: imageOrPlaceholder(item, type);
 	const controls = images.length > 1
 		? `<button class="card-gallery-arrow card-gallery-previous" type="button" data-card-gallery-step="-1" aria-label="Previous ${item.name} photo">‹</button><button class="card-gallery-arrow card-gallery-next" type="button" data-card-gallery-step="1" aria-label="Next ${item.name} photo">›</button><span class="card-gallery-count" aria-live="polite">1 / ${images.length}</span>`
@@ -730,31 +765,35 @@ function cardPhotoMarkup(item, type, label) {
 }
 
 function connectCardGallery(card, images) {
-	if (images.length < 2) return;
 	const photoArea = card.querySelector(".food-photo");
 	const image = photoArea.querySelector(".card-gallery-image");
+	if (!image) return;
 	let currentIndex = 0;
 	let touchStartX = null;
 	let fallback = null;
+	const attemptedImages = new Set([new URL(images[0].url, window.location.href).href]);
 
 	function showImage(index) {
 		currentIndex = (index + images.length) % images.length;
 		image.src = images[currentIndex].url;
+		attemptedImages.add(new URL(images[currentIndex].url, window.location.href).href);
 		image.alt = `${card.querySelector("h3").textContent}, photo ${currentIndex + 1} of ${images.length}`;
-		photoArea.querySelector(".card-gallery-count").textContent = `${currentIndex + 1} / ${images.length}`;
+		const count = photoArea.querySelector(".card-gallery-count");
+		if (count) count.textContent = `${currentIndex + 1} / ${images.length}`;
 	}
 
 	image.addEventListener("error", () => {
-		const failedIndex = images.findIndex((candidate) => candidate.url === image.getAttribute("src"));
-		if (images.length > 1 && failedIndex !== -1) {
-			images.splice(failedIndex, 1);
-			if (images.length < 2) photoArea.querySelectorAll(".card-gallery-arrow, .card-gallery-count").forEach((control) => control.remove());
-			currentIndex = failedIndex % images.length;
-			image.src = images[currentIndex].url;
-			const count = photoArea.querySelector(".card-gallery-count");
-			if (count) count.textContent = `${currentIndex + 1} / ${images.length}`;
-			return;
+		const failedUrl = new URL(image.currentSrc || image.src, window.location.href).href;
+		const failedIndex = images.findIndex((candidate) => new URL(candidate.url, window.location.href).href === failedUrl);
+		if (failedIndex !== -1) {
+			const nextIndex = images.findIndex((candidate) => !attemptedImages.has(new URL(candidate.url, window.location.href).href));
+			if (nextIndex !== -1) {
+				currentIndex = nextIndex;
+				showImage(nextIndex);
+				return;
+			}
 		}
+		if (images.length > 1) photoArea.querySelectorAll(".card-gallery-arrow, .card-gallery-count").forEach((control) => control.remove());
 		if (fallback) return;
 		fallback = document.createElement("div");
 		fallback.className = "photo-placeholder card-gallery-fallback";
@@ -768,6 +807,7 @@ function connectCardGallery(card, images) {
 		fallback = null;
 	});
 
+	if (images.length < 2) return;
 	photoArea.querySelectorAll("[data-card-gallery-step]").forEach((button) => {
 		button.addEventListener("click", () => showImage(currentIndex + Number(button.dataset.cardGalleryStep)));
 	});
@@ -960,6 +1000,7 @@ function renderCard(page) {
 			openDetails(page === "home" ? "recipe" : "restaurant", item, card);
 		}
 	});
+	preloadUpcomingImages(page);
 }
 
 function getSavedCollection(type) {
@@ -1034,6 +1075,7 @@ function openDetails(type, item, trigger) {
 		const yelpUrl = item.yelpUrl || `https://www.yelp.com/search?find_desc=${encodeURIComponent(item.name)}&find_loc=${encodeURIComponent(item.city)}`;
 		const mapsQuery = encodeURIComponent(item.address ? `${item.name}, ${item.address}` : `${item.name}, ${item.city}`);
 		const mapsUrl = item.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`;
+		const popularDishes = item.popularDishes.filter((dish) => dish.trim().toLowerCase() !== "popular dishes");
 		detailContent.innerHTML = `
 			<div class="detail-layout restaurant-detail-layout">
 				${imageMarkup}
@@ -1047,7 +1089,7 @@ function openDetails(type, item, trigger) {
 						<div><dt>Neighborhood</dt><dd>${item.neighborhood}</dd></div>
 						<div><dt>Address</dt><dd>${item.address || "Address not provided yet"}</dd></div>
 					</dl>
-					<section class="popular-dishes"><h3>Popular dishes</h3><ul>${item.popularDishes.map((dish) => `<li>${dish}</li>`).join("")}</ul></section>
+					${popularDishes.length ? `<section class="popular-dishes"><h3>Popular dishes</h3><ul>${popularDishes.map((dish) => `<li>${dish}</li>`).join("")}</ul></section>` : ""}
 					${customerPhotosMarkup(item, yelpUrl, mapsUrl)}
 					<div class="detail-actions">
 						<button class="detail-save-button" type="button" data-detail-save>${isItemSaved(type, item) ? "♥ Saved" : "♡ Save place"}</button>
@@ -1230,8 +1272,6 @@ function ensureSavedRestaurantMap() {
 	if (savedRestaurantMap || !window.L) return Boolean(savedRestaurantMap);
 	savedRestaurantMap = window.L.map("saved-map", { scrollWheelZoom: true, zoomControl: true }).setView([39.5, -98.35], 4);
 	const styleUrl = "https://tiles.openfreemap.org/styles/liberty";
-	console.log("Map provider: OpenFreeMap via MapLibre");
-	console.log("Swipe & Bite map style URL:", styleUrl);
 	window.L.maplibreGL({
 		style: styleUrl,
 		attributionControl: {
